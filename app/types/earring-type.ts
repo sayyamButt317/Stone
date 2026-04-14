@@ -1,0 +1,11 @@
+export type EarringStyle =
+    | "studs"
+    | "drops"
+    | "hoops"
+    | "huggies"
+    | "halo-earrings"
+    | "cluster-earrings"
+    | "pear-drop-earrings"
+    | "chandeliers"
+    | "bezel-set-earrings"
+    | "contemporary-minimal"

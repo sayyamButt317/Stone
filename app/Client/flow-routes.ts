@@ -1,0 +1,16 @@
+export const FLOW_ROUTES = {
+  chooseType: "/Client/choose-type",
+  ringStyle: "/Client/ringstyle",
+  necklace: "/Client/necklace",
+  braclet: "/Client/braclet",
+  earings: "/Client/earings",
+  chooseGender: "/Client/choose-gender",
+  chooseGem: "/Client/choose-gem",
+  chooseMetal: "/Client/choose-metal",
+  chooseSize: "/Client/choose-size",
+  GemDecision: "/Client/Gem",
+  StoneColor: "/Client/stoneColor",
+  additionalDetails: "/Client/additional-details",
+  additionalStyle: "/Client/additional-style",
+  imagePreview: "/Client/ImagePreview",
+} as const
