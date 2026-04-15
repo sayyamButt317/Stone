@@ -8,7 +8,7 @@ import {
     Split,
 } from "lucide-react"
 
-type RingStyleType =
+export type RingStyleType =
     | "solitaire"
     | "three-stone"
     | "halo"
@@ -80,3 +80,4 @@ export const RING_STYLES: Array<{
             Icon: Minus,
         },
     ]
+

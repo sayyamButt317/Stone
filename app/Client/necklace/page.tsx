@@ -19,6 +19,8 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { FLOW_ROUTES } from "../flow-routes"
+import Image from 'next/image'
+import { NecklaceStyle } from "@/app/types/necklace-type"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -31,34 +33,23 @@ const notoSerif = Noto_Serif({
   style: ["normal", "italic"],
 })
 
-type NecklaceStyle =
-  | "solitaire-pendant"
-  | "halo-pendant"
-  | "drop-pendant"
-  | "cluster-pendant"
-  | "bezel-pendant"
-  | "bar-pendant"
-  | "locket-style"
-  | "symbolic-motif"
-  | "vintage-inspired"
-  | "contemporary-minimal"
 
 const OPTIONS: Array<{
   id: NecklaceStyle
   label: string
   Icon: typeof Diamond
 }> = [
-  { id: "solitaire-pendant", label: "Solitaire Pendant", Icon: Diamond },
-  { id: "halo-pendant", label: "Halo Pendant", Icon: Sun },
-  { id: "drop-pendant", label: "Drop Pendant", Icon: Droplets },
-  { id: "cluster-pendant", label: "Cluster Pendant", Icon: Sparkles },
-  { id: "bezel-pendant", label: "Bezel Pendant", Icon: Circle },
-  { id: "bar-pendant", label: "Bar Pendant", Icon: Flame },
-  { id: "locket-style", label: "Locket-Style", Icon: Lock },
-  { id: "symbolic-motif", label: "Symbolic / Motif", Icon: Star },
-  { id: "vintage-inspired", label: "Vintage-Inspired", Icon: WandSparkles },
-  { id: "contemporary-minimal", label: "Contemporary Minimal", Icon: Link2 },
-]
+    { id: "solitaire-pendant", label: "Solitaire Pendant", Icon: Diamond },
+    { id: "halo-pendant", label: "Halo Pendant", Icon: Sun },
+    { id: "drop-pendant", label: "Drop Pendant", Icon: Droplets },
+    { id: "cluster-pendant", label: "Cluster Pendant", Icon: Sparkles },
+    { id: "bezel-pendant", label: "Bezel Pendant", Icon: Circle },
+    { id: "bar-pendant", label: "Bar Pendant", Icon: Flame },
+    { id: "locket-style", label: "Locket-Style", Icon: Lock },
+    { id: "symbolic-motif", label: "Symbolic / Motif", Icon: Star },
+    { id: "vintage-inspired", label: "Vintage-Inspired", Icon: WandSparkles },
+    { id: "contemporary-minimal", label: "Contemporary Minimal", Icon: Link2 },
+  ]
 
 export default function NecklacePage() {
   const router = useRouter()
@@ -76,7 +67,7 @@ export default function NecklacePage() {
         manrope.className
       )}
     >
-      <header className="fixed top-0 z-50 flex w-full items-center justify-between bg-[#111413]/80 px-6 py-4 shadow-[0_1px_0_0_rgba(226,193,150,0.1)] backdrop-blur-xl">
+      {/* <header className="fixed top-0 z-50 flex w-full items-center justify-between bg-[#111413]/80 px-6 py-4 shadow-[0_1px_0_0_rgba(226,193,150,0.1)] backdrop-blur-xl">
         <div className={cn("text-xl font-bold tracking-tight uppercase", notoSerif.className)}>
           Midnight Atelier
         </div>
@@ -88,7 +79,7 @@ export default function NecklacePage() {
         <button type="button" onClick={() => router.push(FLOW_ROUTES.chooseType)}>
           <span className="text-[#e2c196]">✕</span>
         </button>
-      </header>
+      </header> */}
 
       <main className="mx-auto w-full max-w-7xl px-6 pt-32 pb-40 md:px-20">
         <div className="mb-16 grid grid-cols-1 items-end gap-12 lg:grid-cols-2">
@@ -143,10 +134,12 @@ export default function NecklacePage() {
 
         <div className="relative mt-24 h-64 w-full overflow-hidden rounded-lg">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             alt="luxury jewelry detail"
             className="h-full w-full object-cover opacity-40 mix-blend-luminosity"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjzI-N6yLqZjBNW1oeNDGZLqoVItGJ2sgNniqgJnSdahOzJFJbXBAlf-WwKl7leWOJrIQT3UT3nM6-8KRI5KFcxNDBRkuEjDad4MiBn9_L6OQp_qadZ_1OJJmahlPpz4dW_qhX9I1fXLkMmIbqhcey-VxVdyWYl1VC7tCuhiPh7euuzlCagnPWLFKSL-XhS2Qe0G7gyEWVrXkz2ClddO8pEb6HPdPSX9FhCPTYnah7LOSp5EzCz0EQZyELSaSHc3_czzDrwO_uGAs"
+            width={100}
+            height={100}
           />
           <div className="absolute inset-0 bg-linear-to-t from-[#111413] via-transparent to-transparent" />
           <div className="absolute inset-0 bg-linear-to-r from-[#111413] via-transparent to-[#111413]" />

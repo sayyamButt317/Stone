@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, Mars, Transgender, Venus } from "lucide-react"
 import { Modal } from "@/components/Client/Dialogue/index"
 import { DialogTitle } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
-import useJewelleryStore from "@/app/store/jewellery-store"
+import useJewelleryStore, { type GenderChoice } from "@/app/store/jewellery-store"
 
 const manrope = Manrope({
     subsets: ["latin"],
@@ -24,8 +24,6 @@ const SURFACE = "#111413"
 const ON_SURFACE = "#e1e3e1"
 const ON_SURFACE_VARIANT = "#c1c8c5"
 const OUTLINE_VARIANT = "#414846"
-
-export type GenderChoice = "female" | "male" | "unisex"
 
 type Option = {
     id: GenderChoice

@@ -1,10 +1,8 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useState } from "react"
 import { FLOW_ROUTES } from "../flow-routes"
-
-type Selection = "own" | "choose" | "reference"
+import useJewelleryStore, { type HaveStoneChoice } from "@/app/store/jewellery-store"
 
 type CardProps = {
   active: boolean
@@ -19,18 +17,19 @@ type CardProps = {
 
 export default function GemstoneDecisionPage() {
   const router = useRouter()
-  const [selected, setSelected] = useState<Selection | null>(null)
+  const stone = useJewelleryStore((s) => s.stone)
+  const setStone = useJewelleryStore((s) => s.setStone)
 
   const handleNext = () => {
-    if (!selected) return
+    if (stone !== "own" && stone !== "choose" && stone !== "reference") return
 
-    const nextRouteBySelection: Record<Selection, string> = {
-      own: FLOW_ROUTES.additionalDetails,
-      choose: FLOW_ROUTES.chooseGem,
-      reference: FLOW_ROUTES.additionalDetails,
+    const nextRouteBySelection: Record<HaveStoneChoice, string> = {
+      own: FLOW_ROUTES.StoneDetail,
+      choose: FLOW_ROUTES.PickOption,
+      reference: FLOW_ROUTES.yss,
     }
 
-    router.push(nextRouteBySelection[selected])
+    router.push(nextRouteBySelection[stone])
   }
 
   return (
@@ -64,7 +63,7 @@ export default function GemstoneDecisionPage() {
         }
       `}</style>
 
-      <nav className="fixed top-0 z-50 flex w-full items-center justify-between bg-[#111413]/80 px-12 py-6 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+      {/* <nav className="fixed top-0 z-50 flex w-full items-center justify-between bg-[#111413]/80 px-12 py-6 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl">
         <div className="font-['Noto_Serif'] text-2xl uppercase tracking-[0.2em] text-[#e2c196]">
           L&apos;ATELIER
         </div>
@@ -85,7 +84,7 @@ export default function GemstoneDecisionPage() {
           <span className="material-symbols-outlined cursor-pointer duration-300 hover:scale-95">shopping_bag</span>
           <span className="material-symbols-outlined cursor-pointer duration-300 hover:scale-95">person</span>
         </div>
-      </nav>
+      </nav> */}
 
       <aside className="fixed left-0 z-40 flex h-screen w-24 flex-col items-center gap-8 border-r border-[#414846]/10 bg-[#191c1b]/60 py-24 backdrop-blur-2xl">
         <div className="mb-8 flex flex-col items-center gap-1">
@@ -126,31 +125,31 @@ export default function GemstoneDecisionPage() {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <Card
-              active={selected === "own"}
+              active={stone === "own"}
               actionLabel="Select Path"
               description="I want to use my own existing gemstone. Our masters will inspect and set your personal heirloom."
               icon="pan_tool_alt"
               iconWrapperClassName="bg-[#323534]"
-              onClick={() => setSelected("own")}
+              onClick={() => setStone("own")}
               title="Yes, I already have a stone"
             />
             <Card
-              active={selected === "choose"}
+              active={stone === "choose"}
               actionLabel="Enter Gallery"
               description="Explore our curated collection of ethically sourced stones, hand-selected for their brilliance and fire."
               featured
               icon="auto_awesome"
               iconWrapperClassName="bg-[#e2c196]/10 shadow-[0_0_30px_rgba(226,193,150,0.15)]"
-              onClick={() => setSelected("choose")}
+              onClick={() => setStone("choose")}
               title="No, help me choose"
             />
             <Card
-              active={selected === "reference"}
+              active={stone === "reference"}
               actionLabel="Import Stone"
               description="Enter a SKU or link from our online catalog to instantly integrate it into your custom design flow."
               icon="link"
               iconWrapperClassName="bg-[#323534]"
-              onClick={() => setSelected("reference")}
+              onClick={() => setStone("reference")}
               title="I have a YSS stone reference"
             />
           </div>
@@ -170,11 +169,11 @@ export default function GemstoneDecisionPage() {
               </div>
               <button
                 className={`rounded-md border px-12 py-5 font-[Manrope] text-sm uppercase tracking-[0.2em] transition-all duration-500 ${
-                  selected
+                  stone === "own" || stone === "choose" || stone === "reference"
                     ? "border-[#e2c196]/30 bg-[#e2c196]/90 text-[#291800] hover:bg-[#e2c196]"
                     : "cursor-not-allowed border-[#414846]/10 bg-[#e2c196]/10 text-[#e1e3e1]/30"
                 }`}
-                disabled={!selected}
+                disabled={stone !== "own" && stone !== "choose" && stone !== "reference"}
                 onClick={handleNext}
                 type="button"
               >
@@ -201,9 +200,8 @@ export default function GemstoneDecisionPage() {
 function Card({ active, icon, title, description, actionLabel, iconWrapperClassName, featured, onClick }: CardProps) {
   return (
     <button
-      className={`glass-card group relative flex h-full flex-col overflow-hidden rounded-lg p-10 text-left ${
-        active ? "active-selection" : ""
-      }`}
+      className={`glass-card group relative flex h-full flex-col overflow-hidden rounded-lg p-10 text-left ${active ? "active-selection" : ""
+        }`}
       onClick={onClick}
       type="button"
     >
@@ -214,9 +212,8 @@ function Card({ active, icon, title, description, actionLabel, iconWrapperClassN
       ) : null}
 
       <div
-        className={`mb-12 flex h-16 w-16 items-center justify-center rounded-full text-[#e2c196] duration-500 group-hover:scale-110 ${
-          iconWrapperClassName ?? "bg-[#323534]"
-        }`}
+        className={`mb-12 flex h-16 w-16 items-center justify-center rounded-full text-[#e2c196] duration-500 group-hover:scale-110 ${iconWrapperClassName ?? "bg-[#323534]"
+          }`}
       >
         <span className="material-symbols-outlined text-4xl">{icon}</span>
       </div>

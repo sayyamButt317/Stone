@@ -1,0 +1,11 @@
+export type BraceletStyle =
+    | "tennis-bracelet"
+    | "chain-bracelet"
+    | "bangle"
+    | "cuff"
+    | "charm-bracelet"
+    | "station-bracelet"
+    | "link-bracelet"
+    | "gemstone-line-bracelet"
+    | "bezel-set-bracelet"
+    | "contemporary-minimal"

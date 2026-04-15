@@ -10,9 +10,10 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { FLOW_ROUTES } from "../flow-routes"
-import { RING_STYLES } from "@/app/types/ring-type"
+import { RING_STYLES, RingStyleType } from "@/app/types/ring-type"
 import useRingStore from "@/app/store/ring-store"
 import useJewelleryStore from "@/app/store/jewellery-store"
+import Image from 'next/image'
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -23,17 +24,6 @@ const notoSerif = Noto_Serif({
   subsets: ["latin"],
   weight: ["300", "400", "700"],
 })
-
-type RingStyleType =
-  | "solitaire"
-  | "three-stone"
-  | "halo"
-  | "bezel"
-  | "signet"
-  | "cluster"
-  | "toi-et-moi"
-  | "eternity"
-  | "contemporary-minimal"
 
 
 export default function RingStylePage() {
@@ -121,11 +111,12 @@ export default function RingStylePage() {
 
         <div className="mt-24 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
           <div className="group relative h-96 overflow-hidden rounded-xl">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE71JRJFpeb49nzHrwBucH3p3cKBYwPUB3KSsK4_qNpLUZNxgrNyR-bJSJfpUWZ2NPAHa0Vgrz5Vnpg9Idyk3qs1zqwJxd5Fl_wgzZD8eA7UQm15ONdkYftJb1c4EPRCpDXS6IYbHT0pRAh9mPsVrG_7lfORoir83RmY5U9shBUbAPcePfFqh1kuED0hIeYvQIUzBoorzATx5Bio4_4wWYyMYviZvYQa2Z9XhvDF7EoaO6bR0sVwYcaRd_-sI6xd22jEFQ91oK8gQ"
               alt="Luxury Solitaire Ring"
               className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              height={100}
+              width={100}
             />
             <div className="absolute inset-0 bg-linear-to-t from-[#111413] to-transparent opacity-60" />
             <div className="absolute bottom-8 left-8">

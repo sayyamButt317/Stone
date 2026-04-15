@@ -1,0 +1,11 @@
+export type NecklaceStyle =
+    | "solitaire-pendant"
+    | "halo-pendant"
+    | "drop-pendant"
+    | "cluster-pendant"
+    | "bezel-pendant"
+    | "bar-pendant"
+    | "locket-style"
+    | "symbolic-motif"
+    | "vintage-inspired"
+    | "contemporary-minimal"

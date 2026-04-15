@@ -1,3 +1,4 @@
+
 export const FLOW_ROUTES = {
   chooseType: "/Client/choose-type",
   ringStyle: "/Client/ringstyle",
@@ -10,6 +11,9 @@ export const FLOW_ROUTES = {
   chooseSize: "/Client/choose-size",
   GemDecision: "/Client/Gem",
   StoneColor: "/Client/stoneColor",
+  StoneDetail: "/Client/stone-detail",
+  PickOption: "/Client/pick",
+  yss: "/Client/yss",
   additionalDetails: "/Client/additional-details",
   additionalStyle: "/Client/additional-style",
   imagePreview: "/Client/ImagePreview",

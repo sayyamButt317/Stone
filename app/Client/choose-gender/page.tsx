@@ -1,13 +1,14 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo } from "react"
 import { Manrope, Noto_Serif } from "next/font/google"
 import { ArrowLeft, ArrowRight, Mars, Transgender, Venus } from "lucide-react"
 import { cn } from "@/lib/utils"
-import useJewelleryStore from "@/app/store/jewellery-store"
+import useJewelleryStore, { type GenderChoice } from "@/app/store/jewellery-store"
 import Stepper from "@/components/Client/stepper"
 import { useRouter } from "next/navigation"
 import { FLOW_ROUTES } from "../flow-routes"
+import Image from 'next/image'
 
 
 const manrope = Manrope({
@@ -26,8 +27,6 @@ const SURFACE = "#111413"
 const ON_SURFACE = "#e1e3e1"
 const ON_SURFACE_VARIANT = "#c1c8c5"
 const OUTLINE_VARIANT = "#414846"
-
-export type GenderChoice = "female" | "male" | "unisex"
 
 type Option = {
   id: GenderChoice
@@ -52,16 +51,21 @@ export default function ChooseGender({
   step = 2,
   totalSteps = 7,
 }: Props) {
-  const [selected, setSelected] = useState<GenderChoice>("female")
-  const { genderType, setGenderType } = useJewelleryStore()
-  const router = useRouter();
+  const genderType = useJewelleryStore((s) => s.genderType)
+  const setGenderType = useJewelleryStore((s) => s.setGenderType)
+  const router = useRouter()
+
+  const selected = useMemo((): GenderChoice => {
+    if (genderType === "female" || genderType === "male" || genderType === "unisex") return genderType
+    return "female"
+  }, [genderType])
 
   const handleBack = () => {
     router.back()
   }
 
   const handleProceed = () => {
-    if (!genderType) return
+    setGenderType(selected)
     router.push(FLOW_ROUTES.GemDecision)
   }
 
@@ -136,12 +140,8 @@ export default function ChooseGender({
               <button
                 key={id}
                 type="button"
-                disabled={!selected}
                 aria-pressed={isSelected}
-                onClick={() => {
-                  setSelected(id)
-                  setGenderType(id)
-                }}
+                onClick={() => setGenderType(id)}
                 className={cn(
                   "group flex cursor-pointer flex-col items-center justify-center gap-6 rounded-2xl p-10 transition-all duration-500 sm:p-12",
                   "bg-[rgba(49,76,71,0.15)] backdrop-blur-3xl",
@@ -237,11 +237,12 @@ export default function ChooseGender({
         className="pointer-events-none fixed top-0 right-0 z-0 h-full w-1/3 opacity-20"
         aria-hidden
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           alt=""
           className="h-full w-full object-cover mix-blend-overlay"
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7BAvy92v0ebjRSoMVSO0dFx9fbqP2fQ20l0vyN40Tcj6mVBRHoeM5aSzYtoVqfELFT0h9lrxs11Nmowe-4IaJbftI3-UmurDQE-XcJ-pGPWMjWz16NcnR6U0y4BARf_cwW_PuFIORLpa8AK7eIOhgihelmq3lyEy7O_QLdwZ_0WD6nxK7ofXRchVf7blVoX7-bvJ2vXeTGrPxSX-mn_sUv_4SFVm9v_45eihMhK4X4Zvs5vr5YGBG_SXiwYvKvrx3ER-KR1QQE6I"
+          width={100}
+          height={100}
         />
       </div>
     </div>
