@@ -1,11 +1,13 @@
 "use client"
-
 import { Manrope, Noto_Serif } from "next/font/google"
 import { Heart, ShoppingBag } from "lucide-react"
 import { cn } from "@/lib/utils"
 import useImageStore from "@/app/store/image-store"
 import useJewelleryStore from "@/app/store/jewellery-store"
 import useRingStore from "@/app/store/ring-store"
+import { FLOW_ROUTES } from "../flow-routes"
+import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -19,6 +21,7 @@ const notoSerif = Noto_Serif({
 })
 
 export default function ImagePreview() {
+  const router = useRouter();
   const imageUrl = useImageStore((s) => s.image_url)
   const { clearJewellery } = useJewelleryStore()
   const { clearRing } = useRingStore()
@@ -28,7 +31,15 @@ export default function ImagePreview() {
     clearJewellery()
     clearRing()
     clearImage()
+    router.push(FLOW_ROUTES.home)
 
+  }
+
+  const handleDownloadDesign = () => {
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = 'design.jpg';
+    link.click();
   }
   return (
     <div
@@ -62,12 +73,7 @@ export default function ImagePreview() {
             <ShoppingBag className="size-5" />
           </button>
           <div className="h-8 w-8 overflow-hidden rounded-full bg-[#282b29]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRIsSiiZaqLVeAYa4zTBwIWRHuGQxJpPSMzQGD6pbJcyfK0atDCzx3EJPcnmxsPw0e7-VHl44n67nRbTVXBpDVN-zsrWTNQqlL27OfCjTUR0EG90ZMONWASdFtf4_OhxHdSxsDuSxU6A3IqEBPKHn_fGuecf0InAPjSATnrsUi0FhegLwEkVZEEJrDKpZW4m0mHts5pXxHIFbjNWq6fyhQDCNJlpROCbjHb50khVwn15ZuewaP4kka9Rt_vt6ZSsCqaeOEBCF3sjQ"
-              alt="User profile"
-              className="h-full w-full object-cover"
-            />
+            <Image src='https://lh3.googleusercontent.com/aida-public/AB6AXuCMeI53bfuMnZgyr_bndSB03wgt_r9GL2Mb58Cgzjw6c3VrybUKDjt-9-qiRDnU6B-FDFXDzrZ0nEdP9OqoUB5XPakz8HQkTAjCKz_zZirTd9mu0F-_PcUFbVGaikhTYREQ2Dz7DAzapqK9q26T-6HJ2zPSKG_mfgun-kc59zoNXnxCDPl6nI5cTF2XCmT7zWRw_kybGQVperFM71db7hQXSMiQbQJFT1FxxC70on3atIIU82uIbUJWQhPu9jLqpV0ct5Dy7U3C7sg' alt="User profile" width={32} height={32} />
           </div>
         </div>
       </nav>
@@ -76,15 +82,14 @@ export default function ImagePreview() {
         <div className="group relative mb-16 w-full max-w-4xl">
           <div className="absolute -inset-4 rounded-full bg-[#e2c196]/5 opacity-50 blur-3xl" />
           <div className="relative overflow-hidden rounded-lg bg-[#191c1b] p-2 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] md:p-4">
-            <div className="relative aspect-4/5 w-full overflow-hidden rounded-md md:aspect-video">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={imageUrl}
-                alt="The Verdant Sovereign Emerald Ring"
-                className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#0c0f0e99] to-transparent" />
-            </div>
+            <Image
+              src={imageUrl}
+              alt="Image Preview"
+              width={500}
+              height={500}
+              className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#0c0f0e99] to-transparent" />
           </div>
         </div>
 
@@ -104,10 +109,11 @@ export default function ImagePreview() {
 
         <div className="flex flex-col items-center gap-8 md:flex-row">
           <button
+            onClick={handleDownloadDesign}
             type="button"
             className="rounded-md bg-linear-to-br from-[#e2c196] to-[#a58860] px-12 py-5 text-xs font-bold tracking-widest text-[#291800] uppercase shadow-[0_10px_30px_-10px_rgba(226,193,150,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-5px_rgba(226,193,150,0.6)]"
           >
-            Download / Save Design
+            Download Design
           </button>
           <button
             type="button"
@@ -122,7 +128,7 @@ export default function ImagePreview() {
       <footer className="w-full bg-[#0c0f0e] px-8 py-12">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 md:flex-row">
           <div className="text-[10px] tracking-widest text-[#e1e3e166] uppercase">
-            © 2024 THE MIDNIGHT ATELIER. ALL RIGHTS RESERVED.
+            © 2026 THE MIDNIGHT ATELIER. ALL RIGHTS RESERVED.
           </div>
           <div className="flex gap-8">
             {["Privacy Policy", "Terms of Service", "Ethical Sourcing"].map((item) => (

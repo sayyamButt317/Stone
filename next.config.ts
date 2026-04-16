@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "yss-jewelry-images.s3.us-east-2.amazonaws.com",
+        pathname: "/**",
+      },
     ],
   },
 };

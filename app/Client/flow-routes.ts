@@ -1,5 +1,6 @@
 
 export const FLOW_ROUTES = {
+  home: "/",
   chooseType: "/Client/choose-type",
   ringStyle: "/Client/ringstyle",
   necklace: "/Client/necklace",
