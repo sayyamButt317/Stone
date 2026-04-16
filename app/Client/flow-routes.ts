@@ -17,4 +17,9 @@ export const FLOW_ROUTES = {
   additionalDetails: "/Client/additional-details",
   additionalStyle: "/Client/additional-style",
   imagePreview: "/Client/ImagePreview",
+  wearFrequency: "/Client/wear-frequency",
+  preferSetting: "/Client/prefer-setting",
+  personalPreferences: "/Client/personal-preferences",
+  setting: "/Client/setting",
+  inspirationImage: "/Client/inspiration-image",
 } as const

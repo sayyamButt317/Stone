@@ -1,50 +1,32 @@
 import axios from 'axios';
 import { CompanyENDPOINT } from './endpoints';
-import { toast } from 'sonner';
-import { getAuthTokenProvider } from '@/app/provider/auth-provide';
-import useAuthStore from '@/app/store/auth-store';
+import { RING_CREATION_INSTRUCATIONS_PAYLOAD, RING_GENERATION_PAYLOAD } from '@/app/constant/ringcreation';
 
 
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
+    baseURL: 'https://shopify-backend-sh3v.onrender.com/api',
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
-api.interceptors.request.use(
-    (config) => {
-        const accessToken = getAuthTokenProvider();
-        if (accessToken) {
-            config.headers.Authorization = `Bearer ${accessToken}`;
-        }
-        return config;
-    },
-    (error) => Promise.reject(error),
-);
 
-api.interceptors.response.use(
-    (response) => response,
-    (error) => {
-        if (error.response && error.response.status === 401) {
-            useAuthStore().clearAuth();
-
-            if (error.response?.status === 403) {
-                toast.error('Unauthorized access');
-            } else if (error.response?.status === 500) {
-                toast.error('Server error');
-            } else {
-                toast.error('An error occurred. Please try again.');
-                window.location.href = '/auth/login';
-            }
-        }
-        return Promise.reject(error);
-    },
-);
-
-export const GenerateRingDesign = async (payload: {
-    user_input: string;
-}) => {
+export const GenerateRingDesignInstructions = async (payload: RING_CREATION_INSTRUCATIONS_PAYLOAD) => {
     const response = await api.post(CompanyENDPOINT.GENERATE_RING_DESIGN, payload);
+    return response.data;
+};
+
+export const GenerateImage = async (payload: RING_GENERATION_PAYLOAD) => {
+    const formData = new FormData();
+    formData.append('prompt', payload.prompt);
+    if (payload.image) {
+        formData.append('image', payload.image);
+    }
+
+    const response = await api.post(CompanyENDPOINT.GENERATE_IMAGE, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    });
     return response.data;
 };

@@ -3,6 +3,9 @@
 import { Manrope, Noto_Serif } from "next/font/google"
 import { Heart, ShoppingBag } from "lucide-react"
 import { cn } from "@/lib/utils"
+import useImageStore from "@/app/store/image-store"
+import useJewelleryStore from "@/app/store/jewellery-store"
+import useRingStore from "@/app/store/ring-store"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -16,6 +19,17 @@ const notoSerif = Noto_Serif({
 })
 
 export default function ImagePreview() {
+  const imageUrl = useImageStore((s) => s.image_url)
+  const { clearJewellery } = useJewelleryStore()
+  const { clearRing } = useRingStore()
+  const { clearImage } = useImageStore()
+
+  const handleClearLocalStorage = () => {
+    clearJewellery()
+    clearRing()
+    clearImage()
+
+  }
   return (
     <div
       className={cn(
@@ -65,7 +79,7 @@ export default function ImagePreview() {
             <div className="relative aspect-4/5 w-full overflow-hidden rounded-md md:aspect-video">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMeI53bfuMnZgyr_bndSB03wgt_r9GL2Mb58Cgzjw6c3VrybUKDjt-9-qiRDnU6B-FDFXDzrZ0nEdP9OqoUB5XPakz8HQkTAjCKz_zZirTd9mu0F-_PcUFbVGaikhTYREQ2Dz7DAzapqK9q26T-6HJ2zPSKG_mfgun-kc59zoNXnxCDPl6nI5cTF2XCmT7zWRw_kybGQVperFM71db7hQXSMiQbQJFT1FxxC70on3atIIU82uIbUJWQhPu9jLqpV0ct5Dy7U3C7sg"
+                src={imageUrl}
                 alt="The Verdant Sovereign Emerald Ring"
                 className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
@@ -98,6 +112,7 @@ export default function ImagePreview() {
           <button
             type="button"
             className="border-b border-transparent pb-1 text-[11px] tracking-[0.2em] text-[#e1e3e199] uppercase transition-colors duration-500 hover:border-[#e2c196]/30 hover:text-[#e2c196]"
+            onClick={handleClearLocalStorage}
           >
             Start New Design
           </button>

@@ -1,8 +1,18 @@
 "use client"
 
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import useJewelleryStore from "@/app/store/jewellery-store"
+import { FLOW_ROUTES } from "../flow-routes"
+
+const STONE_TYPES = ["Diamond", "Sapphire", "Emerald", "Ruby", "Morganite", "Other"] as const
+const SHAPES = ["Round", "Oval", "Pear", "Emerald Cut", "Marquise", "Cushion"] as const
 
 export default function StoneDetailsPage() {
+  const router = useRouter()
+  const ownStone = useJewelleryStore((s) => s.ownStone)
+  const setOwnStone = useJewelleryStore((s) => s.setOwnStone)
+
   return (
     <div className="bg-[#111413] font-[Manrope] text-[#e1e3e1] selection:bg-[#e2c196]/30">
       <style jsx global>{`
@@ -83,18 +93,27 @@ export default function StoneDetailsPage() {
               </p>
             </header>
 
-            <form className="space-y-8">
+            <form
+              className="space-y-8"
+              onSubmit={(e) => {
+                e.preventDefault()
+                router.push(FLOW_ROUTES.chooseMetal)
+              }}
+            >
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div className="space-y-2">
                   <label className="ml-1 text-xs uppercase tracking-widest text-[#c1c8c5]/80">Stone Type</label>
                   <div className="relative">
-                    <select className="glass-input w-full appearance-none rounded-lg px-5 py-4 text-[#e1e3e1]">
-                      <option>Diamond</option>
-                      <option>Sapphire</option>
-                      <option>Emerald</option>
-                      <option>Ruby</option>
-                      <option>Morganite</option>
-                      <option>Other</option>
+                    <select
+                      className="glass-input w-full appearance-none rounded-lg px-5 py-4 text-[#e1e3e1]"
+                      value={ownStone.stone_type || STONE_TYPES[0]}
+                      onChange={(e) => setOwnStone({ stone_type: e.target.value })}
+                    >
+                      {STONE_TYPES.map((t) => (
+                        <option key={t} value={t}>
+                          {t}
+                        </option>
+                      ))}
                     </select>
                     <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#e2c196]">
                       <span className="material-symbols-outlined text-sm">expand_more</span>
@@ -108,19 +127,24 @@ export default function StoneDetailsPage() {
                     className="glass-input w-full rounded-lg px-5 py-4 text-[#e1e3e1] placeholder:text-[#c1c8c5]/30"
                     placeholder="e.g. Royal Blue"
                     type="text"
+                    value={ownStone.color}
+                    onChange={(e) => setOwnStone({ color: e.target.value })}
                   />
                 </div>
 
                 <div className="space-y-2">
                   <label className="ml-1 text-xs uppercase tracking-widest text-[#c1c8c5]/80">Shape</label>
                   <div className="relative">
-                    <select className="glass-input w-full appearance-none rounded-lg px-5 py-4 text-[#e1e3e1]">
-                      <option>Round</option>
-                      <option>Oval</option>
-                      <option>Pear</option>
-                      <option>Emerald Cut</option>
-                      <option>Marquise</option>
-                      <option>Cushion</option>
+                    <select
+                      className="glass-input w-full appearance-none rounded-lg px-5 py-4 text-[#e1e3e1]"
+                      value={ownStone.shape || SHAPES[0]}
+                      onChange={(e) => setOwnStone({ shape: e.target.value })}
+                    >
+                      {SHAPES.map((s) => (
+                        <option key={s} value={s}>
+                          {s}
+                        </option>
+                      ))}
                     </select>
                     <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#e2c196]">
                       <span className="material-symbols-outlined text-sm">expand_more</span>
@@ -129,12 +153,13 @@ export default function StoneDetailsPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="ml-1 text-xs uppercase tracking-widest text-[#c1c8c5]/80">Carat Weight</label>
+                  <label className="ml-1 text-xs uppercase tracking-widest text-[#c1c8c5]/80">Approx. size / carat</label>
                   <input
                     className="glass-input w-full rounded-lg px-5 py-4 text-[#e1e3e1] placeholder:text-[#c1c8c5]/30"
-                    placeholder="0.00 ct"
-                    step="0.01"
-                    type="number"
+                    placeholder="e.g. 1.2 ct"
+                    type="text"
+                    value={ownStone.approximate_size}
+                    onChange={(e) => setOwnStone({ approximate_size: e.target.value })}
                   />
                 </div>
               </div>
@@ -159,6 +184,7 @@ export default function StoneDetailsPage() {
                 <button
                   className="w-full rounded-md px-10 py-5 text-xs uppercase tracking-widest text-[#c1c8c5]/60 transition-colors duration-300 hover:text-[#e2c196] sm:w-auto"
                   type="button"
+                  onClick={() => router.back()}
                 >
                   Back
                 </button>

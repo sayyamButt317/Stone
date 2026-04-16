@@ -8,17 +8,16 @@ import {
   Blend,
   Gem,
   Grid3X3,
+  Loader2,
   PenLine,
   ScrollText,
   ShoppingBag,
   User,
 } from "lucide-react"
-import { Modal } from "@/components/Client/Dialogue"
-import { DialogTitle } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
 import Stepper from "@/components/Client/stepper"
-import { useRouter } from "next/navigation"
-import { FLOW_ROUTES } from "../flow-routes"
+import useGenerateImageHook from "@/app/routes/Client/hooks/generateimage-hook"
+import useRingStore from "@/app/store/ring-store"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -53,7 +52,6 @@ type Props = {
 }
 
 export default function AdditionalDetails({
-  open,
   onOpenChange,
   step = 6,
   totalSteps = 7,
@@ -62,7 +60,11 @@ export default function AdditionalDetails({
 }: Props) {
   const [description, setDescription] = useState("")
   const characterCount = description.length
-  const router = useRouter();
+  const imagePrompt = useRingStore((s) => s.image_prompt)
+  const setImagePrompt = useRingStore((s) => s.setImagePrompt)
+
+
+  const { mutate: generateImage, isPending } = useGenerateImageHook()
 
   const handleBack = useCallback(() => {
     if (onBack) {
@@ -74,11 +76,17 @@ export default function AdditionalDetails({
 
   const handleContinue = useCallback(() => {
     if (onContinue) {
-      onContinue(description.trim())
       return
     }
+    const prompt = description.trim() || imagePrompt.trim()
+    if (!prompt) return
+
+    setImagePrompt(prompt)
+    generateImage({
+      prompt,
+    })
     onOpenChange(false)
-  }, [description, onContinue, onOpenChange])
+  }, [description, generateImage, imagePrompt, onContinue, onOpenChange, setImagePrompt])
 
   const appendTag = useCallback((tag: string) => {
     setDescription((prev) => {
@@ -210,10 +218,11 @@ export default function AdditionalDetails({
           <button
             type="button"
             onClick={handleContinue}
+            disabled={isPending}
             className="group flex items-center gap-3 rounded-md bg-linear-to-br from-[#e2c196] to-[#a58860] px-12 py-4 shadow-[0_0_30px_rgba(226,193,150,0.15)] transition-all active:scale-95"
           >
-            <span className="text-sm font-bold tracking-[0.2em] text-[#291800] uppercase">Next Step</span>
-            <ArrowRight className="size-5 text-[#291800] transition-transform group-hover:translate-x-1" />
+            <span className="text-sm font-bold tracking-[0.2em] text-[#291800] uppercase">{isPending ? "Generating..." : "Generate Image"}</span>
+            {isPending ? <Loader2 className="size-5 text-[#291800] animate-spin" /> : <ArrowRight className="size-5 text-[#291800] transition-transform group-hover:translate-x-1" />}
           </button>
         </div>
       </footer>

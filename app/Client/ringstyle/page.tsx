@@ -11,7 +11,6 @@ import {
 import { cn } from "@/lib/utils"
 import { FLOW_ROUTES } from "../flow-routes"
 import { RING_STYLES, RingStyleType } from "@/app/types/ring-type"
-import useRingStore from "@/app/store/ring-store"
 import useJewelleryStore from "@/app/store/jewellery-store"
 import Image from 'next/image'
 
@@ -29,7 +28,7 @@ const notoSerif = Noto_Serif({
 export default function RingStylePage() {
   const router = useRouter()
   const [selectedStyle, setSelectedStyle] = useState<RingStyleType>("solitaire")
-  const { setStyle } = useJewelleryStore()
+  const setRingStyleFamily = useJewelleryStore((s) => s.setRingStyleFamily)
 
   const selectedName = useMemo(
     () => RING_STYLES.find((style) => style.id === selectedStyle)?.name ?? "Solitaire",
@@ -81,7 +80,7 @@ export default function RingStylePage() {
                 type="button"
                 onClick={() => {
                   setSelectedStyle(id)
-                  setStyle(selectedName)
+                  setRingStyleFamily(name)
                 }}
                 className={cn(
                   "flex flex-col items-center rounded-lg p-8 text-center transition-all duration-500",
@@ -153,7 +152,10 @@ export default function RingStylePage() {
         </button>
         <button
           type="button"
-          onClick={() => router.push(FLOW_ROUTES.chooseGender)}
+          onClick={() => {
+            setRingStyleFamily(selectedName)
+            router.push(FLOW_ROUTES.chooseGender)
+          }}
           className="rounded-full bg-linear-to-tr from-[#e2c196] to-[#a58860] px-10 py-4 text-xs font-bold tracking-widest text-[#111413] uppercase shadow-[0_10px_20px_rgba(226,193,150,0.2)] transition-opacity hover:opacity-90"
         >
           <span className="flex items-center gap-3">

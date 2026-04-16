@@ -51,7 +51,7 @@ export default function ChooseMetal({
 
   const handleContinue = (() => {
     if (!metalType) return
-    router.push(FLOW_ROUTES.chooseSize)
+    router.push(FLOW_ROUTES.preferSetting)
   })
 
   return (

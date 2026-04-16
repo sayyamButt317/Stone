@@ -1,11 +1,29 @@
 "use client"
 
-import useJewelleryStore from "@/app/store/jewellery-store"
+import useJewelleryStore, { OptionPick } from "@/app/store/jewellery-store"
 import Image from "next/image"
+import { FLOW_ROUTES } from "../flow-routes"
+import { useRouter } from "next/navigation"
 
 export default function RecomendationPage() {
 
-    const { setPick } = useJewelleryStore()
+    const router = useRouter();
+    const { pick, setPick } = useJewelleryStore()
+
+    const handleBack = () => {
+        setPick('')
+        router.back()
+    }
+
+    const handleNext = () => {
+        if (pick !== "stone" && pick !== "color") return
+        const nextRouteBySelection: Record<OptionPick, string> = {
+            stone: FLOW_ROUTES.chooseGem,
+            color: FLOW_ROUTES.StoneColor,
+        }
+
+        router.push(nextRouteBySelection[pick])
+    }
 
     return (
         <div className="min-h-screen bg-[#111413] font-[Manrope] text-[#e1e3e1] selection:bg-[#e2c196]/30">
@@ -113,7 +131,16 @@ export default function RecomendationPage() {
                     </header>
 
                     <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-                        <button className="glass-card emerald-glow group flex h-[400px] flex-col justify-between rounded-lg border border-[#414846]/10 p-12 text-left transition-all duration-500 hover:scale-[1.02]" type="button">
+                        <button
+                            aria-pressed={pick === "stone"}
+                            onClick={() => setPick("stone")}
+                            className={`glass-card emerald-glow group flex h-[400px] flex-col justify-between rounded-lg border p-12 text-left transition-all duration-500 hover:scale-[1.02] ${
+                                pick === "stone"
+                                    ? "border-[#e2c196]/50 bg-[#e2c196]/5 shadow-[0_0_30px_rgba(226,193,150,0.2)]"
+                                    : "border-[#414846]/10"
+                            }`}
+                            type="button"
+                        >
                             <div className="space-y-6">
                                 <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#414846]/20 bg-[#1d201f] text-[#e2c196] transition-transform duration-500 group-hover:scale-110">
                                     <span className="material-symbols-outlined text-4xl">diamond</span>
@@ -135,7 +162,16 @@ export default function RecomendationPage() {
                             </div>
                         </button>
 
-                        <button className="glass-card emerald-glow group flex h-[400px] flex-col justify-between rounded-lg border border-[#414846]/10 p-12 text-left transition-all duration-500 hover:scale-[1.02]" type="button">
+                        <button
+                            aria-pressed={pick === "color"}
+                            onClick={() => setPick("color")}
+                            className={`glass-card emerald-glow group flex h-[400px] flex-col justify-between rounded-lg border p-12 text-left transition-all duration-500 hover:scale-[1.02] ${
+                                pick === "color"
+                                    ? "border-[#e2c196]/50 bg-[#e2c196]/5 shadow-[0_0_30px_rgba(226,193,150,0.2)]"
+                                    : "border-[#414846]/10"
+                            }`}
+                            type="button"
+                        >
                             <div className="space-y-6">
                                 <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#414846]/20 bg-[#1d201f] text-[#e2c196] transition-transform duration-500 group-hover:scale-110">
                                     <span className="material-symbols-outlined text-4xl">palette</span>
@@ -159,13 +195,14 @@ export default function RecomendationPage() {
                     </div>
 
                     <footer className="mt-20 flex items-center justify-between">
-                        <button className="group flex items-center gap-3 rounded-full px-8 py-4 text-sm uppercase tracking-widest text-[#c1c8c5] transition-colors hover:text-[#e2c196]" type="button">
+                        <button onClick={handleBack} className="group flex items-center gap-3 rounded-full px-8 py-4 text-sm uppercase tracking-widest text-[#c1c8c5] transition-colors hover:text-[#e2c196]" type="button">
                             <span className="material-symbols-outlined text-lg transition-transform group-hover:-translate-x-1">arrow_back</span>
                             Back
                         </button>
                         <button
-                            className="gold-gradient flex cursor-not-allowed items-center gap-3 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-widest text-[#412d0d] opacity-30 shadow-[0_10px_20px_rgba(0,0,0,0.3)]"
-                            disabled
+                            onClick={handleNext}
+                            className={`gold-gradient flex items-center gap-3 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-widest text-[#412d0d] shadow-[0_10px_20px_rgba(0,0,0,0.3)] ${pick === "stone" || pick === "color" ? "opacity-100" : "opacity-30"}`}
+                            disabled={pick !== "stone" && pick !== "color"}
                             type="button"
                         >
                             Next

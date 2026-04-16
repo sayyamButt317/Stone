@@ -1,6 +1,4 @@
 "use client"
-
-import { useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Manrope, Noto_Serif } from "next/font/google"
 import {
@@ -16,6 +14,8 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { FLOW_ROUTES } from "../flow-routes"
+import useJewelleryStore, { StoneColor } from "@/app/store/jewellery-store"
+import { COLORS } from "@/app/constant/stonecolor"
 
 const manrope = Manrope({
     subsets: ["latin"],
@@ -27,51 +27,10 @@ const notoSerif = Noto_Serif({
     weight: ["300", "400", "700"],
 })
 
-type StoneColor =
-    | "black"
-    | "blue"
-    | "brown"
-    | "clear"
-    | "gray"
-    | "green"
-    | "multicolor"
-    | "orange"
-    | "pink"
-    | "purple"
-    | "red"
-    | "yellow"
-
-const COLORS: Array<{
-    id: StoneColor
-    label: string
-    swatch: string
-}> = [
-        { id: "black", label: "Black", swatch: "#000000" },
-        { id: "blue", label: "Blue", swatch: "#2196F3" },
-        { id: "brown", label: "Brown", swatch: "#795548" },
-        { id: "clear", label: "Clear", swatch: "#f8f9fa" },
-        { id: "gray", label: "Gray", swatch: "#9e9e9e" },
-        { id: "green", label: "Green", swatch: "#2e7d32" },
-        {
-            id: "multicolor",
-            label: "Multicolor",
-            swatch: "linear-gradient(135deg,#f44336 0%,#2196F3 50%,#ffeb3b 100%)",
-        },
-        { id: "orange", label: "Orange", swatch: "#ff9800" },
-        { id: "pink", label: "Pink", swatch: "#e91e63" },
-        { id: "purple", label: "Purple", swatch: "#9c27b0" },
-        { id: "red", label: "Red", swatch: "#d32f2f" },
-        { id: "yellow", label: "Yellow", swatch: "#ffeb3b" },
-    ]
 
 export default function StonePage() {
     const router = useRouter()
-    const [selectedColor, setSelectedColor] = useState<StoneColor>("green")
-
-    const selectedLabel = useMemo(
-        () => COLORS.find((c) => c.id === selectedColor)?.label ?? "Green",
-        [selectedColor]
-    )
+    const { stonecolor, setStoneColor } = useJewelleryStore()
 
     return (
         <div
@@ -148,12 +107,12 @@ export default function StonePage() {
                     <div className="rounded-xl border border-[#4148461a] bg-[#191c1b]/40 p-12 shadow-2xl backdrop-blur-md md:p-20">
                         <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
                             {COLORS.map((color) => {
-                                const isSelected = color.id === selectedColor
+                                const isSelected = color.id.toLowerCase() === stonecolor.toLowerCase()
                                 return (
                                     <button
                                         key={color.id}
                                         type="button"
-                                        onClick={() => setSelectedColor(color.id)}
+                                        onClick={() => setStoneColor(color.id as StoneColor)}
                                         className="group flex cursor-pointer flex-col items-center gap-4"
                                     >
                                         <div
@@ -180,7 +139,7 @@ export default function StonePage() {
                         </div>
                     </div>
 
-                    <div className="mt-16 flex flex-col items-center justify-between gap-8 md:flex-row">
+                    <div className="mt-24 flex flex-col items-center justify-between gap-8 md:flex-row">
                         <button
                             type="button"
                             onClick={() => router.push(FLOW_ROUTES.chooseGem)}
@@ -191,7 +150,10 @@ export default function StonePage() {
                         </button>
                         <button
                             type="button"
-                            onClick={() => router.push(FLOW_ROUTES.chooseMetal)}
+                            onClick={() => {
+                                setStoneColor(stonecolor)
+                                router.push(FLOW_ROUTES.chooseMetal)
+                            }}
                             className="group rounded-md bg-linear-to-br from-[#e2c196] to-[#a58860] px-12 py-5 text-sm tracking-[0.2em] text-[#291800] uppercase shadow-[0_10px_30px_rgba(226,193,150,0.2)] transition-all hover:shadow-[0_15px_40px_rgba(226,193,150,0.3)] active:scale-95"
                         >
                             <span className="flex items-center gap-2 font-semibold">
@@ -205,7 +167,7 @@ export default function StonePage() {
                 <section className="mt-32 grid w-full max-w-5xl items-center gap-12 md:grid-cols-2">
                     <div className="order-2 md:order-1">
                         <span className="mb-4 block text-xs tracking-[0.2em] text-[#b0cdc6] uppercase">
-                            Selected Profile: {selectedLabel}
+                            Selected Profile: {stonecolor}
                         </span>
                         <h3 className={cn("mb-6 text-3xl font-light", notoSerif.className)}>The Soul of the Emerald</h3>
                         <p className="mb-8 leading-relaxed text-[#c1c8c5]">

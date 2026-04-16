@@ -168,11 +168,10 @@ export default function GemstoneDecisionPage() {
                 </div>
               </div>
               <button
-                className={`rounded-md border px-12 py-5 font-[Manrope] text-sm uppercase tracking-[0.2em] transition-all duration-500 ${
-                  stone === "own" || stone === "choose" || stone === "reference"
+                className={`rounded-md border px-12 py-5 font-[Manrope] text-sm uppercase tracking-[0.2em] transition-all duration-500 ${stone === "own" || stone === "choose" || stone === "reference"
                     ? "border-[#e2c196]/30 bg-[#e2c196]/90 text-[#291800] hover:bg-[#e2c196]"
                     : "cursor-not-allowed border-[#414846]/10 bg-[#e2c196]/10 text-[#e1e3e1]/30"
-                }`}
+                  }`}
                 disabled={stone !== "own" && stone !== "choose" && stone !== "reference"}
                 onClick={handleNext}
                 type="button"
