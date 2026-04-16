@@ -223,11 +223,11 @@ export default function WearFrequencyPage() {
                         Back
                     </button>
                     <button
-                        className="flex items-center gap-4 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-10 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-[#111413] shadow-[0_0_20px_rgba(226,193,150,0.2)] transition-transform duration-300 active:scale-95 hover:scale-[1.02]"
+                        className="flex items-center cursor-pointer  gap-4 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-10 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-[#111413] shadow-[0_0_20px_rgba(226,193,150,0.2)] transition-transform duration-300 active:scale-95 hover:scale-[1.02]"
                         onClick={handleNext}
                         type="button"
                     >
-                        Next
+                        Next:Personal Preferences
                         <span className="material-symbols-outlined text-sm">arrow_forward_ios</span>
                     </button>
                 </div>

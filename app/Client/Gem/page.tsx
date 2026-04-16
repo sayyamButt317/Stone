@@ -154,23 +154,17 @@ export default function GemstoneDecisionPage() {
             />
           </div>
 
-          <footer className="mx-auto mt-20 flex max-w-4xl items-center justify-between border-t border-[#414846]/10 pt-12">
+          <footer className="mx-auto flex max-w-4xl items-center justify-between border-t border-[#414846]/10 pt-12">
             <button className="group flex items-center gap-3 font-[Manrope] text-xs uppercase tracking-widest text-[#e1e3e1]/60 transition-colors hover:text-[#e2c196]" onClick={() => router.back()} type="button">
               <span className="material-symbols-outlined text-sm transition-transform group-hover:-translate-x-1">arrow_back_ios</span>
               Back
             </button>
 
             <div className="flex items-center gap-12">
-              <div className="hidden flex-col items-end sm:flex">
-                <span className="mb-1 text-[10px] uppercase tracking-widest text-[#e1e3e1]/40">Configuration Progress</span>
-                <div className="relative h-[2px] w-32 bg-[#414846]/20">
-                  <div className="absolute left-0 top-0 h-full w-[42%] bg-[#e2c196] shadow-[0_0_8px_rgba(226,193,150,0.5)]" />
-                </div>
-              </div>
               <button
-                className={`rounded-md border px-12 py-5 font-[Manrope] text-sm uppercase tracking-[0.2em] transition-all duration-500 ${stone === "own" || stone === "choose" || stone === "reference"
-                    ? "border-[#e2c196]/30 bg-[#e2c196]/90 text-[#291800] hover:bg-[#e2c196]"
-                    : "cursor-not-allowed border-[#414846]/10 bg-[#e2c196]/10 text-[#e1e3e1]/30"
+                className={`rounded-md border cursor-pointer px-12 py-5 font-[Manrope] text-sm uppercase tracking-[0.2em] transition-all duration-500 ${stone === "own" || stone === "choose" || stone === "reference"
+                  ? "border-[#e2c196]/30 bg-[#e2c196]/90 text-[#291800] hover:bg-[#e2c196]"
+                  : "cursor-not-allowed border-[#414846]/10 bg-[#e2c196]/10 text-[#e1e3e1]/30"
                   }`}
                 disabled={stone !== "own" && stone !== "choose" && stone !== "reference"}
                 onClick={handleNext}
@@ -231,3 +225,31 @@ function Card({ active, icon, title, description, actionLabel, iconWrapperClassN
     </button>
   )
 }
+
+
+
+
+
+
+// <footer
+// className="z-50 shrink-0 border-0 bg-[#111413]/90 px-6 py-8 backdrop-blur-2xl sm:px-12"
+// >
+// <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-4">
+//   <button
+//     type="button"
+//     onClick={handleBack}
+//     className="flex items-center gap-3 text-[10px] tracking-[0.25em] text-stone-500 uppercase transition-colors duration-500 hover:text-[#e2c196] active:scale-95"
+//   >
+//     <ArrowLeft className="size-4 shrink-0" strokeWidth={1.5} />
+//     Previous Phase
+//   </button>
+//   <button
+//     type="button"
+//     onClick={handleProceed}
+//     className="flex items-center gap-4 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-4 text-[10px] font-bold tracking-[0.3em] text-[#291800] uppercase shadow-[0_10px_30px_rgba(226,193,150,0.2)] transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_40px_rgba(226,193,150,0.4)] active:scale-95 sm:px-10 sm:py-5"
+//   >
+//     Proceed to Carving
+//     <ArrowRight className="size-4 shrink-0" strokeWidth={1.5} />
+//   </button>
+// </div>
+// </footer>

@@ -172,11 +172,11 @@ export default function PreferSettingPage() {
                         <span className="font-['Noto_Serif'] text-sm italic text-[#e2c196]">{prefersetting}</span>
                     </div>
                     <button
-                        className="gold-sheen rounded-full px-12 py-4 text-xs font-bold uppercase tracking-[0.15em] text-[#111413] shadow-[0_0_20px_rgba(226,193,150,0.2)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
+                        className="gold-sheen cursor-pointer rounded-full px-12 py-4 text-xs font-bold uppercase tracking-[0.15em] text-[#111413] shadow-[0_0_20px_rgba(226,193,150,0.2)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
                         onClick={handleNext}
                         type="button"
                     >
-                        Next: Review Your Vision
+                        Next: Wear Frequency
                     </button>
                 </div>
             </footer>

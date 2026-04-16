@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useState } from "react"
+import { useCallback } from "react"
 import { Manrope, Noto_Serif } from "next/font/google"
 import {
   ArrowLeft,
@@ -18,6 +18,8 @@ import { cn } from "@/lib/utils"
 import Stepper from "@/components/Client/stepper"
 import useGenerateImageHook from "@/app/routes/Client/hooks/generateimage-hook"
 import useRingStore from "@/app/store/ring-store"
+import { useRouter } from "next/navigation"
+import { FLOW_ROUTES } from "../flow-routes"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -43,8 +45,6 @@ const QUICK_TAGS = [
 ] as const
 
 type Props = {
-  open: boolean
-  onOpenChange: (open: boolean) => void
   step?: number
   totalSteps?: number
   onBack?: () => void
@@ -52,16 +52,14 @@ type Props = {
 }
 
 export default function AdditionalDetails({
-  onOpenChange,
   step = 6,
   totalSteps = 7,
   onBack,
   onContinue,
 }: Props) {
-  const [description, setDescription] = useState("")
-  const characterCount = description.length
-  const imagePrompt = useRingStore((s) => s.image_prompt)
-  const setImagePrompt = useRingStore((s) => s.setImagePrompt)
+  const router = useRouter()
+  const { image_prompt, setImagePrompt } = useRingStore()
+  const characterCount = image_prompt.length
 
 
   const { mutate: generateImage, isPending } = useGenerateImageHook()
@@ -71,29 +69,29 @@ export default function AdditionalDetails({
       onBack()
       return
     }
-    onOpenChange(false)
-  }, [onBack, onOpenChange])
+  }, [onBack])
 
   const handleContinue = useCallback(() => {
     if (onContinue) {
       return
     }
-    const prompt = description.trim() || imagePrompt.trim()
+    const prompt = image_prompt.trim()
     if (!prompt) return
 
     setImagePrompt(prompt)
     generateImage({
       prompt,
+    }, {
+      onSuccess: () => {
+        router.push(FLOW_ROUTES.imagePreview)
+      },
     })
-    onOpenChange(false)
-  }, [description, generateImage, imagePrompt, onContinue, onOpenChange, setImagePrompt])
+  }, [generateImage, image_prompt, onContinue, router, setImagePrompt])
 
   const appendTag = useCallback((tag: string) => {
-    setDescription((prev) => {
-      const next = prev.trim().length > 0 ? `${prev}\n${tag}` : tag
-      return next.slice(0, MAX_CHAR)
-    })
-  }, [])
+    const next = image_prompt.trim().length > 0 ? `${image_prompt}\n${tag}` : tag
+    setImagePrompt(next.slice(0, MAX_CHAR))
+  }, [image_prompt, setImagePrompt])
 
   return (
     <div
@@ -159,9 +157,9 @@ export default function AdditionalDetails({
           <div className="relative w-full lg:col-span-9">
             <div className="group relative">
               <textarea
-                value={description}
+                value={image_prompt}
                 maxLength={MAX_CHAR}
-                onChange={(e) => setDescription(e.target.value)}
+                onChange={(e) => setImagePrompt(e.target.value)}
                 className={cn(
                   "w-full min-h-[450px] resize-none rounded-[20px] border p-10 text-lg leading-relaxed md:p-14 md:text-xl",
                   "border-[#e2c196]/10 bg-[rgba(25,28,27,0.6)] text-[#e1e3e1] backdrop-blur-xl",
@@ -221,8 +219,7 @@ export default function AdditionalDetails({
             disabled={isPending}
             className="group flex items-center gap-3 rounded-md bg-linear-to-br from-[#e2c196] to-[#a58860] px-12 py-4 shadow-[0_0_30px_rgba(226,193,150,0.15)] transition-all active:scale-95"
           >
-            <span className="text-sm font-bold tracking-[0.2em] text-[#291800] uppercase">{isPending ? "Generating..." : "Generate Image"}</span>
-            {isPending ? <Loader2 className="size-5 text-[#291800] animate-spin" /> : <ArrowRight className="size-5 text-[#291800] transition-transform group-hover:translate-x-1" />}
+            <span className="text-sm cursor-pointer font-bold tracking-[0.2em] text-[#291800] uppercase">{isPending ? <Loader2 className="size-5 text-[#291800] animate-spin" /> : "Generate Image"}</span>
           </button>
         </div>
       </footer>

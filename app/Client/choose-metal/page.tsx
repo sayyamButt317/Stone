@@ -206,7 +206,7 @@ export default function ChooseMetal({
           <button
             type="button"
             onClick={handleContinue}
-            className="rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-3 text-[10px] font-bold tracking-[0.2em] text-[#111413] uppercase shadow-[0_4px_15px_rgba(226,193,150,0.2)] transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
+            className="rounded-full cursor-pointer bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-3 text-[10px] font-bold tracking-[0.2em] text-[#111413] uppercase shadow-[0_4px_15px_rgba(226,193,150,0.2)] transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
           >
             Next: Select Size
           </button>

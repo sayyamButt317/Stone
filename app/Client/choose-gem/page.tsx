@@ -136,8 +136,8 @@ export default function ChooseGem({ onBack }: Props) {
               >
                 <div
                   className={`glass-card flex h-full flex-col items-center rounded-xl p-8 text-center transition-all duration-500 ${isSelected
-                      ? "gold-glow -translate-y-2 border-[#e2c196]/60"
-                      : "hover:-translate-y-2 hover:border-[#e2c196]/40"
+                    ? "gold-glow -translate-y-2 border-[#e2c196]/60"
+                    : "hover:-translate-y-2 hover:border-[#e2c196]/40"
                     }`}
                 >
                   <div className="relative mb-8 flex h-40 w-40 items-center justify-center">
@@ -202,7 +202,7 @@ export default function ChooseGem({ onBack }: Props) {
           <span className="font-['Manrope'] text-[10px] font-bold uppercase tracking-[0.2em]">Back</span>
         </button>
         <button className="group flex items-center gap-3 rounded-full bg-gradient-to-br from-[#e2c196] to-[#a58860] px-10 py-3 text-[#111413] shadow-[0_0_20px_rgba(226,193,150,0.3)] transition-transform duration-500 hover:scale-105 active:scale-95" onClick={handleContinue} type="button">
-          <span className="font-['Manrope'] text-[10px] font-extrabold uppercase tracking-[0.2em]">Proceed to Metal Selection</span>
+          <span className="font-['Manrope'] cursor-pointer  text-[10px] font-extrabold uppercase tracking-[0.2em]">Proceed to Metal Selection</span>
           <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
         </button>
       </footer>

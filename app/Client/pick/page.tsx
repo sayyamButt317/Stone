@@ -53,7 +53,7 @@ export default function RecomendationPage() {
         }
       `}</style>
 
-            <header className="fixed top-0 z-50 flex w-full items-center justify-between bg-[#111413]/80 px-12 py-6 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+            {/* <header className="fixed top-0 z-50 flex w-full items-center justify-between bg-[#111413]/80 px-12 py-6 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl">
                 <div className="font-['Noto_Serif'] text-2xl uppercase tracking-[0.2em] text-[#e2c196]">L&apos;ATELIER</div>
                 <nav className="hidden items-center gap-10 md:flex">
                     <a className="font-['Noto_Serif'] font-light tracking-wide text-[#e1e3e1]/60 transition-colors duration-500 hover:text-[#e2c196]" href="#">
@@ -77,7 +77,7 @@ export default function RecomendationPage() {
                         <span className="material-symbols-outlined">person</span>
                     </button>
                 </div>
-            </header>
+            </header> */}
 
             <aside className="fixed left-0 z-40 hidden h-screen w-24 flex-col items-center gap-8 border-r border-[#414846]/10 bg-[#191c1b]/60 py-24 backdrop-blur-2xl md:flex">
                 <div className="mb-12 text-center">
@@ -134,11 +134,10 @@ export default function RecomendationPage() {
                         <button
                             aria-pressed={pick === "stone"}
                             onClick={() => setPick("stone")}
-                            className={`glass-card emerald-glow group flex h-[400px] flex-col justify-between rounded-lg border p-12 text-left transition-all duration-500 hover:scale-[1.02] ${
-                                pick === "stone"
+                            className={`glass-card emerald-glow group flex h-[400px] flex-col justify-between rounded-lg border p-12 text-left transition-all duration-500 hover:scale-[1.02] ${pick === "stone"
                                     ? "border-[#e2c196]/50 bg-[#e2c196]/5 shadow-[0_0_30px_rgba(226,193,150,0.2)]"
                                     : "border-[#414846]/10"
-                            }`}
+                                }`}
                             type="button"
                         >
                             <div className="space-y-6">
@@ -165,11 +164,10 @@ export default function RecomendationPage() {
                         <button
                             aria-pressed={pick === "color"}
                             onClick={() => setPick("color")}
-                            className={`glass-card emerald-glow group flex h-[400px] flex-col justify-between rounded-lg border p-12 text-left transition-all duration-500 hover:scale-[1.02] ${
-                                pick === "color"
+                            className={`glass-card emerald-glow group flex h-[400px] flex-col justify-between rounded-lg border p-12 text-left transition-all duration-500 hover:scale-[1.02] ${pick === "color"
                                     ? "border-[#e2c196]/50 bg-[#e2c196]/5 shadow-[0_0_30px_rgba(226,193,150,0.2)]"
                                     : "border-[#414846]/10"
-                            }`}
+                                }`}
                             type="button"
                         >
                             <div className="space-y-6">
@@ -201,7 +199,7 @@ export default function RecomendationPage() {
                         </button>
                         <button
                             onClick={handleNext}
-                            className={`gold-gradient flex items-center gap-3 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-widest text-[#412d0d] shadow-[0_10px_20px_rgba(0,0,0,0.3)] ${pick === "stone" || pick === "color" ? "opacity-100" : "opacity-30"}`}
+                            className={`gold-gradient flex cursor-pointer items-center gap-3 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-widest text-[#412d0d] shadow-[0_10px_20px_rgba(0,0,0,0.3)] ${pick === "stone" || pick === "color" ? "opacity-100" : "opacity-30"}`}
                             disabled={pick !== "stone" && pick !== "color"}
                             type="button"
                         >

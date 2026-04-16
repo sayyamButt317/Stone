@@ -87,6 +87,8 @@ export default function ImagePreview() {
               alt="Image Preview"
               width={500}
               height={500}
+              loading="eager"
+              unoptimized
               className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
             <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#0c0f0e99] to-transparent" />

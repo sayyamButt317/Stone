@@ -7,6 +7,7 @@ import useJewelleryStore from "@/app/store/jewellery-store"
 import { FLOW_ROUTES } from "../flow-routes"
 import { useCreateRingMutation } from "@/app/routes/Client/hooks/ring-hook"
 import { RING_CREATION_INSTRUCATIONS_PAYLOAD } from "@/app/constant/ringcreation"
+import { Loader2 } from "lucide-react"
 
 type TeaserImage = {
   alt: string
@@ -270,7 +271,7 @@ export default function InspirationImagePage() {
           disabled={isGenerating}
           type="button"
         >
-          {isGenerating ? "Generating..." : "Start Generating"}
+          {isGenerating ? <Loader2 className="size-5 animate-spin" /> : "Generate Instruction"}
         </button>
 
         <div className="mt-32 grid w-full grid-cols-2 gap-4 opacity-30 grayscale transition-all duration-700 hover:grayscale-0 md:grid-cols-4">
