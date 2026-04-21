@@ -66,36 +66,8 @@ export default function WearFrequencyPage() {
 
             <nav className="fixed top-0 z-50 flex h-24 w-full items-center justify-between bg-[#111413]/80 px-12 shadow-2xl shadow-black/40 backdrop-blur-xl">
                 <div className="font-['Noto_Serif'] text-2xl font-light tracking-[0.2em] text-[#e2c196]">THE MIDNIGHT ATELIER</div>
-                <div className="hidden items-center gap-12 md:flex">
-                    <a className="font-['Noto_Serif'] text-sm uppercase tracking-wide text-[#e1e3e1]/60 transition-colors duration-500 hover:text-[#e2c196]" href="#">
-                        Curation
-                    </a>
-                    <a className="border-b border-[#e2c196]/30 pb-1 font-['Noto_Serif'] text-sm uppercase tracking-wide text-[#e2c196] transition-colors duration-500 hover:text-[#e2c196]" href="#">
-                        Process
-                    </a>
-                    <a className="font-['Noto_Serif'] text-sm uppercase tracking-wide text-[#e1e3e1]/60 transition-colors duration-500 hover:text-[#e2c196]" href="#">
-                        History
-                    </a>
-                    <a className="font-['Noto_Serif'] text-sm uppercase tracking-wide text-[#e1e3e1]/60 transition-colors duration-500 hover:text-[#e2c196]" href="#">
-                        Vault
-                    </a>
-                </div>
-                <div className="flex items-center text-[#e2c196]">
-                    <span className="material-symbols-outlined text-2xl">shopping_bag</span>
-                </div>
             </nav>
-
-            <main className="mx-auto flex w-full max-w-7xl grow flex-col items-center px-6 pb-40 pt-32">
-                <div className="mb-16 w-full max-w-2xl">
-                    <div className="mb-4 flex items-end justify-between">
-                        <span className="text-xs uppercase tracking-[0.2em] text-[#c1c8c5]/60">Step 5 of 7</span>
-                        <span className="text-xs uppercase tracking-[0.2em] text-[#e2c196]">Lifestyle Analysis</span>
-                    </div>
-                    <div className="h-[2px] w-full overflow-hidden bg-[#323534]">
-                        <div className="h-full w-[71.4%] bg-linear-to-br from-[#e2c196] to-[#a58860] transition-all duration-1000" />
-                    </div>
-                </div>
-
+            <main className="mx-auto flex w-full max-w-7xl grow flex-col items-center px-6 pb-40 pt-22">
                 <div className="mb-16 space-y-6 text-center">
                     <h1 className="font-['Noto_Serif'] text-4xl leading-tight text-[#e1e3e1] md:text-6xl">How will it mostly be worn?</h1>
                     <p className="mx-auto max-w-2xl text-lg leading-relaxed text-[#c1c8c5]/80">
@@ -181,45 +153,16 @@ export default function WearFrequencyPage() {
                     </button>
                 </div>
 
-                <div className="relative mt-24 flex w-full flex-col items-center gap-12 overflow-hidden rounded-lg bg-[#1d201f] p-12 md:flex-row">
-                    <div className="pointer-events-none absolute right-0 top-0 h-full w-1/3 opacity-10">
-                        <Image
-                            alt="Artisan jeweler desk"
-                            className="h-full w-full object-cover grayscale"
-                            height={420}
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFr-jko_ygGqkm_6KTMfrkNnnAQV34bxhP-Qp8dg5PdKzvFPnzLddYqsGpawCjgre2kVcIo8FLkbWcs1IoKov0CULhxbLKB7sBjt6C9UXvLqTT67nhq2lgL03zI1_O_Qtsl270o0PCImVOpWH4BSp59mz5-4oJXw9P3CY7ox_9G-Th7X_jKD41RT88wbyGxNAFYicNvna8anzhyFbEu1YvhLVgCCpieElrYUh99E-Eeu_d43z0KDe3ybf8D1XbaAbEbPj4ychUGek"
-                            width={420}
-                        />
-                    </div>
-                    <div className="z-10 flex-1">
-                        <h4 className="mb-4 font-['Noto_Serif'] text-xl text-[#e2c196]">The Atelier Philosophy</h4>
-                        <p className="max-w-xl text-base leading-relaxed text-[#c1c8c5]">
-                            Every piece created in our workshop is a dialogue between form and function. By understanding your lifestyle, we
-                            select metal alloys and prong structures that ensure your heirloom remains pristine through generations of wear.
-                        </p>
-                    </div>
-                    <div className="z-10 shrink-0">
-                        <div className="flex h-32 w-32 items-center justify-center rounded-full border border-[#e2c196]/20 p-4">
-                            <Image
-                                alt="Diamond setting"
-                                className="h-full w-full rounded-full object-cover"
-                                height={128}
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzn1xDxO2br-URRyUxKHNoPyvayktpjOfCfOjekr4h754vj9SSOf8IZ7dlwHbbE_9a1erjlDdAAp16zAK0gFCJsDfFAHOCzO02KWyWQHJUHOUkwdTHbu-qYrytWa8bPL52OznL6nXdQ-zBQURnsoVhx9MVkxdybUo_ZD23SRUum11PWPPLzuU7SCbXLZdUHhZDqJModY7x-dBsd1KQkd5vNR86CoCBxFrPW7CSqA-qEtGystDmCeASi6TkcEI-9R99f3W5UBxSCVw"
-                                width={128}
-                            />
-                        </div>
-                    </div>
-                </div>
+
             </main>
 
-            <div className="fixed bottom-0 z-50 h-28 w-full bg-[#111413]/90 shadow-[0_-20px_40px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
-                <div className="mx-auto flex h-full w-full max-w-screen-2xl items-center justify-between px-16">
+            <div className="fixed bottom-0 z-50 h-28 w-full">
+                <div className="mx-auto flex h-full w-full max-w-screen-2xl items-center justify-end gap-2 px-16">
                     <button
-                        className="flex items-center gap-4 rounded-full border border-[#414846]/15 px-10 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-[#e1e3e1]/40 transition-transform duration-300 hover:scale-[1.02]"
+                        className="flex items-center cursor-pointer gap-4 rounded-full border border-[#414846]/15 px-10 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-[#e1e3e1]/40 transition-transform duration-300 hover:scale-[1.02]"
                         onClick={handleBack}
                         type="button"
                     >
-                        <span className="material-symbols-outlined text-sm">arrow_back_ios</span>
                         Back
                     </button>
                     <button
@@ -228,7 +171,6 @@ export default function WearFrequencyPage() {
                         type="button"
                     >
                         Next:Personal Preferences
-                        <span className="material-symbols-outlined text-sm">arrow_forward_ios</span>
                     </button>
                 </div>
             </div>

@@ -3,10 +3,11 @@
 import { useRouter } from "next/navigation"
 import { FLOW_ROUTES } from "../flow-routes"
 import useJewelleryStore, { type HaveStoneChoice } from "@/app/store/jewellery-store"
+import { Paperclip, Pointer } from "lucide-react"
 
 type CardProps = {
   active: boolean
-  icon: string
+  icon: React.ReactNode | string
   title: string
   description: string
   actionLabel: string
@@ -67,29 +68,9 @@ export default function GemstoneDecisionPage() {
         <div className="font-['Noto_Serif'] text-2xl uppercase tracking-[0.2em] text-[#e2c196]">
           L&apos;ATELIER
         </div>
-
-        <div className="hidden gap-10 md:flex">
-          <a className="font-['Noto_Serif'] font-light tracking-wide text-[#e1e3e1]/60 transition-colors duration-500 hover:text-[#e2c196]" href="#">
-            Collections
-          </a>
-          <a className="border-b border-[#e2c196]/30 pb-1 font-['Noto_Serif'] font-light tracking-wide text-[#e2c196] transition-colors duration-500 hover:text-[#e2c196]" href="#">
-            Bespoke
-          </a>
-          <a className="font-['Noto_Serif'] font-light tracking-wide text-[#e1e3e1]/60 transition-colors duration-500 hover:text-[#e2c196]" href="#">
-            Heritage
-          </a>
-        </div>
-
-        <div className="flex items-center gap-6 text-[#e2c196]">
-          <span className="material-symbols-outlined cursor-pointer duration-300 hover:scale-95">shopping_bag</span>
-          <span className="material-symbols-outlined cursor-pointer duration-300 hover:scale-95">person</span>
-        </div>
       </nav> */}
 
       <aside className="fixed left-0 z-40 flex h-screen w-24 flex-col items-center gap-8 border-r border-[#414846]/10 bg-[#191c1b]/60 py-24 backdrop-blur-2xl">
-        <div className="mb-8 flex flex-col items-center gap-1">
-          <span className="font-['Manrope'] text-[10px] uppercase tracking-widest text-[#e2c196]/60">Step 3 of 7</span>
-        </div>
         <div className="flex flex-col gap-10">
           <div className="group flex cursor-pointer flex-col items-center gap-2">
             <span className="material-symbols-outlined p-4 text-[#e1e3e1]/40 transition-all duration-300 hover:bg-[#1d201f]">edit_note</span>
@@ -110,25 +91,24 @@ export default function GemstoneDecisionPage() {
         </div>
       </aside>
 
-      <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-24 pl-24 pt-32">
+      <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-4 pl-24 pt-4">
         <div className="pointer-events-none absolute -right-24 top-1/4 h-[500px] w-[500px] rounded-full bg-[#314c47]/10 blur-[120px]" />
         <div className="pointer-events-none absolute -left-24 bottom-1/4 h-[400px] w-[400px] rounded-full bg-[#e2c196]/10 blur-[100px]" />
 
         <div className="z-10 w-full max-w-6xl px-12">
-          <header className="mb-16 text-center">
-            <span className="mb-4 block font-[Manrope] text-[12px] uppercase tracking-[0.3em] text-[#e2c196]/70">Process Stage: Gemstone Inquiry</span>
-            <h1 className="mb-6 font-['Noto_Serif'] text-5xl leading-tight text-[#e1e3e1] md:text-6xl">Do you already have a stone?</h1>
+          <header className="mb-6 text-center">
+            <h1 className=" font-['Noto_Serif'] text-5xl leading-tight text-[#e1e3e1] md:text-6xl">Do you already have a stone?</h1>
             <p className="mx-auto max-w-2xl text-lg text-[#c1c8c5]">
-              Choose how you&apos;d like to proceed with your gemstone selection. We accommodate heirloom stones and curated acquisitions.
+              Choose how you&apos;d like to proceed with your gemstone selection.
             </p>
           </header>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mb-4">
             <Card
               active={stone === "own"}
               actionLabel="Select Path"
               description="I want to use my own existing gemstone. Our masters will inspect and set your personal heirloom."
-              icon="pan_tool_alt"
+              icon={<Pointer className="size-8" />}
               iconWrapperClassName="bg-[#323534]"
               onClick={() => setStone("own")}
               title="Yes, I already have a stone"
@@ -138,7 +118,7 @@ export default function GemstoneDecisionPage() {
               actionLabel="Enter Gallery"
               description="Explore our curated collection of ethically sourced stones, hand-selected for their brilliance and fire."
               featured
-              icon="auto_awesome"
+              icon={<Pointer className="size-8" />}
               iconWrapperClassName="bg-[#e2c196]/10 shadow-[0_0_30px_rgba(226,193,150,0.15)]"
               onClick={() => setStone("choose")}
               title="No, help me choose"
@@ -147,19 +127,24 @@ export default function GemstoneDecisionPage() {
               active={stone === "reference"}
               actionLabel="Import Stone"
               description="Enter a SKU or link from our online catalog to instantly integrate it into your custom design flow."
-              icon="link"
+              icon={<Paperclip className="size-8" />}
               iconWrapperClassName="bg-[#323534]"
               onClick={() => setStone("reference")}
               title="I have a YSS stone reference"
             />
           </div>
 
-          <footer className="mx-auto flex max-w-4xl items-center justify-between border-t border-[#414846]/10 pt-12">
-            <button className="group flex items-center gap-3 font-[Manrope] text-xs uppercase tracking-widest text-[#e1e3e1]/60 transition-colors hover:text-[#e2c196]" onClick={() => router.back()} type="button">
-              <span className="material-symbols-outlined text-sm transition-transform group-hover:-translate-x-1">arrow_back_ios</span>
+          <footer className="mx-auto flex max-w-4xl items-center justify-end border-t border-[#414846]/10 pt-2">
+            <button
+              type="button"
+              onClick={() => router.back()}
+              className="group flex items-center gap-2 cursor-pointer text-[10px] uppercase tracking-[0.25em] text-stone-500 transition-all duration-300 hover:text-[#e2c196] active:scale-95"
+            >
+              <span className="material-symbols-outlined text-sm transition-transform duration-300 group-hover:-translate-x-1">
+                arrow_back_ios
+              </span>
               Back
             </button>
-
             <div className="flex items-center gap-12">
               <button
                 className={`rounded-md border cursor-pointer px-12 py-5 font-[Manrope] text-sm uppercase tracking-[0.2em] transition-all duration-500 ${stone === "own" || stone === "choose" || stone === "reference"
@@ -193,7 +178,7 @@ export default function GemstoneDecisionPage() {
 function Card({ active, icon, title, description, actionLabel, iconWrapperClassName, featured, onClick }: CardProps) {
   return (
     <button
-      className={`glass-card group relative flex h-full flex-col overflow-hidden rounded-lg p-10 text-left ${active ? "active-selection" : ""
+      className={`glass-card group cursor-pointer relative flex h-full flex-col overflow-hidden rounded-lg p-10 text-left ${active ? "active-selection" : ""
         }`}
       onClick={onClick}
       type="button"
@@ -229,27 +214,3 @@ function Card({ active, icon, title, description, actionLabel, iconWrapperClassN
 
 
 
-
-
-// <footer
-// className="z-50 shrink-0 border-0 bg-[#111413]/90 px-6 py-8 backdrop-blur-2xl sm:px-12"
-// >
-// <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-4">
-//   <button
-//     type="button"
-//     onClick={handleBack}
-//     className="flex items-center gap-3 text-[10px] tracking-[0.25em] text-stone-500 uppercase transition-colors duration-500 hover:text-[#e2c196] active:scale-95"
-//   >
-//     <ArrowLeft className="size-4 shrink-0" strokeWidth={1.5} />
-//     Previous Phase
-//   </button>
-//   <button
-//     type="button"
-//     onClick={handleProceed}
-//     className="flex items-center gap-4 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-4 text-[10px] font-bold tracking-[0.3em] text-[#291800] uppercase shadow-[0_10px_30px_rgba(226,193,150,0.2)] transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_40px_rgba(226,193,150,0.4)] active:scale-95 sm:px-10 sm:py-5"
-//   >
-//     Proceed to Carving
-//     <ArrowRight className="size-4 shrink-0" strokeWidth={1.5} />
-//   </button>
-// </div>
-// </footer>

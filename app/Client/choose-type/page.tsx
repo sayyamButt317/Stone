@@ -73,8 +73,7 @@ export default function ChooseJewelleryType({
             style={{ color: ON_SURFACE, backgroundColor: SURFACE }}
         >
             <h1 className="sr-only">
-                What would you like to create? Choose the type of jewellery to begin
-                your design.
+                Choose the type of jewellery to begin your design.
             </h1>
 
             <div
@@ -103,11 +102,11 @@ export default function ChooseJewelleryType({
                 </div>
             </header>
 
-            <section className="relative z-10 flex min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 py-8 sm:py-12">
-                <div className="mb-12 max-w-2xl space-y-6 text-center sm:mb-16">
+            <section className="relative z-10 flex min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 py-2">
+                <div className="mb-12 max-w-2xl space-y-4 text-center sm:mb-2">
                     <h1
                         className={cn(
-                            "text-4xl leading-tight tracking-tight sm:text-5xl md:text-6xl",
+                            "text-3xl leading-tight tracking-tight sm:text-5xl md:text-6xl",
                             notoSerif.className
                         )}
                     >
@@ -236,7 +235,6 @@ export default function ChooseJewelleryType({
                     <span className="text-sm font-bold tracking-[0.25em] uppercase text-[#111413]">
                         Begin Crafting
                     </span>
-                    <ArrowRight className="size-5 text-[#111413] transition-transform group-hover:translate-x-1" />
                 </button>
             </nav>
 

@@ -8,6 +8,7 @@ import { METALS } from "@/app/constant/metal"
 import Stepper from "@/components/Client/stepper"
 import { useRouter } from "next/navigation"
 import { FLOW_ROUTES } from "../flow-routes"
+import Image from "next/image"
 
 
 const manrope = Manrope({
@@ -25,7 +26,6 @@ const ACCENT = "#e2c196"
 const SURFACE = "#111413"
 const ON_SURFACE = "#e1e3e1"
 const ON_SURFACE_VARIANT = "#c1c8c5"
-const SURFACE_CONTAINER_HIGHEST = "#323534"
 
 
 export default function ChooseMetal({
@@ -76,34 +76,16 @@ export default function ChooseMetal({
           >
             Midnight Atelier
           </div>
-
-          <div
-            className={cn(
-              "hidden items-center gap-8 font-light tracking-wide md:flex",
-              notoSerif.className
-            )}
-            style={{ color: `${ON_SURFACE}99` }}
-          >
-            <span className="cursor-pointer transition-colors duration-300 hover:text-[#e2c196]">
-              Collections
-            </span>
-            <span className="cursor-pointer transition-colors duration-300 hover:text-[#e2c196]">
-              Bespoke
-            </span>
-            <span className="cursor-pointer transition-colors duration-300 hover:text-[#e2c196]">
-              Heritage
-            </span>
-          </div>
         </div>
 
         <div className="absolute right-0 bottom-0 left-0 h-px bg-linear-to-r from-transparent via-[#414846]/20 to-transparent" />
       </header>
 
-      <main className="mx-auto flex w-full max-w-screen-2xl min-h-0 flex-1 flex-col items-center justify-center overflow-y-auto px-6 pt-32 pb-40">
-        <div className="mb-16 w-full max-w-4xl space-y-6 text-center">
-          <div className="mx-auto w-full max-w-xs">
+      <main className="mx-auto flex w-full max-w-screen-2xl min-h-0 flex-1 flex-col items-center justify-center overflow-y-auto px-6 pt-22 pb-40">
+        <div className="mb-6 w-full max-w-4xl space-y-6 text-center">
+          {/* <div className="mx-auto w-full max-w-xs">
             <Stepper step={step} totalSteps={totalSteps} />
-          </div>
+          </div> */}
 
           <div className="space-y-2">
             <h1
@@ -120,7 +102,7 @@ export default function ChooseMetal({
           </div>
         </div>
 
-        <section className="w-full overflow-x-auto pb-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <section className="w-full overflow-x-auto pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex min-w-max flex-nowrap gap-6 px-4 md:justify-center">
             {METALS.map((metal) => {
               const selected = metal.id === selectedMetal
@@ -148,9 +130,11 @@ export default function ChooseMetal({
                     ) : null}
 
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={metal.imageUrl}
                       alt={metal.name}
+                      width={100}
+                      height={100}
                       className={cn(
                         "h-full w-full object-cover transition-transform duration-700 group-hover:scale-110",
                         metal.imageClassName
@@ -185,7 +169,7 @@ export default function ChooseMetal({
       </main>
 
       <footer className="fixed bottom-0 z-50 w-full rounded-t-[40px] bg-[#191c1b]/90 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
-        <div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between px-10 py-8">
+        <div className="mx-auto cursor-pointer flex w-full max-w-screen-2xl items-center justify-end gap-2 px-10 py-8">
           <button
             type="button"
             onClick={handleBack}
@@ -193,15 +177,6 @@ export default function ChooseMetal({
           >
             Back
           </button>
-
-          <div className="hidden flex-col items-center lg:flex">
-            <span className="text-[10px] tracking-widest text-[#c1c8c566] uppercase">
-              Current Selection
-            </span>
-            <span className={cn("text-sm italic text-[#e2c196]", notoSerif.className)}>
-              {selectedMetalLabel}
-            </span>
-          </div>
 
           <button
             type="button"
@@ -212,11 +187,6 @@ export default function ChooseMetal({
           </button>
         </div>
       </footer>
-
-      <div className="pointer-events-none fixed top-0 left-0 -z-10 h-full w-full">
-        <div className="absolute top-[-10%] right-[-10%] h-[50%] w-[50%] rounded-full bg-[#314c47]/10 blur-[120px]" />
-        <div className="absolute bottom-[-5%] left-[-5%] h-[40%] w-[40%] rounded-full bg-[#342204]/5 blur-[100px]" />
-      </div>
     </div>
   )
 }

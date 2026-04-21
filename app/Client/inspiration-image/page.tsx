@@ -154,30 +154,17 @@ export default function InspirationImagePage() {
         type="file"
       />
 
-      <header className="fixed top-0 z-50 flex h-20 w-full items-center justify-between bg-[#111413]/60 px-8 text-[#e2c196] shadow-2xl shadow-black/40 backdrop-blur-2xl">
+      <header className="fixed top-0 z-50 flex h-20 w-full items-center justify-between  px-8 text-[#e2c196] ">
         <div className="font-['Noto_Serif'] text-lg uppercase tracking-[0.2em] text-[#e2c196]">The Atelier</div>
-        <div className="flex items-center gap-4">
-          <button className="material-symbols-outlined cursor-pointer transition-colors duration-300 hover:text-[#e2c196]" type="button">
-            close
-          </button>
-        </div>
       </header>
 
-      <main className="mx-auto flex w-full max-w-7xl grow flex-col items-center px-6 pb-48 pt-32 md:px-24 md:pb-40">
-        <div className="mb-16 w-full max-w-2xl">
-          <div className="mb-4 flex items-end justify-between">
-            <span className="text-[10px] uppercase tracking-widest text-[#c1c8c5]">Creation Flow</span>
-            <span className="text-[10px] uppercase tracking-widest text-[#e2c196]">Step 6 of 7</span>
-          </div>
-          <div className="h-[2px] w-full overflow-hidden bg-[#323534]">
-            <div className="h-full w-[85%] bg-[#e2c196] transition-all duration-700" />
-          </div>
-        </div>
+      <main className="mx-auto flex w-full max-w-7xl grow flex-col items-center px-6 pb-48 pt-22 md:px-24 md:pb-40">
+
 
         <div className="mb-12 space-y-4 text-center">
           <h1 className="font-['Noto_Serif'] text-4xl leading-tight text-[#e1e3e1] md:text-5xl">Do you have an inspiration image?</h1>
           <p className="mx-auto max-w-lg text-lg font-light text-[#c1c8c5]">
-            Upload a photo or sketch to help our designers capture your vision.
+            Upload a photo to help our designers capture your vision.
           </p>
         </div>
 
@@ -244,66 +231,26 @@ export default function InspirationImagePage() {
           </div>
         </div>
 
-        <div className="mt-16 flex w-full flex-col items-center space-y-8">
+        <div className="mt-16 flex w-full flex-row gap-2 justify-center items-center">
           <button
-            className="gold-gradient min-w-[280px] rounded-md px-16 py-5 text-sm font-extrabold uppercase tracking-widest text-[#412d0d] shadow-[0_0_30px_rgba(226,193,150,0.3)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
-            onClick={() => {
-              if (!previewUrl) handleUploadClick()
-              else goNext()
-            }}
-            type="button"
-          >
-            {previewUrl ? "Continue" : "Upload Image"}
-          </button>
-          <button
-            className="group relative text-[10px] uppercase tracking-[0.3em] text-[#c1c8c5] transition-colors duration-300 hover:text-[#e2c196]"
+            className="gold-gradient min-w-[280px] bg-gray-950 cursor-pointer rounded-md px-16 py-5 text-sm font-extrabold uppercase tracking-widest text-[#412d0d] shadow-[0_0_30px_rgba(226,193,150,0.3)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
             onClick={handleSkip}
             type="button"
           >
             Skip for now
-            <span className="absolute -bottom-1 left-1/2 h-px w-0 bg-[#e2c196] transition-all duration-300 group-hover:left-0 group-hover:w-full" />
           </button>
-        </div>
-
-        <button
-          className="gold-gradient min-w-[280px] rounded-md px-16 py-5 text-sm font-extrabold uppercase tracking-widest text-[#412d0d] shadow-[0_0_30px_rgba(226,193,150,0.3)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
-          onClick={RingGeneration}
-          disabled={isGenerating}
-          type="button"
-        >
-          {isGenerating ? <Loader2 className="size-5 animate-spin" /> : "Generate Instruction"}
-        </button>
-
-        <div className="mt-32 grid w-full grid-cols-2 gap-4 opacity-30 grayscale transition-all duration-700 hover:grayscale-0 md:grid-cols-4">
-          {TEASER_IMAGES.map((item) => (
-            <div
-              className={`h-48 overflow-hidden rounded-lg bg-[#1d201f] ${item.offsetTop ? "mt-8 md:mt-8" : ""}`}
-              key={item.src}
-            >
-              <Image alt={item.alt} className="h-full w-full object-cover" height={192} src={item.src} width={400} />
-            </div>
-          ))}
+          <button
+            className="gold-gradient min-w-[280px] cursor-pointer rounded-md px-16 py-5 text-sm font-extrabold uppercase tracking-widest text-[#412d0d] shadow-[0_0_30px_rgba(226,193,150,0.3)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
+            onClick={RingGeneration}
+            disabled={isGenerating}
+            type="button"
+          >
+            {isGenerating ? <Loader2 className="size-5 animate-spin" /> : "Generate Instruction"}
+          </button>
         </div>
       </main>
 
-      <nav className="fixed bottom-0 left-0 z-50 flex w-full justify-around rounded-t-[2rem] bg-[#111413]/80 px-6 pb-8 pt-4 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] backdrop-blur-2xl md:hidden">
-        <div className="flex flex-col items-center justify-center px-6 py-2 text-[#e1e3e1]/40">
-          <span className="material-symbols-outlined mb-1">diamond</span>
-          <span className="text-[10px] uppercase tracking-widest">Gallery</span>
-        </div>
-        <div className="flex flex-col items-center justify-center rounded-full bg-[#e2c196]/10 px-6 py-2 text-[#e2c196] shadow-[0_0_20px_rgba(226,193,150,0.2)]">
-          <span className="material-symbols-outlined mb-1">auto_awesome</span>
-          <span className="text-[10px] uppercase tracking-widest">Create</span>
-        </div>
-        <div className="flex flex-col items-center justify-center px-6 py-2 text-[#e1e3e1]/40">
-          <span className="material-symbols-outlined mb-1">lock</span>
-          <span className="text-[10px] uppercase tracking-widest">Vault</span>
-        </div>
-        <div className="flex flex-col items-center justify-center px-6 py-2 text-[#e1e3e1]/40">
-          <span className="material-symbols-outlined mb-1">person</span>
-          <span className="text-[10px] uppercase tracking-widest">Profile</span>
-        </div>
-      </nav>
+
     </div>
   )
 }

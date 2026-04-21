@@ -11,6 +11,7 @@ export type Preference =
     | "half_bezel"
     | "halo"
     | "hidden_halo";
+
 export type OwnStoneFields = {
     stone_type: string
     color: string
@@ -24,9 +25,9 @@ export type StoneType = 'Diamond' | 'Sapphire' | 'Emerald' | 'Ruby' | 'Morganite
 export type StoneShape = 'Round' | 'Oval' | 'Pear' | 'Emerald Cut' | 'Marquise' | 'Cushion' | 'Other'
 
 const emptyOwnStone = (): OwnStoneFields => ({
-    stone_type: 'Diamond',
+    stone_type: '',
     color: '',
-    shape: 'Round',
+    shape: '',
     approximate_size: '',
 })
 

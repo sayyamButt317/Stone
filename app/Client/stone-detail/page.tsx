@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import useJewelleryStore from "@/app/store/jewellery-store"
 import { FLOW_ROUTES } from "../flow-routes"
+import { ChevronDown } from "lucide-react"
 
 const STONE_TYPES = ["Diamond", "Sapphire", "Emerald", "Ruby", "Morganite", "Other"] as const
 const SHAPES = ["Round", "Oval", "Pear", "Emerald Cut", "Marquise", "Cushion"] as const
@@ -86,7 +87,6 @@ export default function StoneDetailsPage() {
         <section className="flex flex-1 flex-col justify-center px-8 py-16 md:px-16 lg:px-24">
           <div className="max-w-xl">
             <header className="mb-12">
-              <span className="mb-4 block text-xs uppercase tracking-[0.3em] text-[#e2c196]">Creation Flow • Step 2 of 4</span>
               <h1 className="mb-6 font-['Noto_Serif'] text-5xl leading-tight text-[#e1e3e1] md:text-6xl">Tell us about your stone</h1>
               <p className="text-lg font-light leading-relaxed text-[#c1c8c5]">
                 Provide the details of your gemstone for suitability assessment.
@@ -116,7 +116,7 @@ export default function StoneDetailsPage() {
                       ))}
                     </select>
                     <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#e2c196]">
-                      <span className="material-symbols-outlined text-sm">expand_more</span>
+                      <span className="material-symbols-outlined text-sm cursor-pointer"><ChevronDown /></span>
                     </div>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export default function StoneDetailsPage() {
                       ))}
                     </select>
                     <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#e2c196]">
-                      <span className="material-symbols-outlined text-sm">expand_more</span>
+                      <span className="material-symbols-outlined text-sm"><ChevronDown /></span>
                     </div>
                   </div>
                 </div>
@@ -163,30 +163,19 @@ export default function StoneDetailsPage() {
                   />
                 </div>
               </div>
-
-              <div className="rounded-lg border-l-2 border-[#e2c196]/20 bg-[#191c1b] p-6">
-                <div className="flex gap-4">
-                  <span className="material-symbols-outlined text-[#e2c196]">info</span>
-                  <p className="text-sm italic text-[#c1c8c5]">
-                    Our master jewellers require precise measurements to ensure structural integrity and aesthetic harmony in your custom
-                    setting.
-                  </p>
-                </div>
-              </div>
-
               <div className="flex flex-col items-center gap-6 pt-10 sm:flex-row">
                 <button
-                  className="gold-gradient-cta w-full rounded-md px-10 py-5 text-xs uppercase tracking-widest text-[#412d0d] shadow-[0_10px_30px_rgba(226,193,150,0.2)] transition-transform duration-300 hover:scale-105 sm:w-auto"
-                  type="submit"
-                >
-                  Proceed to Assessment
-                </button>
-                <button
-                  className="w-full rounded-md px-10 py-5 text-xs uppercase tracking-widest text-[#c1c8c5]/60 transition-colors duration-300 hover:text-[#e2c196] sm:w-auto"
+                  className="w-full rounded-md px-10 py-5 cursor-pointer text-xs uppercase tracking-widest text-[#c1c8c5]/60 transition-colors duration-300 hover:text-[#e2c196] sm:w-auto"
                   type="button"
                   onClick={() => router.back()}
                 >
                   Back
+                </button>
+                <button
+                  className="gold-gradient-cta cursor-pointer w-full rounded-md px-10 py-5 text-xs uppercase tracking-widest text-[#412d0d] shadow-[0_10px_30px_rgba(226,193,150,0.2)] transition-transform duration-300 hover:scale-105 sm:w-auto"
+                  type="submit"
+                >
+                  Proceed to Assessment
                 </button>
               </div>
             </form>
@@ -194,15 +183,15 @@ export default function StoneDetailsPage() {
         </section>
 
         <section className="relative hidden overflow-hidden bg-[#0c0f0e] lg:block lg:w-5/12 xl:w-1/2">
-          <div className="absolute inset-0 z-10 bg-gradient-to-tr from-[#111413] to-transparent opacity-60" />
+          <div className="absolute inset-0 z-10 bg-linear-to-tr from-[#111413] to-transparent opacity-60" />
           <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#314c47]/10 blur-[120px]" />
           <div className="absolute -left-24 bottom-1/4 h-80 w-80 rounded-full bg-[#e2c196]/5 blur-[100px]" />
 
           <div className="relative flex h-full items-center justify-center p-12">
-            <div className="group relative aspect-[3/4] w-full max-w-md overflow-hidden rounded-lg shadow-[0_40px_80px_rgba(0,0,0,0.6)]">
+            <div className="group relative aspect-3/4 w-full max-w-md overflow-hidden rounded-lg shadow-[0_40px_80px_rgba(0,0,0,0.6)]">
               <Image
                 alt="gemstone assessment"
-                className="object-cover grayscale-[20%] transition-transform duration-[2000ms] group-hover:scale-110"
+                className="object-cover grayscale-20 transition-transform duration-2000 group-hover:scale-110"
                 fill
                 sizes="(min-width: 1280px) 50vw, (min-width: 1024px) 41vw, 100vw"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuASt27nTu32Bm_DUIQe-oZZrnRR0wNtErn3G1LBOgwVrtHb-MYeNCMPPZrrvZ9U9ezbBXDEm0UVcuSKdRwi9CE4uw-iUdr-BbDOrPzxV_fzg7pfB0c5lNPA_SdfPFZ4kzVAJsve3-1y6qNXzKc6zQ0sB_6pL3l7PTmMdCb3saQ7a9vJHdOiMKl44T9KT8VksCKQSwyKRZICL0WNRpGbcH4ulgjBsRgQAxSr3udfSyt547MguqUoVA25qPXGe0S4FuGBXSayrEP_JMw"
@@ -217,7 +206,7 @@ export default function StoneDetailsPage() {
             </div>
 
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#e2c196]/5" />
-            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[140%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#e2c196]/[0.02]" />
+            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[140%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#e2c196]/2" />
           </div>
         </section>
       </main>

@@ -74,32 +74,11 @@ export default function PersonalPreferencesPage() {
         }
       `}</style>
 
-            <nav className="fixed top-0 z-50 flex h-20 w-full items-center justify-between bg-[#111413]/80 px-8 backdrop-blur-xl">
+            <nav className="fixed top-0 z-50 flex h-20 w-full items-center justify-between px-8">
                 <div className="font-['Noto_Serif'] text-xl font-bold tracking-widest text-[#e2c196]">Midnight Atelier</div>
-                <div className="hidden items-center gap-8 font-['Noto_Serif'] text-[#e1e3e1] md:flex">
-                    <a className="text-[#e1e3e1]/60 transition-colors duration-300 hover:text-[#e2c196]" href="#">
-                        Collections
-                    </a>
-                    <a className="text-[#e1e3e1]/60 transition-colors duration-300 hover:text-[#e2c196]" href="#">
-                        Bespoke
-                    </a>
-                    <a className="border-b border-[#e2c196] pb-1 text-[#e2c196] transition-colors duration-300" href="#">
-                        Heritage
-                    </a>
-                </div>
-                <div className="flex items-center gap-6 text-[#e2c196]">
-                    <span className="material-symbols-outlined cursor-pointer transition-transform hover:scale-110">shopping_bag</span>
-                    <span className="material-symbols-outlined cursor-pointer transition-transform hover:scale-110">person</span>
-                </div>
             </nav>
 
-            <main className="mx-auto flex w-full max-w-5xl grow flex-col items-center px-6 pb-40 pt-32 md:px-24">
-                <div className="mb-16 flex w-full max-w-md flex-col items-center">
-                    <span className="mb-4 text-[10px] uppercase tracking-[0.2em] text-[#e2c196]">Step 6 of 7</span>
-                    <div className="h-[2px] w-full overflow-hidden rounded-full bg-[#414846]/20">
-                        <div className="h-full w-[85%] bg-linear-to-r from-[#e2c196] to-[#a58860]" />
-                    </div>
-                </div>
+            <main className="mx-auto flex w-full max-w-5xl grow flex-col items-center px-6 pb-40 pt-12 md:px-24">
 
                 <div className="mb-12 space-y-4 text-center">
                     <h1 className="font-['Noto_Serif'] text-4xl font-light italic tracking-tight text-[#e1e3e1] md:text-5xl">
@@ -113,17 +92,14 @@ export default function PersonalPreferencesPage() {
                 <div className="group relative w-full max-w-3xl">
                     <div className="absolute -inset-1 rounded-lg bg-linear-to-br from-[#e2c196]/10 to-transparent opacity-0 blur-2xl transition-opacity duration-700 group-focus-within:opacity-100" />
                     <textarea
-                        className="min-h-[220px] w-full rounded-lg border border-[#414846]/15 bg-[#0c0f0e]/60 p-8 font-[Manrope] leading-relaxed text-[#e1e3e1] shadow-2xl backdrop-blur-xl placeholder:text-[#c1c8c5]/30 focus:border-[#e2c196]/40 focus:outline-none focus:ring-1 focus:ring-[#e2c196]/40"
+                        className="min-h-[220px] w-full rounded-lg border border-[#414846] bg-[#0c0f0e]/60 p-8 font-[Manrope] leading-relaxed text-[#e1e3e1] shadow-2xl backdrop-blur-xl placeholder:text-[#c1c8c5]/30 focus:border-[#e2c196]/40 focus:outline-none focus:ring-1 focus:ring-[#e2c196]/40"
                         onChange={(e) => setPersonalPreferences(e.target.value)}
                         placeholder="e.g., I'd love a very low-profile setting for daily wear, but definitely avoid sharp claws..."
                         value={personalPreferences}
                     />
-                    <div className="absolute bottom-6 right-8">
-                        <span className="material-symbols-outlined text-[#e2c196]/40">auto_awesome</span>
-                    </div>
                 </div>
 
-                <div className="mt-16 w-full max-w-3xl">
+                <div className="mt-6 w-full max-w-3xl">
                     <h3 className="mb-6 text-center text-[11px] uppercase tracking-[0.15em] text-[#c1c8c5]/60">Inspiration keywords</h3>
                     <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
                         {KEYWORD_OPTIONS.map(({ label, value }) => {
@@ -154,25 +130,21 @@ export default function PersonalPreferencesPage() {
                 <div className="pointer-events-none fixed -right-40 -top-40 -z-10 h-96 w-96 rounded-full bg-[#e2c196]/5 blur-[120px]" />
             </main>
 
-            <footer className="fixed bottom-0 z-50 flex w-full items-center justify-between rounded-t-full border-t border-[#414846]/15 bg-[#111413]/90 px-12 py-8 shadow-[0_-20px_40px_rgba(0,0,0,0.4)] backdrop-blur-2xl">
+            <footer className="fixed bottom-0 z-50 flex w-full items-center justify-end gap-2 rounded-t-full border-t border-[#414846]/15">
                 <button
-                    className="group flex flex-col items-center justify-center px-8 py-3 text-[#e1e3e1]/50 transition-transform duration-500 hover:scale-105"
+                    className="group flex flex-col cursor-pointer items-center justify-center px-8 py-3 text-[#e1e3e1]/50 transition-transform duration-500 hover:scale-105"
                     onClick={handleBack}
                     type="button"
                 >
-                    <span className="material-symbols-outlined mb-1 group-hover:text-[#e2c196]">arrow_back</span>
                     <span className="font-[Manrope] text-[10px] uppercase tracking-widest">Back</span>
                 </button>
                 <button
-                    className="flex flex-col items-center justify-center rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-10 py-4 text-[#111413] shadow-lg shadow-[#e2c196]/20 transition-transform duration-500 hover:scale-105"
+                    className="flex flex-col items-center cursor-pointer justify-center rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-10 py-4 text-[#111413] shadow-lg shadow-[#e2c196]/20 transition-transform duration-500 hover:scale-105"
                     onClick={handleContinue}
                     type="button"
                 >
                     <div className="flex items-center gap-3">
                         <span className="font-[Manrope] text-[11px] font-bold uppercase tracking-[0.15em]">Continue to Review</span>
-                        <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: '"FILL" 1' }}>
-                            auto_awesome
-                        </span>
                     </div>
                 </button>
             </footer>

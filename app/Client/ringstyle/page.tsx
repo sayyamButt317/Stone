@@ -42,23 +42,25 @@ export default function RingStylePage() {
         manrope.className
       )}
     >
-      <header className="fixed top-0 z-50 flex h-20 w-full items-center justify-between border-b border-[#414846]/15 bg-[#111413]/80 px-8 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl">
-        <div className={cn("text-2xl font-light tracking-[0.2em]", notoSerif.className)}>
+      <header className="fixed top-0 z-50 flex h-20 w-full items-center border-b border-[#414846]/15 bg-[#111413]/80 px-8 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+        {/* <div className={cn("text-2xl font-light tracking-[0.2em]", notoSerif.className)}>
           L&apos;ATELIER
-        </div>
-        <div className="hidden items-center gap-10 md:flex">
-          <span className="text-xs tracking-widest text-[#e1e3e1]/60 uppercase">Step 2 of 7</span>
-        </div>
+        </div> */}
         <button
           type="button"
           onClick={() => router.push(FLOW_ROUTES.chooseType)}
-          className="text-[#e2c196]"
+          className="rounded-full cursor-pointer border border-[#414846]/30 px-8 py-3 text-xs tracking-widest text-[#e1e3e1] uppercase transition-opacity hover:opacity-90"
         >
-          <X className="size-5" />
+          <span className="flex items-center gap-2">
+            <ArrowLeft className="size-4" />
+            Back
+          </span>
         </button>
       </header>
 
+
       <main className="relative mx-auto max-w-7xl px-6 pt-32 pb-40 md:px-20">
+
         <div className="pointer-events-none fixed top-[-10%] right-[-10%] z-0 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_at_50%_50%,#0f2a26_0%,transparent_70%)] opacity-40" />
         <div className="pointer-events-none fixed bottom-[-10%] left-[-10%] z-0 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_50%_50%,#0f2a26_0%,transparent_70%)] opacity-40" />
 
@@ -83,7 +85,7 @@ export default function RingStylePage() {
                   setRingStyleFamily(name)
                 }}
                 className={cn(
-                  "flex flex-col items-center rounded-lg p-8 text-center transition-all duration-500",
+                  "flex flex-col items-center cursor-pointer rounded-lg p-8 text-center transition-all duration-500",
                   "border bg-[#191c1b]/30 backdrop-blur-sm",
                   isSelected
                     ? "scale-105 border-[#e2c196]/40 bg-[#1d201f]/40 shadow-[0_0_30px_rgba(226,193,150,0.2)]"
@@ -108,48 +110,9 @@ export default function RingStylePage() {
           })}
         </div>
 
-        <div className="mt-24 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-          <div className="group relative h-96 overflow-hidden rounded-xl">
-            <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE71JRJFpeb49nzHrwBucH3p3cKBYwPUB3KSsK4_qNpLUZNxgrNyR-bJSJfpUWZ2NPAHa0Vgrz5Vnpg9Idyk3qs1zqwJxd5Fl_wgzZD8eA7UQm15ONdkYftJb1c4EPRCpDXS6IYbHT0pRAh9mPsVrG_7lfORoir83RmY5U9shBUbAPcePfFqh1kuED0hIeYvQIUzBoorzATx5Bio4_4wWYyMYviZvYQa2Z9XhvDF7EoaO6bR0sVwYcaRd_-sI6xd22jEFQ91oK8gQ"
-              alt="Luxury Solitaire Ring"
-              className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              height={100}
-              width={100}
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-[#111413] to-transparent opacity-60" />
-            <div className="absolute bottom-8 left-8">
-              <p className="mb-2 text-xs tracking-[0.2em] text-[#e2c196] uppercase">
-                Featured Silhouette
-              </p>
-              <h2 className={cn("text-2xl", notoSerif.className)}>{selectedName}</h2>
-            </div>
-          </div>
-          <div className="space-y-6">
-            <p className={cn("text-2xl leading-relaxed text-[#e1e3e1]/80", notoSerif.className)}>
-              &quot;Each silhouette is a sculptural foundation, waiting to be adorned with your choice of metal and gemstone.&quot;
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="h-px w-12 bg-[#e2c196]" />
-              <span className="text-xs tracking-widest text-[#e2c196] uppercase">
-                Master Goldsmith, L&apos;Atelier
-              </span>
-            </div>
-          </div>
-        </div>
       </main>
 
-      <footer className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-between bg-[#111413]/90 px-10 py-6 shadow-[0_-10px_30px_rgba(0,0,0,0.3)] backdrop-blur-2xl">
-        <button
-          type="button"
-          onClick={() => router.push(FLOW_ROUTES.chooseType)}
-          className="rounded-full border border-[#414846]/30 px-8 py-3 text-xs tracking-widest text-[#e1e3e1] uppercase transition-opacity hover:opacity-90"
-        >
-          <span className="flex items-center gap-2">
-            <ArrowLeft className="size-4" />
-            Back
-          </span>
-        </button>
+      <footer className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-end bg-[#111413]/90 px-10 py-6 shadow-[0_-10px_30px_rgba(0,0,0,0.3)] backdrop-blur-2xl">
         <button
           type="button"
           onClick={() => {
@@ -158,9 +121,8 @@ export default function RingStylePage() {
           }}
           className="rounded-full bg-linear-to-tr from-[#e2c196] to-[#a58860] px-10 py-4 text-xs font-bold tracking-widest text-[#111413] uppercase shadow-[0_10px_20px_rgba(226,193,150,0.2)] transition-opacity hover:opacity-90"
         >
-          <span className="flex items-center gap-3">
+          <span className="flex items-center cursor-pointer gap-3">
             Next: Choose Intended Wearer
-            <ArrowRight className="size-4" />
           </span>
         </button>
       </footer>

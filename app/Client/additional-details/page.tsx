@@ -20,6 +20,7 @@ import useGenerateImageHook from "@/app/routes/Client/hooks/generateimage-hook"
 import useRingStore from "@/app/store/ring-store"
 import { useRouter } from "next/navigation"
 import { FLOW_ROUTES } from "../flow-routes"
+import Image from "next/image"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -104,25 +105,15 @@ export default function AdditionalDetails({
     >
       <h1 className="sr-only">Describe your jewelry vision</h1>
 
-      <header className="fixed top-0 z-50 flex w-full items-center justify-between bg-[#111413]/80 px-8 py-6 backdrop-blur-xl">
+      <header className="fixed top-0 z-50 flex w-full items-center justify-between  px-8 py-6 ">
         <div className={cn("text-xl font-bold tracking-[0.2em] uppercase", notoSerif.className)}>
           Midnight Atelier
         </div>
-        <div className="flex items-center gap-6">
-          <ShoppingBag className="size-5 cursor-pointer text-[#e1e3e1]/60 transition-colors hover:text-[#e2c196]" />
-          <User className="size-5 cursor-pointer text-[#e1e3e1]/60 transition-colors hover:text-[#e2c196]" />
-        </div>
+
       </header>
 
-      <main className="mx-auto flex w-full max-w-6xl min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 pt-32 pb-24 md:px-20">
+      <main className="mx-auto flex w-full max-w-6xl min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 pt-22 pb-24 md:px-20">
         <div className="mb-16 w-full space-y-6 text-center">
-          <div className="mx-auto inline-block w-full max-w-xs space-y-3">
-            <Stepper
-              step={step}
-              totalSteps={totalSteps}
-              label={`${Math.round((step / Math.max(totalSteps, 1)) * 100)}% Complete`}
-            />
-          </div>
           <div className="space-y-2">
             <h1 className={cn("text-4xl font-bold tracking-tight md:text-5xl", notoSerif.className)}>
               Describe your vision
@@ -144,10 +135,11 @@ export default function AdditionalDetails({
             </div>
 
             <div className="relative h-64 overflow-hidden rounded-lg shadow-2xl">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9pVwMzIKMjJD0i4Z-UZSaDAaKpb-puNJtaZpgpcVyAxcPOXOBXJO05CRmoceYDjWKnlC1XZ2jYpjTeQauJLus52DyhOGaLKqOm2lPd_BkYQQHJ9oI-HfDTIBZLZqDt3zkFd-yvhHNCYKOukw3IligWZ2emyJVzRUmj9asIKWxB1z9BzKAASQZnu6Pvoagpejmp9DCtL8AWcoiwOS3a3Ym4iA72HkFYENcQpGBmxxgKpIRrGld2Y-W5CN072Bmd4qhmB9dMBjzzV4"
                 alt="Jeweler sketch"
+                width={100}
+                height={100}
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#111413] to-transparent opacity-60" />
@@ -174,27 +166,11 @@ export default function AdditionalDetails({
                 </div>
               </div>
             </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <span className="mr-2 text-xs font-bold tracking-[0.15em] text-[#c1c8c599] uppercase">
-                Quick tags:
-              </span>
-              {QUICK_TAGS.map((tag) => (
-                <button
-                  key={tag}
-                  type="button"
-                  onClick={() => appendTag(tag)}
-                  className="rounded-full bg-[#314c47]/40 px-5 py-2 text-xs text-[#9ebbb5] transition-colors hover:bg-[#314c47]"
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
           </div>
         </section>
       </main>
 
-      <footer className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-between bg-[#111413]/60 px-8 py-8 backdrop-blur-2xl">
+      <footer className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-between  px-8 py-8">
         <button
           type="button"
           onClick={handleBack}

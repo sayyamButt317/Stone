@@ -40,7 +40,7 @@ export default function EarringsPage() {
         manrope.className
       )}
     >
-      <nav className="fixed top-0 z-50 w-full bg-neutral-950/80 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+      <nav className="fixed top-0 z-50 w-full ">
         <div className="mx-auto flex w-full max-w-full items-center justify-between px-8 py-4">
           <div
             className={cn(
@@ -51,49 +51,15 @@ export default function EarringsPage() {
             THE MIDNIGHT ATELIER
           </div>
 
-          <div className="hidden items-center gap-12 md:flex">
-            <button
-              type="button"
-              className="text-xs tracking-widest text-neutral-400 uppercase transition-colors duration-300 hover:text-[#e2c196]"
-            >
-              Collections
-            </button>
-            <button
-              type="button"
-              className="border-b border-[#e2c196] pb-1 text-xs tracking-widest text-[#e2c196] uppercase"
-            >
-              Bespoke
-            </button>
-            <button
-              type="button"
-              className="text-xs tracking-widest text-neutral-400 uppercase transition-colors duration-300 hover:text-[#e2c196]"
-            >
-              Heritage
-            </button>
-          </div>
 
-          <div className="flex items-center gap-6">
-            <div className="mr-4 flex flex-col items-end">
-              <span className="text-[10px] tracking-widest text-[#a58860] uppercase">
-                Step 2 of 7
-              </span>
-              <div className="mt-1 h-1 w-32 overflow-hidden rounded-full bg-[#323534]">
-                <div className="h-full w-[28%] bg-[#e2c196] shadow-[0_0_8px_rgba(226,193,150,0.6)]" />
-              </div>
-            </div>
-            <button type="button" className="text-[#e2c196]">
-              <ShoppingBag className="size-5" />
-            </button>
-          </div>
+
+
         </div>
         <div className="absolute right-0 bottom-0 left-0 h-px bg-neutral-800/30" />
       </nav>
 
-      <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center px-6 pt-32 pb-40 md:px-20">
+      <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center px-6 pt-22 pb-20 md:px-20">
         <header className="mb-16 space-y-4 text-center">
-          <span className="text-xs tracking-[0.3em] text-[#e2c196] uppercase">
-            The Silhouette Selection
-          </span>
           <h1
             className={cn(
               "text-4xl font-light tracking-tight italic md:text-6xl",
@@ -150,11 +116,11 @@ export default function EarringsPage() {
         </div>
       </main>
 
-      <nav className="fixed right-0 bottom-0 left-0 z-50 flex items-center justify-between bg-neutral-950/90 px-10 pt-4 pb-8 shadow-[0_-20px_40px_rgba(0,0,0,0.4)] backdrop-blur-2xl">
+      <nav className="fixed right-0 bottom-0 left-0 z-50 flex items-center justify-end gap-2 bg-neutral-950/90 px-10 pt-4 pb-8 shadow-[0_-20px_40px_rgba(0,0,0,0.4)] backdrop-blur-2xl">
         <button
           type="button"
           onClick={() => router.push(FLOW_ROUTES.chooseType)}
-          className="flex items-center gap-2 rounded-full border border-neutral-700/50 px-8 py-3 text-[11px] font-medium tracking-wider text-neutral-300 uppercase transition-all hover:scale-[1.02] hover:opacity-90"
+          className="flex items-center gap-2 cursor-pointer rounded-full border border-neutral-700/50 px-8 py-3 text-[11px] font-medium tracking-wider text-neutral-300 uppercase transition-all hover:scale-[1.02] hover:opacity-90"
         >
           <ArrowLeft className="size-4" />
           Back
@@ -171,7 +137,7 @@ export default function EarringsPage() {
         <button
           type="button"
           onClick={() => router.push(FLOW_ROUTES.chooseGender)}
-          className="flex items-center gap-2 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-3 text-[11px] font-bold tracking-wider text-neutral-950 uppercase transition-all duration-150 hover:scale-[1.02] hover:opacity-90 active:scale-95"
+          className="flex items-center gap-2 cursor-pointer rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-3 text-[11px] font-bold tracking-wider text-neutral-950 uppercase transition-all duration-150 hover:scale-[1.02] hover:opacity-90 active:scale-95"
         >
           Next: Choose Intended Wearer
           <ArrowRight className="size-4" />

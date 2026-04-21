@@ -29,14 +29,14 @@ export default function YssStonePage() {
           <button
             type="button"
             onClick={() => router.back()}
-            className="rounded-full border border-[#414846]/40 px-6 py-3 text-xs uppercase tracking-widest text-[#c1c8c5]"
+            className="rounded-full cursor-pointer border border-[#414846]/40 px-6 py-3 text-xs uppercase tracking-widest text-[#c1c8c5]"
           >
             Back
           </button>
           <button
             type="button"
             onClick={() => router.push(FLOW_ROUTES.chooseGem)}
-            className="rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-3 text-xs font-semibold uppercase tracking-widest text-[#111413]"
+            className="rounded-full cursor-pointer bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-3 text-xs font-semibold uppercase tracking-widest text-[#111413]"
           >
             Continue
           </button>

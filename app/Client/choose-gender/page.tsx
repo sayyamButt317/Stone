@@ -101,9 +101,9 @@ export default function ChooseGender({
         </div>
       </header>
 
-      <div className="mx-auto w-full max-w-4xl shrink-0 px-6 pt-6 pb-4 md:px-24">
+      {/* <div className="mx-auto w-full max-w-4xl shrink-0 px-6 pt-6 pb-4 md:px-24">
         <Stepper step={step} totalSteps={totalSteps} label="Selection" />
-      </div>
+      </div> */}
 
       <main className="relative flex min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 pb-40">
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
@@ -192,32 +192,16 @@ export default function ChooseGender({
             )
           })}
         </div>
-
-        <div className="relative z-10 mt-16 flex items-center gap-4 md:mt-20">
-          <div
-            className="h-px w-12"
-            style={{ backgroundColor: `${OUTLINE_VARIANT}4d` }}
-            aria-hidden
-          />
-          <div className="text-[10px] tracking-widest text-stone-600 uppercase italic">
-            Curated Artisanship
-          </div>
-          <div
-            className="h-px w-12"
-            style={{ backgroundColor: `${OUTLINE_VARIANT}4d` }}
-            aria-hidden
-          />
-        </div>
       </main>
 
       <footer
-        className="z-50 shrink-0 border-0 bg-[#111413]/90 px-6 py-8 backdrop-blur-2xl sm:px-12"
+        className="z-50 shrink-0 border-0 bg-[#111413]/90 backdrop-blur-2xl "
       >
-        <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-4">
+        <div className="mx-auto flex max-w-screen-2xl items-center justify-end gap-4">
           <button
             type="button"
             onClick={handleBack}
-            className="flex items-center gap-3 text-[10px] tracking-[0.25em] text-stone-500 uppercase transition-colors duration-500 hover:text-[#e2c196] active:scale-95"
+            className="flex items-center gap-3 text-[10px] tracking-[0.25em] cursor-pointer text-stone-500 uppercase transition-colors duration-500 hover:text-[#e2c196] active:scale-95"
           >
             <ArrowLeft className="size-4 shrink-0" strokeWidth={1.5} />
             Previous Phase
@@ -225,7 +209,7 @@ export default function ChooseGender({
           <button
             type="button"
             onClick={handleProceed}
-            className="flex items-center gap-4 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-4 text-[10px] font-bold tracking-[0.3em] text-[#291800] uppercase shadow-[0_10px_30px_rgba(226,193,150,0.2)] transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_40px_rgba(226,193,150,0.4)] active:scale-95 sm:px-10 sm:py-5"
+            className="flex items-center cursor-pointer gap-4 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] text-[10px] font-bold tracking-[0.3em] text-[#291800] uppercase shadow-[0_10px_30px_rgba(226,193,150,0.2)] transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_40px_rgba(226,193,150,0.4)] active:scale-95 sm:px-10 sm:py-5"
           >
             Proceed to Carving
             <ArrowRight className="size-4 shrink-0" strokeWidth={1.5} />
