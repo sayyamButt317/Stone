@@ -4,7 +4,6 @@ import { useCallback } from "react"
 import { Manrope, Noto_Serif } from "next/font/google"
 import {
   ArrowLeft,
-  ArrowRight,
   Blend,
   Gem,
   Grid3X3,
@@ -12,7 +11,6 @@ import {
   PenLine,
   ScrollText,
   ShoppingBag,
-  User,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Stepper from "@/components/Client/stepper"
@@ -38,13 +36,6 @@ const ON_SURFACE = "#e1e3e1"
 const ON_SURFACE_VARIANT = "#c1c8c5"
 const MAX_CHAR = 2500
 
-const QUICK_TAGS = [
-  "Art Deco Influence",
-  "Minimalist",
-  "Family Crest",
-  "Organic Shapes",
-] as const
-
 type Props = {
   step?: number
   totalSteps?: number
@@ -53,8 +44,6 @@ type Props = {
 }
 
 export default function AdditionalDetails({
-  step = 6,
-  totalSteps = 7,
   onBack,
   onContinue,
 }: Props) {
@@ -88,11 +77,6 @@ export default function AdditionalDetails({
       },
     })
   }, [generateImage, image_prompt, onContinue, router, setImagePrompt])
-
-  const appendTag = useCallback((tag: string) => {
-    const next = image_prompt.trim().length > 0 ? `${image_prompt}\n${tag}` : tag
-    setImagePrompt(next.slice(0, MAX_CHAR))
-  }, [image_prompt, setImagePrompt])
 
   return (
     <div

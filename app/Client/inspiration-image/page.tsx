@@ -9,33 +9,6 @@ import { useCreateRingMutation } from "@/app/routes/Client/hooks/ring-hook"
 import { RING_CREATION_INSTRUCATIONS_PAYLOAD } from "@/app/constant/ringcreation"
 import { Loader2 } from "lucide-react"
 
-type TeaserImage = {
-  alt: string
-  src: string
-  offsetTop?: boolean
-}
-
-const TEASER_IMAGES: TeaserImage[] = [
-  {
-    alt: "Reference 1",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBw8MOdGT214RzI6Pn9yuLF_27b1o1mBasDY-MjK4aJKet5RtgfDh9Og_MS8wjsE_CPvAe7Jh1IZQTrcUcV40TUWLCT8mfHl4L3pIp-ciz4z-zUsxJEOt-AxFuqrXPTQ28k5YzoHp4XLI74TdqTv3Ez6VGCXKzuv0VsR5sc6pnWWDunE55zBRfSG648KZ26tZolZwaepqGQI6OZ3ca4eo419nXqBYduNeew2Ljtg-8GB9i6uLXXxCgBs2fDAffawxJ-DRWI7rkzOQA",
-  },
-  {
-    alt: "Reference 2",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQzuT_6sUc0EdW0PyJepc4lVDwZhgC2GofVdIQEbHr2owoU5_pt6EPeYhY013OR7w5cI1z92BcdSKwmgaCFH51SpqeaItZLMWozDT9nwcB7eJSoatLFwJlLjywBcC0Q92m7WyUPIMaNb8hacMug8WE3TJGfz2y6Fsy2fEgx8rgAPCX1Z-_xo3jwBfphksVSbrPIuQN3fryI2VATwta2WOVOcChD2yGyUW7Wh1z55eNSA0XkUlYS-0hKO1wq1p_OLnh1sMQer8usWA",
-    offsetTop: true,
-  },
-  {
-    alt: "Reference 3",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuA6t9zxUjhS78oseMZIjtIpIN3gICc2KLpTri6LWXA7RRsxqyf6JavPRea5-bAWxkMjDONNrZvk0ARDS2ObGn6RKqlYnLDyT6Bx-1BbZUuFMwXj0DMl_-pbzlp7Q89e2VHIL9A_oV_cEQZbwR7d3Ihq_Q1peV6aLNQdTIXSwFPc1xnEEiz8dnFf1xS4_fljSzEWZZTEWuG0vYR9oYIHLAQjgLgyCU-GNAcZiV-xwAF3uW4v6GI4rhhJTodQlSo2cXqKaiYULhNw3p4",
-  },
-  {
-    alt: "Reference 4",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBmMOsW7gc6rmSBI_Y-Aa2SOnpOOis_RVhydtz8WBt_iROXDN9hMBFYVMuaaJ_TclHGEFBIsbPgC0vw8hkXz1lTj_3Ts8AYi25ad5VWAh8dP-YahTuXEY2xb-LsUu67uco66FE7kHaushFjXP_oZ-W-tv2dE9ZSO5doxih7sw5bCSzTrwi2Q3IAR4Li9S56_FIhPCw5_7jj6ii0NItk1ABo4mZRIMe8kKU0xs_55JDMHqJPJZ2w6_dba7jNLwN1cTXW-gSVoWgmDLU",
-    offsetTop: true,
-  },
-]
-
 export default function InspirationImagePage() {
   const router = useRouter()
   const setImagePreview = useJewelleryStore((s) => s.setImagePreview)
@@ -155,7 +128,7 @@ export default function InspirationImagePage() {
       />
 
       <header className="fixed top-0 z-50 flex h-20 w-full items-center justify-between  px-8 text-[#e2c196] ">
-        <div className="font-['Noto_Serif'] text-lg uppercase tracking-[0.2em] text-[#e2c196]">The Atelier</div>
+        <div className="font-['Noto_Serif'] text-lg uppercase tracking-[0.2em] text-[#e2c196]">L&apos;ATELIER</div>
       </header>
 
       <main className="mx-auto flex w-full max-w-7xl grow flex-col items-center px-6 pb-48 pt-22 md:px-24 md:pb-40">
@@ -231,14 +204,14 @@ export default function InspirationImagePage() {
           </div>
         </div>
 
-        <div className="mt-16 flex w-full flex-row gap-2 justify-center items-center">
-          <button
+        <div className="mt-16 flex w-full flex-row gap-2 justify-end items-center">
+          {/* <button
             className="gold-gradient min-w-[280px] bg-gray-950 cursor-pointer rounded-md px-16 py-5 text-sm font-extrabold uppercase tracking-widest text-[#412d0d] shadow-[0_0_30px_rgba(226,193,150,0.3)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
             onClick={handleSkip}
             type="button"
           >
             Skip for now
-          </button>
+          </button> */}
           <button
             className="gold-gradient min-w-[280px] cursor-pointer rounded-md px-16 py-5 text-sm font-extrabold uppercase tracking-widest text-[#412d0d] shadow-[0_0_30px_rgba(226,193,150,0.3)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
             onClick={RingGeneration}

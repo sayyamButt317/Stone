@@ -74,7 +74,7 @@ export default function ChooseMetal({
             )}
             style={{ color: ACCENT }}
           >
-            Midnight Atelier
+            L&apos;ATELIER
           </div>
         </div>
 
@@ -168,7 +168,7 @@ export default function ChooseMetal({
         </section>
       </main>
 
-      <footer className="fixed bottom-0 z-50 w-full rounded-t-[40px] bg-[#191c1b]/90 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
+      <footer className="fixed bottom-0 z-50 w-full rounded-t-[40px] ">
         <div className="mx-auto cursor-pointer flex w-full max-w-screen-2xl items-center justify-end gap-2 px-10 py-8">
           <button
             type="button"

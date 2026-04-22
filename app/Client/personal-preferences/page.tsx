@@ -75,7 +75,7 @@ export default function PersonalPreferencesPage() {
       `}</style>
 
             <nav className="fixed top-0 z-50 flex h-20 w-full items-center justify-between px-8">
-                <div className="font-['Noto_Serif'] text-xl font-bold tracking-widest text-[#e2c196]">Midnight Atelier</div>
+                <div className="font-['Noto_Serif'] text-xl font-bold tracking-widest text-[#e2c196]">L&apos;ATELIER</div>
             </nav>
 
             <main className="mx-auto flex w-full max-w-5xl grow flex-col items-center px-6 pb-40 pt-12 md:px-24">

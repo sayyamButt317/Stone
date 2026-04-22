@@ -88,13 +88,8 @@ export default function ChooseGem({ onBack }: Props) {
         }
       `}</style>
 
-      <nav className="fixed top-0 z-50 flex h-20 w-full items-center justify-between bg-[#111413]/80 px-8 backdrop-blur-xl">
+      <nav className="fixed top-0 z-50 flex h-20 w-full items-center justify-between px-8 ">
         <div className="font-['Noto_Serif'] text-xl font-light italic tracking-tight text-[#e2c196]">The Midnight Atelier</div>
-        <div className="hidden items-center gap-8 md:flex">
-          <span className="cursor-pointer font-['Noto_Serif'] tracking-tight text-[#e1e3e1]/60 transition-colors duration-300 hover:text-[#e2c196]">Collections</span>
-          <span className="cursor-pointer font-['Noto_Serif'] tracking-tight text-[#e1e3e1]/60 transition-colors duration-300 hover:text-[#e2c196]">Heritage</span>
-          <span className="cursor-pointer font-['Noto_Serif'] font-medium tracking-tight text-[#e2c196] transition-colors duration-300">Custom Creation</span>
-        </div>
         <div className="text-[#e2c196]">
           <span className="material-symbols-outlined">close</span>
         </div>
@@ -102,15 +97,6 @@ export default function ChooseGem({ onBack }: Props) {
       </nav>
 
       <main className="mx-auto flex w-full max-w-7xl flex-col px-4 pb-40 pt-32 md:px-8">
-        <div className="mx-auto mb-12 w-full max-w-md">
-          <div className="mb-3 flex items-end justify-between">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-[#e2c196]">Step 3 of 7</span>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-[#c1c8c5]">Gemstone selection</span>
-          </div>
-          <div className="h-[2px] w-full overflow-hidden rounded-full bg-[#323534]">
-            <div className="gold-gradient h-full w-[42.8%] shadow-[0_0_10px_rgba(226,193,150,0.5)]" />
-          </div>
-        </div>
 
         <header className="mb-16 text-center">
           <h1 className="mb-4 font-['Noto_Serif'] text-4xl font-light italic tracking-tight text-[#e1e3e1] md:text-6xl">Select your gemstone</h1>
@@ -174,36 +160,14 @@ export default function ChooseGem({ onBack }: Props) {
             )
           })}
         </div>
-
-        <section className="mx-auto mt-12 w-full max-w-3xl rounded-xl border border-dashed border-[#414846]/30 p-8 glass-card">
-          <div className="flex flex-col items-center gap-8 md:flex-row">
-            <div className="shrink-0">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#e2c196]/20 bg-[#282b29] text-[#e2c196]">
-                <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: '"FILL" 1' }}>
-                  auto_awesome
-                </span>
-              </div>
-            </div>
-            <div>
-              <h4 className="mb-2 font-['Noto_Serif'] text-xl text-[#e1e3e1]">{selectedGemData.name} Heritage Selection</h4>
-              <p className="text-sm leading-relaxed text-[#c1c8c5]/80">
-                The Emerald is known as the &quot;Jewel of Kings.&quot; Our selection features stones sourced from ethical mines in Zambia,
-                chosen for their intense verdant hue and minimal visible inclusions. Each stone is hand-cut to maximize light
-                refraction.
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer className="fixed bottom-8 left-1/2 z-50 flex min-w-[320px] -translate-x-1/2 items-center justify-between gap-4 rounded-full border border-[#414846]/15 bg-[#191c1b]/60 p-2 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-2xl md:min-w-[500px]">
-        <button className="flex items-center gap-2 px-8 py-3 text-[#e1e3e1] transition-transform duration-500 hover:scale-105 active:scale-95" onClick={handleBack} type="button">
-          <span className="material-symbols-outlined text-lg">arrow_back</span>
+        <button className="flex cursor-pointer items-center gap-2 px-8 py-3 text-[#e1e3e1] transition-transform duration-500 hover:scale-105 active:scale-95" onClick={handleBack} type="button">
           <span className="font-['Manrope'] text-[10px] font-bold uppercase tracking-[0.2em]">Back</span>
         </button>
-        <button className="group flex items-center gap-3 rounded-full bg-gradient-to-br from-[#e2c196] to-[#a58860] px-10 py-3 text-[#111413] shadow-[0_0_20px_rgba(226,193,150,0.3)] transition-transform duration-500 hover:scale-105 active:scale-95" onClick={handleContinue} type="button">
+        <button className="group cursor-pointer flex items-center gap-3 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-10 py-3 text-[#111413] shadow-[0_0_20px_rgba(226,193,150,0.3)] transition-transform duration-500 hover:scale-105 active:scale-95" onClick={handleContinue} type="button">
           <span className="font-['Manrope'] cursor-pointer  text-[10px] font-extrabold uppercase tracking-[0.2em]">Proceed to Metal Selection</span>
-          <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
         </button>
       </footer>
 

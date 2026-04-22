@@ -203,8 +203,8 @@ export default function ChooseGender({
             onClick={handleBack}
             className="flex items-center gap-3 text-[10px] tracking-[0.25em] cursor-pointer text-stone-500 uppercase transition-colors duration-500 hover:text-[#e2c196] active:scale-95"
           >
-            <ArrowLeft className="size-4 shrink-0" strokeWidth={1.5} />
-            Previous Phase
+
+            Back
           </button>
           <button
             type="button"
@@ -212,7 +212,7 @@ export default function ChooseGender({
             className="flex items-center cursor-pointer gap-4 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] text-[10px] font-bold tracking-[0.3em] text-[#291800] uppercase shadow-[0_10px_30px_rgba(226,193,150,0.2)] transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_40px_rgba(226,193,150,0.4)] active:scale-95 sm:px-10 sm:py-5"
           >
             Proceed to Carving
-            <ArrowRight className="size-4 shrink-0" strokeWidth={1.5} />
+
           </button>
         </div>
       </footer>

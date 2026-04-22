@@ -65,7 +65,7 @@ export default function WearFrequencyPage() {
       `}</style>
 
             <nav className="fixed top-0 z-50 flex h-24 w-full items-center justify-between bg-[#111413]/80 px-12 shadow-2xl shadow-black/40 backdrop-blur-xl">
-                <div className="font-['Noto_Serif'] text-2xl font-light tracking-[0.2em] text-[#e2c196]">THE MIDNIGHT ATELIER</div>
+                <div className="font-['Noto_Serif'] text-2xl font-light tracking-[0.2em] text-[#e2c196]">L&apos;ATELIER</div>
             </nav>
             <main className="mx-auto flex w-full max-w-7xl grow flex-col items-center px-6 pb-40 pt-22">
                 <div className="mb-16 space-y-6 text-center">

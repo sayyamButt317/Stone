@@ -64,13 +64,13 @@ export default function GemstoneDecisionPage() {
         }
       `}</style>
 
-      {/* <nav className="fixed top-0 z-50 flex w-full items-center justify-between bg-[#111413]/80 px-12 py-6 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+      <nav className="fixed top-0 z-50 flex w-full items-center justify-between px-12 py-6 ">
         <div className="font-['Noto_Serif'] text-2xl uppercase tracking-[0.2em] text-[#e2c196]">
           L&apos;ATELIER
         </div>
-      </nav> */}
+      </nav>
 
-      <aside className="fixed left-0 z-40 flex h-screen w-24 flex-col items-center gap-8 border-r border-[#414846]/10 bg-[#191c1b]/60 py-24 backdrop-blur-2xl">
+      {/* <aside className="fixed left-0 z-40 flex h-screen w-24 flex-col items-center gap-8 border-r border-[#414846]/10 bg-[#191c1b]/60 py-24 backdrop-blur-2xl">
         <div className="flex flex-col gap-10">
           <div className="group flex cursor-pointer flex-col items-center gap-2">
             <span className="material-symbols-outlined p-4 text-[#e1e3e1]/40 transition-all duration-300 hover:bg-[#1d201f]">edit_note</span>
@@ -89,7 +89,7 @@ export default function GemstoneDecisionPage() {
             <span className="font-['Manrope'] text-[8px] uppercase tracking-widest text-[#e1e3e1]/40">Review</span>
           </div>
         </div>
-      </aside>
+      </aside> */}
 
       <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-4 pl-24 pt-4">
         <div className="pointer-events-none absolute -right-24 top-1/4 h-[500px] w-[500px] rounded-full bg-[#314c47]/10 blur-[120px]" />
@@ -134,20 +134,19 @@ export default function GemstoneDecisionPage() {
             />
           </div>
 
-          <footer className="mx-auto flex max-w-4xl items-center justify-end border-t border-[#414846]/10 pt-2">
+          <footer className="mx-auto flex max-w-4xl items-center justify-end gap-2 border-t border-[#414846]/10 pt-2">
             <button
               type="button"
               onClick={() => router.back()}
               className="group flex items-center gap-2 cursor-pointer text-[10px] uppercase tracking-[0.25em] text-stone-500 transition-all duration-300 hover:text-[#e2c196] active:scale-95"
             >
-              <span className="material-symbols-outlined text-sm transition-transform duration-300 group-hover:-translate-x-1">
-                arrow_back_ios
+              <span className="text-[10px] font-bold tracking-[0.15em] uppercase">
+                Back
               </span>
-              Back
             </button>
             <div className="flex items-center gap-12">
               <button
-                className={`rounded-md border cursor-pointer px-12 py-5 font-[Manrope] text-sm uppercase tracking-[0.2em] transition-all duration-500 ${stone === "own" || stone === "choose" || stone === "reference"
+                className={`rounded-full border cursor-pointer px-12 py-5 font-[Manrope] text-sm uppercase tracking-[0.2em] transition-all duration-500 ${stone === "own" || stone === "choose" || stone === "reference"
                   ? "border-[#e2c196]/30 bg-[#e2c196]/90 text-[#291800] hover:bg-[#e2c196]"
                   : "cursor-not-allowed border-[#414846]/10 bg-[#e2c196]/10 text-[#e1e3e1]/30"
                   }`}
@@ -204,7 +203,6 @@ function Card({ active, icon, title, description, actionLabel, iconWrapperClassN
       <div className="mt-8 border-t border-[#414846]/20 pt-8 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
         <span className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#e2c196]">
           {actionLabel}
-          <span className="material-symbols-outlined text-sm">arrow_forward</span>
         </span>
       </div>
     </button>

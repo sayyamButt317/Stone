@@ -79,7 +79,7 @@ export default function RecomendationPage() {
                 </div>
             </header> */}
 
-            <aside className="fixed left-0 z-40 hidden h-screen w-24 flex-col items-center gap-8 border-r border-[#414846]/10 bg-[#191c1b]/60 py-24 backdrop-blur-2xl md:flex">
+            {/* <aside className="fixed left-0 z-40 hidden h-screen w-24 flex-col items-center gap-8 border-r border-[#414846]/10 bg-[#191c1b]/60 py-24 backdrop-blur-2xl md:flex">
                 <div className="mb-12 text-center">
                     <div className="font-['Noto_Serif'] text-[10px] uppercase leading-tight tracking-widest text-[#e2c196]">
                         Step
@@ -115,7 +115,7 @@ export default function RecomendationPage() {
                         <span className="font-['Manrope'] text-[10px] uppercase tracking-widest text-[#e1e3e1]/40">Review</span>
                     </div>
                 </div>
-            </aside>
+            </aside> */}
 
             <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-24 pt-32 md:pl-24">
                 <div className="absolute right-[-10%] top-[-10%] h-[600px] w-[600px] rounded-full bg-[#314c47]/10 blur-[120px]" />
@@ -135,8 +135,8 @@ export default function RecomendationPage() {
                             aria-pressed={pick === "stone"}
                             onClick={() => setPick("stone")}
                             className={`glass-card emerald-glow group flex h-[400px] flex-col justify-between rounded-lg border p-12 text-left transition-all duration-500 hover:scale-[1.02] ${pick === "stone"
-                                    ? "border-[#e2c196]/50 bg-[#e2c196]/5 shadow-[0_0_30px_rgba(226,193,150,0.2)]"
-                                    : "border-[#414846]/10"
+                                ? "border-[#e2c196]/50 bg-[#e2c196]/5 shadow-[0_0_30px_rgba(226,193,150,0.2)]"
+                                : "border-[#414846]/10"
                                 }`}
                             type="button"
                         >
@@ -165,8 +165,8 @@ export default function RecomendationPage() {
                             aria-pressed={pick === "color"}
                             onClick={() => setPick("color")}
                             className={`glass-card emerald-glow group flex h-[400px] flex-col justify-between rounded-lg border p-12 text-left transition-all duration-500 hover:scale-[1.02] ${pick === "color"
-                                    ? "border-[#e2c196]/50 bg-[#e2c196]/5 shadow-[0_0_30px_rgba(226,193,150,0.2)]"
-                                    : "border-[#414846]/10"
+                                ? "border-[#e2c196]/50 bg-[#e2c196]/5 shadow-[0_0_30px_rgba(226,193,150,0.2)]"
+                                : "border-[#414846]/10"
                                 }`}
                             type="button"
                         >
@@ -192,9 +192,8 @@ export default function RecomendationPage() {
                         </button>
                     </div>
 
-                    <footer className="mt-20 flex items-center justify-between">
+                    <footer className="mt-20 flex items-center justify-end">
                         <button onClick={handleBack} className="group flex items-center gap-3 rounded-full px-8 py-4 text-sm uppercase tracking-widest text-[#c1c8c5] transition-colors hover:text-[#e2c196]" type="button">
-                            <span className="material-symbols-outlined text-lg transition-transform group-hover:-translate-x-1">arrow_back</span>
                             Back
                         </button>
                         <button
@@ -204,32 +203,10 @@ export default function RecomendationPage() {
                             type="button"
                         >
                             Next
-                            <span className="material-symbols-outlined text-lg">arrow_forward</span>
                         </button>
                     </footer>
                 </section>
             </main>
-
-            <nav className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around bg-[#111413]/80 py-4 backdrop-blur-xl md:hidden">
-                <div className="flex flex-col items-center gap-1">
-                    <span className="material-symbols-outlined text-[#e1e3e1]/40">edit_note</span>
-                    <span className="text-[10px] uppercase text-[#e1e3e1]/40">Design</span>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                    <span className="material-symbols-outlined text-[#e2c196]" style={{ fontVariationSettings: '"FILL" 1' }}>
-                        diamond
-                    </span>
-                    <span className="text-[10px] uppercase text-[#e2c196]">Stones</span>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                    <span className="material-symbols-outlined text-[#e1e3e1]/40">auto_awesome</span>
-                    <span className="text-[10px] uppercase text-[#e1e3e1]/40">Setting</span>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                    <span className="material-symbols-outlined text-[#e1e3e1]/40">visibility</span>
-                    <span className="text-[10px] uppercase text-[#e1e3e1]/40">Review</span>
-                </div>
-            </nav>
         </div>
     )
 }
