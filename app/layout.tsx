@@ -5,6 +5,7 @@ import QueryProvider from "./context/QueryProvider";
 import CustomToast from "@/components/Client/customtoast";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ErrorBoundary } from "@/app/errors";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <QueryProvider>
+          <Analytics />
           <CustomToast />
           <ErrorBoundary>{children}</ErrorBoundary>
           <ReactQueryDevtools initialIsOpen={false} />
