@@ -13,6 +13,8 @@ import { FLOW_ROUTES } from "../flow-routes"
 import { RING_STYLES, RingStyleType } from "@/app/types/ring-type"
 import useJewelleryStore from "@/app/store/jewellery-store"
 import Image from 'next/image'
+import CustomButton from "@/components/Custom/CustomButton"
+import BackButton from "@/components/Custom/BackButton"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -112,19 +114,15 @@ export default function RingStylePage() {
 
       </main>
 
-      <footer className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-end bg-[#111413]/90 px-10 py-6 shadow-[0_-10px_30px_rgba(0,0,0,0.3)] backdrop-blur-2xl">
-        <button
-          type="button"
-          onClick={() => {
-            setRingStyleFamily(selectedName)
-            router.push(FLOW_ROUTES.chooseGender)
-          }}
-          className="rounded-full bg-linear-to-tr from-[#e2c196] to-[#a58860] px-10 py-4 text-xs font-bold tracking-widest text-[#111413] uppercase shadow-[0_10px_20px_rgba(226,193,150,0.2)] transition-opacity hover:opacity-90"
-        >
-          <span className="flex items-center cursor-pointer gap-3">
-            Next: Choose Intended Wearer
-          </span>
-        </button>
+      <footer className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-end px-10 py-6 ">
+        <BackButton onClick={() => router.push(FLOW_ROUTES.chooseType)} />
+        <CustomButton onClick={() => {
+          setRingStyleFamily(selectedName)
+          router.push(FLOW_ROUTES.chooseGender)
+        }}>
+          Choose Intended Wearer
+        </CustomButton>
+
       </footer>
     </div>
   )

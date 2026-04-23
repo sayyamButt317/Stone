@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation"
 import { FLOW_ROUTES } from "../flow-routes"
 import useJewelleryStore, { type HaveStoneChoice } from "@/app/store/jewellery-store"
 import { Paperclip, Pointer } from "lucide-react"
+import BackButton from "@/components/Custom/BackButton"
+import CustomButton from "@/components/Custom/CustomButton"
 
 type CardProps = {
   active: boolean
@@ -64,7 +66,7 @@ export default function GemstoneDecisionPage() {
         }
       `}</style>
 
-      <nav className="fixed top-0 z-50 flex w-full items-center justify-between px-12 py-6 ">
+      <nav className="fixed top-0 z-50 flex w-full items-center justify-between px- 6py-6 ">
         <div className="font-['Noto_Serif'] text-2xl uppercase tracking-[0.2em] text-[#e2c196]">
           L&apos;ATELIER
         </div>
@@ -134,42 +136,28 @@ export default function GemstoneDecisionPage() {
             />
           </div>
 
-          <footer className="mx-auto flex max-w-4xl items-center justify-end gap-2 border-t border-[#414846]/10 pt-2">
-            <button
-              type="button"
-              onClick={() => router.back()}
-              className="group flex items-center gap-2 cursor-pointer text-[10px] uppercase tracking-[0.25em] text-stone-500 transition-all duration-300 hover:text-[#e2c196] active:scale-95"
-            >
-              <span className="text-[10px] font-bold tracking-[0.15em] uppercase">
-                Back
-              </span>
-            </button>
-            <div className="flex items-center gap-12">
-              <button
-                className={`rounded-full border cursor-pointer px-12 py-5 font-[Manrope] text-sm uppercase tracking-[0.2em] transition-all duration-500 ${stone === "own" || stone === "choose" || stone === "reference"
-                  ? "border-[#e2c196]/30 bg-[#e2c196]/90 text-[#291800] hover:bg-[#e2c196]"
-                  : "cursor-not-allowed border-[#414846]/10 bg-[#e2c196]/10 text-[#e1e3e1]/30"
-                  }`}
-                disabled={stone !== "own" && stone !== "choose" && stone !== "reference"}
-                onClick={handleNext}
-                type="button"
-              >
-                Next
-              </button>
+          <footer
+            className="z-50 shrink-0 border-0"
+          >
+            <div className="mx-auto flex w-full items-center justify-end gap-4">
+              <BackButton
+                onClick={() => router.back()}
+              />
+              <div className="flex items-center gap-12">
+                <CustomButton
+                  className={stone === "own" || stone === "choose" || stone === "reference"
+                    ? "border-[#e2c196]/30 bg-[#e2c196]/90 text-[#291800] hover:bg-[#e2c196]"
+                    : "cursor-not-allowed border-[#414846]/10 bg-[#e2c196]/10 text-[#e1e3e1]/30"
+                  }
+                  onClick={handleNext}
+                >
+                  Next
+                </CustomButton>
+              </div>
             </div>
           </footer>
         </div>
       </main>
-
-      <div className="pointer-events-none fixed right-0 top-1/2 hidden h-[614px] w-32 -translate-y-1/2 opacity-20 xl:block">
-        <div
-          className="h-full w-full bg-cover bg-center grayscale mix-blend-screen"
-          style={{
-            backgroundImage:
-              'url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2uuBNnvkkLuotXiTyDOg8ZB1xsBs7ykazjdXaG2TCpur9pDfepmelBH-2clk3iT0w_krch1_DOXMpPBXg2XapOd3RhI8PbigGpJqS4puxDH_KXgQ_yIZahdrxB3FZoTz2aOBuG8hK0RGOfW3FO2QKlQg35I4kFYmUe2vWg2SLyWiBDrqjJBVD1bCuvj0a8aEVb6H9xG-bPbtjsiIdQ6HkyrHmI6Wm2spOyH77ap14mazg-9w1d-uWb8JOEW7gnF1C-vh6vOwfu9I")',
-          }}
-        />
-      </div>
     </div>
   )
 }

@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation"
 import useJewelleryStore, { Inspiration_Keywords } from "@/app/store/jewellery-store"
 import { FLOW_ROUTES } from "../flow-routes"
+import BackButton from "@/components/Custom/BackButton"
+import CustomButton from "@/components/Custom/CustomButton"
 
 const KEYWORD_OPTIONS: ReadonlyArray<{ label: string; value: Inspiration_Keywords }> = [
     { label: "Low profile", value: "low_profile" },
@@ -130,23 +132,17 @@ export default function PersonalPreferencesPage() {
                 <div className="pointer-events-none fixed -right-40 -top-40 -z-10 h-96 w-96 rounded-full bg-[#e2c196]/5 blur-[120px]" />
             </main>
 
-            <footer className="fixed bottom-0 z-50 flex w-full items-center justify-end gap-2 rounded-t-full border-t border-[#414846]/15">
-                <button
-                    className="group flex flex-col cursor-pointer items-center justify-center px-8 py-3 text-[#e1e3e1]/50 transition-transform duration-500 hover:scale-105"
-                    onClick={handleBack}
-                    type="button"
-                >
-                    <span className="font-[Manrope] text-[10px] uppercase tracking-widest">Back</span>
-                </button>
-                <button
-                    className="flex flex-col items-center cursor-pointer justify-center rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-10 py-4 text-[#111413] shadow-lg shadow-[#e2c196]/20 transition-transform duration-500 hover:scale-105"
-                    onClick={handleContinue}
-                    type="button"
-                >
-                    <div className="flex items-center gap-3">
-                        <span className="font-[Manrope] text-[11px] font-bold uppercase tracking-[0.15em]">Continue to Review</span>
-                    </div>
-                </button>
+            <footer className="fixed bottom-0 z-50 flex w-full items-center justify-end gap-2 rounded-t-full border-t border-[#414846]/15 mb-2 px-6">
+                <div className="flex items-center justify-end gap-2">
+                    <BackButton
+                        onClick={() => router.back()}
+                    />
+                    <CustomButton
+                        onClick={handleContinue}
+                    >
+                        Continue to Review
+                    </CustomButton>
+                </div>
             </footer>
         </div>
     )

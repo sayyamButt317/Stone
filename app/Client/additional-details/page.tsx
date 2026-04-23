@@ -19,6 +19,8 @@ import useRingStore from "@/app/store/ring-store"
 import { useRouter } from "next/navigation"
 import { FLOW_ROUTES } from "../flow-routes"
 import Image from "next/image"
+import BackButton from "@/components/Custom/BackButton"
+import CustomButton from "@/components/Custom/CustomButton"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -89,15 +91,8 @@ export default function AdditionalDetails({
     >
       <h1 className="sr-only">Describe your jewelry vision</h1>
 
-      <header className="fixed top-0 z-50 flex w-full items-center justify-between  px-8 py-6 ">
-        <div className={cn("text-xl font-bold tracking-[0.2em] uppercase", notoSerif.className)}>
-          Midnight Atelier
-        </div>
-
-      </header>
-
-      <main className="mx-auto flex w-full max-w-6xl min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 pt-22 pb-24 md:px-20">
-        <div className="mb-16 w-full space-y-6 text-center">
+      <main className="mx-auto flex w-full max-w-6xl min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 pt-12 pb-24 md:px-20">
+        <div className="mb-6 w-full space-y-6 text-center">
           <div className="space-y-2">
             <h1 className={cn("text-4xl font-bold tracking-tight md:text-5xl", notoSerif.className)}>
               Describe your vision
@@ -117,17 +112,6 @@ export default function AdditionalDetails({
                 Your words will guide our master artisans in the initial hand-sketching phase of your unique piece.
               </p>
             </div>
-
-            <div className="relative h-64 overflow-hidden rounded-lg shadow-2xl">
-              <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9pVwMzIKMjJD0i4Z-UZSaDAaKpb-puNJtaZpgpcVyAxcPOXOBXJO05CRmoceYDjWKnlC1XZ2jYpjTeQauJLus52DyhOGaLKqOm2lPd_BkYQQHJ9oI-HfDTIBZLZqDt3zkFd-yvhHNCYKOukw3IligWZ2emyJVzRUmj9asIKWxB1z9BzKAASQZnu6Pvoagpejmp9DCtL8AWcoiwOS3a3Ym4iA72HkFYENcQpGBmxxgKpIRrGld2Y-W5CN072Bmd4qhmB9dMBjzzV4"
-                alt="Jeweler sketch"
-                width={100}
-                height={100}
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-[#111413] to-transparent opacity-60" />
-            </div>
           </aside>
 
           <div className="relative w-full lg:col-span-9">
@@ -137,7 +121,7 @@ export default function AdditionalDetails({
                 maxLength={MAX_CHAR}
                 onChange={(e) => setImagePrompt(e.target.value)}
                 className={cn(
-                  "w-full min-h-[450px] resize-none rounded-[20px] border p-10 text-lg leading-relaxed md:p-14 md:text-xl",
+                  "w-full min-h-[450px] resize-none rounded-[20px] border p-4 text-sm leading-relaxed md:p-6 md:text-base",
                   "border-[#e2c196]/10 bg-[rgba(25,28,27,0.6)] text-[#e1e3e1] backdrop-blur-xl",
                   "placeholder:text-[#c1c8c54d] transition-all duration-500",
                   "focus:border-[#e2c196]/40 focus:bg-[rgba(25,28,27,0.8)] focus:shadow-[0_0_25px_rgba(226,193,150,0.15)] focus:outline-none"
@@ -154,57 +138,20 @@ export default function AdditionalDetails({
         </section>
       </main>
 
-      <footer className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-between  px-8 py-8">
-        <button
-          type="button"
-          onClick={handleBack}
-          className="group flex items-center gap-2"
-        >
-          <ArrowLeft className="size-5 text-[#e2c196] transition-transform group-hover:-translate-x-1" />
-          <span className="text-sm tracking-widest text-[#e1e3e199] uppercase transition-colors group-hover:text-[#e2c196]">
-            Back
-          </span>
-        </button>
+      <footer className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-end gap-2 rounded-t-full border-t border-[#414846]/15 mb-2 px-6">
+        <BackButton
+          onClick={() => router.back()}
+        />
 
         <div className="flex items-center gap-12">
-          <div className="hidden flex-col items-end md:flex">
-            <span className="text-[10px] tracking-[0.2em] text-[#c1c8c566] uppercase">Next phase</span>
-            <span className={cn("text-sm italic text-[#e2c196]", notoSerif.className)}>
-              Finalizing the Mount
-            </span>
-          </div>
-          <button
-            type="button"
+          <CustomButton
             onClick={handleContinue}
             disabled={isPending}
-            className="group flex items-center gap-3 rounded-md bg-linear-to-br from-[#e2c196] to-[#a58860] px-12 py-4 shadow-[0_0_30px_rgba(226,193,150,0.15)] transition-all active:scale-95"
           >
-            <span className="text-sm cursor-pointer font-bold tracking-[0.2em] text-[#291800] uppercase">{isPending ? <Loader2 className="size-5 text-[#291800] animate-spin" /> : "Generate Image"}</span>
-          </button>
+            Generate Image
+          </CustomButton>
         </div>
       </footer>
-
-      <aside className="fixed top-1/2 left-0 hidden -translate-y-1/2 flex-col gap-8 rounded-r-3xl border-r border-[#414846]/10 bg-[#191c1b]/50 px-6 py-12 backdrop-blur-md lg:flex">
-        <div className="group flex cursor-pointer flex-col items-center gap-2 text-[#c1c8c566] transition-colors hover:text-[#e2c196]">
-          <Blend className="size-4" />
-          <span className="text-[8px] tracking-tight uppercase">Materials</span>
-        </div>
-        <div className="group flex cursor-pointer flex-col items-center gap-2 text-[#c1c8c566] transition-colors hover:text-[#e2c196]">
-          <Gem className="size-4" />
-          <span className="text-[8px] tracking-tight uppercase">Gems</span>
-        </div>
-        <div className="group flex cursor-pointer flex-col items-center gap-2 text-[#c1c8c566] transition-colors hover:text-[#e2c196]">
-          <Grid3X3 className="size-4" />
-          <span className="text-[8px] tracking-tight uppercase">Settings</span>
-        </div>
-        <div className="flex cursor-pointer flex-col items-center gap-2 text-[#e2c196]">
-          <ScrollText className="size-4 fill-current" />
-          <span className="text-[8px] font-bold tracking-tight uppercase">Vision</span>
-        </div>
-      </aside>
-
-      <div className="pointer-events-none fixed top-[-10%] right-[-5%] h-[400px] w-[400px] rounded-full bg-[#e2c196]/5 blur-[120px]" />
-      <div className="pointer-events-none fixed bottom-[-10%] left-[-5%] h-[300px] w-[300px] rounded-full bg-[#314c47]/10 blur-[100px]" />
     </div>
   )
 }

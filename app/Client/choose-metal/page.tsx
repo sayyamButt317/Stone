@@ -9,6 +9,8 @@ import Stepper from "@/components/Client/stepper"
 import { useRouter } from "next/navigation"
 import { FLOW_ROUTES } from "../flow-routes"
 import Image from "next/image"
+import BackButton from "@/components/Custom/BackButton"
+import CustomButton from "@/components/Custom/CustomButton"
 
 
 const manrope = Manrope({
@@ -129,7 +131,6 @@ export default function ChooseMetal({
                       <div className={cn("absolute inset-0 z-10", metal.tintOverlayClassName)} />
                     ) : null}
 
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <Image
                       src={metal.imageUrl}
                       alt={metal.name}
@@ -170,21 +171,16 @@ export default function ChooseMetal({
 
       <footer className="fixed bottom-0 z-50 w-full rounded-t-[40px] ">
         <div className="mx-auto cursor-pointer flex w-full max-w-screen-2xl items-center justify-end gap-2 px-10 py-8">
-          <button
-            type="button"
-            onClick={handleBack}
-            className="rounded-full border border-[#414846]/30 px-8 py-3 text-[10px] font-bold tracking-[0.2em] text-[#e1e3e1] uppercase transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
-          >
-            Back
-          </button>
+          <BackButton
+            onClick={() => router.back()}
+          />
 
-          <button
-            type="button"
+          <CustomButton
             onClick={handleContinue}
             className="rounded-full cursor-pointer bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-3 text-[10px] font-bold tracking-[0.2em] text-[#111413] uppercase shadow-[0_4px_15px_rgba(226,193,150,0.2)] transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
           >
-            Next: Select Size
-          </button>
+            Next
+          </CustomButton>
         </div>
       </footer>
     </div>

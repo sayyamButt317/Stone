@@ -8,6 +8,8 @@ import { FLOW_ROUTES } from "../flow-routes"
 import { useCreateRingMutation } from "@/app/routes/Client/hooks/ring-hook"
 import { RING_CREATION_INSTRUCATIONS_PAYLOAD } from "@/app/constant/ringcreation"
 import { Loader2 } from "lucide-react"
+import CustomButton from "@/components/Custom/CustomButton"
+import BackButton from "@/components/Custom/BackButton"
 
 export default function InspirationImagePage() {
   const router = useRouter()
@@ -131,7 +133,7 @@ export default function InspirationImagePage() {
         <div className="font-['Noto_Serif'] text-lg uppercase tracking-[0.2em] text-[#e2c196]">L&apos;ATELIER</div>
       </header>
 
-      <main className="mx-auto flex w-full max-w-7xl grow flex-col items-center px-6 pb-48 pt-22 md:px-24 md:pb-40">
+      <main className="mx-auto flex w-full max-w-7xl grow flex-col items-center px-6 pb-48 pt-12 md:px-24 md:pb-40">
 
 
         <div className="mb-12 space-y-4 text-center">
@@ -204,26 +206,18 @@ export default function InspirationImagePage() {
           </div>
         </div>
 
-        <div className="mt-16 flex w-full flex-row gap-2 justify-end items-center">
-          {/* <button
-            className="gold-gradient min-w-[280px] bg-gray-950 cursor-pointer rounded-md px-16 py-5 text-sm font-extrabold uppercase tracking-widest text-[#412d0d] shadow-[0_0_30px_rgba(226,193,150,0.3)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
+        <div className="mt-6 flex w-full flex-row gap-2 justify-end items-center">
+          <BackButton
             onClick={handleSkip}
-            type="button"
-          >
-            Skip for now
-          </button> */}
-          <button
-            className="gold-gradient min-w-[280px] cursor-pointer rounded-md px-16 py-5 text-sm font-extrabold uppercase tracking-widest text-[#412d0d] shadow-[0_0_30px_rgba(226,193,150,0.3)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
+          />
+          <CustomButton
             onClick={RingGeneration}
             disabled={isGenerating}
-            type="button"
           >
-            {isGenerating ? <Loader2 className="size-5 animate-spin" /> : "Generate Instruction"}
-          </button>
+            Generate Instruction
+          </CustomButton>
         </div>
       </main>
-
-
     </div>
   )
 }

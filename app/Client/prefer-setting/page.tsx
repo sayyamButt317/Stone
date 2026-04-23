@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation"
 import useJewelleryStore, { Preference } from "@/app/store/jewellery-store"
 import { FLOW_ROUTES } from "../flow-routes"
 import { PREFERSETTING } from "@/app/constant/prefersetting"
+import BackButton from "@/components/Custom/BackButton"
+import CustomButton from "@/components/Custom/CustomButton"
 
 export default function PreferSettingPage() {
     const router = useRouter()
@@ -105,21 +107,15 @@ export default function PreferSettingPage() {
 
             <footer className="fixed bottom-0 z-50 w-full rounded-t-[2rem] ">
                 <div className="flex w-full items-center justify-end px-12 py-8 gap-2">
-                    <button
-                        className="rounded-full cursor-pointer border border-[#414846]/30 px-12 py-4 text-xs font-bold uppercase tracking-[0.15em] text-[#e1e3e1] transition-all duration-300 hover:scale-[1.02] hover:bg-[#e1e3e1]/5 active:scale-95"
-                        onClick={handleBack}
-                        type="button"
-                    >
-                        Back
-                    </button>
+                    <BackButton
+                        onClick={() => router.back()}
+                    />
 
-                    <button
-                        className="gold-sheen cursor-pointer rounded-full px-12 py-4 text-xs font-bold uppercase tracking-[0.15em] text-[#111413] shadow-[0_0_20px_rgba(226,193,150,0.2)] transition-all duration-300 hover:scale-[1.02] active:scale-95"
+                    <CustomButton
                         onClick={handleNext}
-                        type="button"
                     >
                         Next: Wear Frequency
-                    </button>
+                    </CustomButton>
                 </div>
             </footer>
         </div>

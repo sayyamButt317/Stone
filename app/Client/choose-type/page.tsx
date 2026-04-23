@@ -40,8 +40,6 @@ type Props = {
 }
 
 export default function ChooseJewelleryType({
-    step = 1,
-    totalSteps = 7,
 }: Props) {
     const [selected, setSelected] = useState<JewelleryType>("ring")
     const router = useRouter();
@@ -95,11 +93,11 @@ export default function ChooseJewelleryType({
                 >
                     L&apos;ATELIER
                 </div>
-                <div className="flex w-56 items-start gap-4">
+                {/* <div className="flex w-56 items-start gap-4">
                     <div className="flex-1">
                         <Stepper compact step={step} totalSteps={totalSteps} />
                     </div>
-                </div>
+                </div> */}
             </header>
 
             <section className="relative z-10 flex min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 py-2">

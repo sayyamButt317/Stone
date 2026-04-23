@@ -9,6 +9,8 @@ import Stepper from "@/components/Client/stepper"
 import { useRouter } from "next/navigation"
 import { FLOW_ROUTES } from "../flow-routes"
 import Image from 'next/image'
+import CustomButton from "@/components/Custom/CustomButton"
+import BackButton from "@/components/Custom/BackButton"
 
 
 const manrope = Manrope({
@@ -195,25 +197,13 @@ export default function ChooseGender({
       </main>
 
       <footer
-        className="z-50 shrink-0 border-0 bg-[#111413]/90 backdrop-blur-2xl "
+        className="z-50 shrink-0 border-0 px-10 py-2"
       >
-        <div className="mx-auto flex max-w-screen-2xl items-center justify-end gap-4">
-          <button
-            type="button"
-            onClick={handleBack}
-            className="flex items-center gap-3 text-[10px] tracking-[0.25em] cursor-pointer text-stone-500 uppercase transition-colors duration-500 hover:text-[#e2c196] active:scale-95"
-          >
-
-            Back
-          </button>
-          <button
-            type="button"
-            onClick={handleProceed}
-            className="flex items-center cursor-pointer gap-4 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] text-[10px] font-bold tracking-[0.3em] text-[#291800] uppercase shadow-[0_10px_30px_rgba(226,193,150,0.2)] transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_40px_rgba(226,193,150,0.4)] active:scale-95 sm:px-10 sm:py-5"
-          >
+        <div className="mx-auto flex w-full items-center justify-end gap-4">
+          <BackButton onClick={handleBack} />
+          <CustomButton onClick={handleProceed}>
             Proceed to Carving
-
-          </button>
+          </CustomButton>
         </div>
       </footer>
 
