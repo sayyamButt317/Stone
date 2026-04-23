@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils"
 import { FLOW_ROUTES } from "../flow-routes"
 import { BRACELET_OPTIONS } from "@/app/constant/braclet"
 import { BraceletStyle } from "@/app/types/braclet-type"
+import BackButton from "@/components/Custom/BackButton"
+import CustomButton from "@/components/Custom/CustomButton"
 
 const manrope = Manrope({
     subsets: ["latin"],
@@ -165,28 +167,19 @@ export default function BraceletPage() {
 
                 {/* Right side buttons */}
                 <div className="flex items-center gap-4">
-                    <button
-                        type="button"
+                    <BackButton
                         onClick={() => router.push(FLOW_ROUTES.chooseType)}
-                        className="group flex items-center gap-2 px-6 py-3 text-[#e1e3e1] opacity-70 transition-all duration-200 hover:opacity-100"
-                    >
-                        <ArrowLeft className="size-4" />
-                        <span className="text-[10px] font-bold tracking-[0.15em] uppercase">
-                            Back
-                        </span>
-                    </button>
+                    />
 
-                    <button
-                        type="button"
+                    <CustomButton
                         onClick={() => router.push(FLOW_ROUTES.chooseGender)}
-                        className="flex items-center gap-3 cursor-pointer rounded-full bg-linear-to-tr from-[#e2c196] to-[#a58860] px-10 py-4 text-[#111413] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(226,193,150,0.2)] active:scale-95"
                     >
                         <span className="text-[10px] font-extrabold tracking-[0.15em] uppercase">
                             Next Step: Intended Wearer
                         </span>
-                        <ArrowRight className="size-4" />
-                    </button>
+                    </CustomButton>
                 </div>
+
             </footer>
         </div>
     )

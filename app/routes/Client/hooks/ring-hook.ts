@@ -12,7 +12,7 @@ export function useCreateRingMutation() {
         mutationFn: (payload: RING_CREATION_INSTRUCATIONS_PAYLOAD) => GenerateRingDesignInstructions(payload),
         onSuccess: (data) => {
             setImagePrompt(data.image_prompt)
-            router.push(FLOW_ROUTES.additionalDetails)
+            router.push(FLOW_ROUTES.additionalStyle)
         },
         onError: (error) => {
             console.log(error)

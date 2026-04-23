@@ -4,6 +4,7 @@ import useJewelleryStore, { OptionPick } from "@/app/store/jewellery-store"
 import Image from "next/image"
 import { FLOW_ROUTES } from "../flow-routes"
 import { useRouter } from "next/navigation"
+import { Gem, Palette } from "lucide-react"
 
 export default function RecomendationPage() {
 
@@ -53,84 +54,18 @@ export default function RecomendationPage() {
         }
       `}</style>
 
-            {/* <header className="fixed top-0 z-50 flex w-full items-center justify-between bg-[#111413]/80 px-12 py-6 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl">
-                <div className="font-['Noto_Serif'] text-2xl uppercase tracking-[0.2em] text-[#e2c196]">L&apos;ATELIER</div>
-                <nav className="hidden items-center gap-10 md:flex">
-                    <a className="font-['Noto_Serif'] font-light tracking-wide text-[#e1e3e1]/60 transition-colors duration-500 hover:text-[#e2c196]" href="#">
-                        Collections
-                    </a>
-                    <a
-                        className="border-b border-[#e2c196]/30 pb-1 font-['Noto_Serif'] font-light tracking-wide text-[#e2c196] transition-colors duration-500 hover:text-[#e2c196]"
-                        href="#"
-                    >
-                        Bespoke
-                    </a>
-                    <a className="font-['Noto_Serif'] font-light tracking-wide text-[#e1e3e1]/60 transition-colors duration-500 hover:text-[#e2c196]" href="#">
-                        Heritage
-                    </a>
-                </nav>
-                <div className="flex items-center gap-6">
-                    <button className="text-[#e2c196] transition-all duration-300 ease-in-out hover:scale-95" type="button">
-                        <span className="material-symbols-outlined">shopping_bag</span>
-                    </button>
-                    <button className="text-[#e2c196] transition-all duration-300 ease-in-out hover:scale-95" type="button">
-                        <span className="material-symbols-outlined">person</span>
-                    </button>
-                </div>
-            </header> */}
 
-            {/* <aside className="fixed left-0 z-40 hidden h-screen w-24 flex-col items-center gap-8 border-r border-[#414846]/10 bg-[#191c1b]/60 py-24 backdrop-blur-2xl md:flex">
-                <div className="mb-12 text-center">
-                    <div className="font-['Noto_Serif'] text-[10px] uppercase leading-tight tracking-widest text-[#e2c196]">
-                        Step
-                        <br />
-                        02
-                    </div>
-                </div>
-                <div className="flex flex-col items-center gap-8">
-                    <div className="group flex cursor-pointer flex-col items-center gap-1">
-                        <div className="soft-fade-transition rounded-full p-4 text-[#e1e3e1]/40 transition-all duration-300 hover:bg-[#1d201f]">
-                            <span className="material-symbols-outlined">edit_note</span>
-                        </div>
-                        <span className="font-['Manrope'] text-[10px] uppercase tracking-widest text-[#e1e3e1]/40">Design</span>
-                    </div>
-                    <div className="group flex cursor-pointer flex-col items-center gap-1">
-                        <div className="soft-fade-transition rounded-full bg-[#e2c196]/10 p-4 text-[#e2c196] shadow-[0_0_20px_rgba(226,193,150,0.2)] transition-all duration-300 hover:bg-[#1d201f]">
-                            <span className="material-symbols-outlined" style={{ fontVariationSettings: '"FILL" 1' }}>
-                                diamond
-                            </span>
-                        </div>
-                        <span className="font-['Manrope'] text-[10px] uppercase tracking-widest text-[#e2c196]">Gemstones</span>
-                    </div>
-                    <div className="group flex cursor-pointer flex-col items-center gap-1">
-                        <div className="soft-fade-transition rounded-full p-4 text-[#e1e3e1]/40 transition-all duration-300 hover:bg-[#1d201f]">
-                            <span className="material-symbols-outlined">auto_awesome</span>
-                        </div>
-                        <span className="font-['Manrope'] text-[10px] uppercase tracking-widest text-[#e1e3e1]/40">Setting</span>
-                    </div>
-                    <div className="group flex cursor-pointer flex-col items-center gap-1">
-                        <div className="soft-fade-transition rounded-full p-4 text-[#e1e3e1]/40 transition-all duration-300 hover:bg-[#1d201f]">
-                            <span className="material-symbols-outlined">visibility</span>
-                        </div>
-                        <span className="font-['Manrope'] text-[10px] uppercase tracking-widest text-[#e1e3e1]/40">Review</span>
-                    </div>
-                </div>
-            </aside> */}
 
-            <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-24 pt-32 md:pl-24">
+            <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-24 pt-12 md:pl-24">
                 <div className="absolute right-[-10%] top-[-10%] h-[600px] w-[600px] rounded-full bg-[#314c47]/10 blur-[120px]" />
                 <div className="absolute bottom-[-10%] left-[-10%] h-[400px] w-[400px] rounded-full bg-[#e2c196]/5 blur-[100px]" />
 
-                <section className="relative z-10 w-full max-w-6xl px-8 md:px-20">
+                <section className="relative z-10 w-full max-w-6xl px-8 md:px-20 ">
                     <header className="mb-16 space-y-4 text-center">
                         <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#e2c196]">Gemstone Selection</span>
-                        <h1 className="font-['Noto_Serif'] text-5xl font-light leading-tight text-[#e1e3e1] md:text-7xl">How would you like to choose?</h1>
-                        <p className="mx-auto max-w-2xl text-lg font-light leading-relaxed text-[#c1c8c5] md:text-xl">
-                            Find the perfect gemstone by type or by your preferred aesthetic.
-                        </p>
                     </header>
 
-                    <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-10 md:grid-cols-2 ">
                         <button
                             aria-pressed={pick === "stone"}
                             onClick={() => setPick("stone")}
@@ -141,15 +76,14 @@ export default function RecomendationPage() {
                             type="button"
                         >
                             <div className="space-y-6">
-                                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#414846]/20 bg-[#1d201f] text-[#e2c196] transition-transform duration-500 group-hover:scale-110">
-                                    <span className="material-symbols-outlined text-4xl">diamond</span>
-                                </div>
-                                <div>
-                                    <h3 className="mb-3 font-['Noto_Serif'] text-3xl text-[#e1e3e1]">Pick by stone</h3>
-                                    <p className="text-lg font-light text-[#c1c8c5]">Select from our variety of species.</p>
+                                <div className="flex items-center gap-3">
+                                    <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#414846]/20 bg-[#1d201f] text-[#e2c196] transition-transform duration-500 group-hover:scale-110">
+                                        <Gem className="size-4" />
+                                    </div>
+                                    <span className="material-symbols-outlined text-4xl text-[#e2c196] font-light">Pick by stone</span>
                                 </div>
                             </div>
-                            <div className="relative mt-8 h-40 w-full overflow-hidden rounded-md opacity-60 transition-opacity duration-700 group-hover:opacity-100">
+                            <div className="relative mt-8 h-40 w-full cursor-pointer overflow-hidden rounded-md opacity-60 transition-opacity duration-700 group-hover:opacity-100">
                                 <Image
                                     alt="Macro photography of raw multi-colored gemstones and high-quality cut diamonds scattered on a dark velvet surface with soft studio lighting"
                                     className="object-cover"
@@ -171,15 +105,15 @@ export default function RecomendationPage() {
                             type="button"
                         >
                             <div className="space-y-6">
-                                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#414846]/20 bg-[#1d201f] text-[#e2c196] transition-transform duration-500 group-hover:scale-110">
-                                    <span className="material-symbols-outlined text-4xl">palette</span>
+                                <div className="flex items-center gap-3">
+                                    <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#414846]/20 bg-[#1d201f] text-[#e2c196] transition-transform duration-500 group-hover:scale-110">
+                                        <Palette className="size-4" />
+                                    </div>
+                                    <span className="material-symbols-outlined text-4xl text-[#e2c196] font-light">Pick by colour</span>
                                 </div>
-                                <div>
-                                    <h3 className="mb-3 font-['Noto_Serif'] text-3xl text-[#e1e3e1]">Pick by colour</h3>
-                                    <p className="text-lg font-light text-[#c1c8c5]">Browse stones by their visual hue.</p>
-                                </div>
+
                             </div>
-                            <div className="relative mt-8 h-40 w-full overflow-hidden rounded-md opacity-60 transition-opacity duration-700 group-hover:opacity-100">
+                            <div className="relative mt-8 h-40 cursor-pointer w-full overflow-hidden rounded-md opacity-60 transition-opacity duration-700 group-hover:opacity-100">
                                 <Image
                                     alt="An artistic arrangement of faceted jewels showing a spectrum of colors from deep emerald green to sapphire blue and ruby red"
                                     className="object-cover"

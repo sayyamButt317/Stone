@@ -1,10 +1,12 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import useJewelleryStore from "@/app/store/jewellery-store"
 import { FLOW_ROUTES } from "../flow-routes"
+import BackButton from "@/components/Custom/BackButton"
+import CustomButton from "@/components/Custom/CustomButton"
 
 type GemCard = {
   id: string
@@ -49,18 +51,6 @@ export default function ChooseGem({ onBack }: Props) {
     const validSaved = GEM_CARDS.some((gem) => gem.id === savedGemType)
     return validSaved ? savedGemType : "emerald"
   })
-
-  const selectedGemData = useMemo(() => GEM_CARDS.find((gem) => gem.id === selectedGem) ?? GEM_CARDS[1], [selectedGem])
-
-  const handleBack = () => {
-    if (onBack) onBack()
-    else router.back()
-  }
-
-  const handleContinue = () => {
-    setGemType(selectedGem)
-    router.push(FLOW_ROUTES.chooseMetal)
-  }
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#111413] text-[#e1e3e1] selection:bg-[#e2c196] selection:text-[#412d0d]">
@@ -162,19 +152,13 @@ export default function ChooseGem({ onBack }: Props) {
         </div>
       </main>
 
-      <footer className="fixed bottom-8 left-1/2 z-50 flex min-w-[320px] -translate-x-1/2 items-center justify-between gap-4 rounded-full border border-[#414846]/15 bg-[#191c1b]/60 p-2 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-2xl md:min-w-[500px]">
-        <button className="flex cursor-pointer items-center gap-2 px-8 py-3 text-[#e1e3e1] transition-transform duration-500 hover:scale-105 active:scale-95" onClick={handleBack} type="button">
-          <span className="font-['Manrope'] text-[10px] font-bold uppercase tracking-[0.2em]">Back</span>
-        </button>
-        <button className="group cursor-pointer flex items-center gap-3 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-10 py-3 text-[#111413] shadow-[0_0_20px_rgba(226,193,150,0.3)] transition-transform duration-500 hover:scale-105 active:scale-95" onClick={handleContinue} type="button">
-          <span className="font-['Manrope'] cursor-pointer  text-[10px] font-extrabold uppercase tracking-[0.2em]">Proceed to Metal Selection</span>
-        </button>
+      <footer className="fixed bottom-8 right-10 z-50 flex min-w-[320px] items-center justify-end gap-4 rounded-full border border-[#414846]/15 bg-[#191c1b]/60 p-2 md:min-w-[500px]">
+        <BackButton onClick={() => (onBack ? onBack() : router.back())} />
+        <CustomButton onClick={() => router.push(FLOW_ROUTES.chooseMetal)}>
+          Proceed to Metal Selection
+        </CustomButton>
       </footer>
-
-      <div className="pointer-events-none fixed left-0 top-0 -z-10 h-full w-full overflow-hidden">
-        <div className="absolute right-[-10%] top-[-20%] h-[60%] w-[60%] rounded-full bg-teal-300/5 blur-[120px]" />
-        <div className="absolute bottom-[-20%] left-[-10%] h-[50%] w-[50%] rounded-full bg-[#e2c196]/5 blur-[100px]" />
-      </div>
-    </div>
+      
+    </div >
   )
 }
