@@ -67,17 +67,20 @@ export default function NecklacePage() {
         manrope.className
       )}
     >
-      <header className="fixed top-0 z-50 flex w-full items-center justify-between bg-[#111413]/80 px-6 py-4 shadow-[0_1px_0_0_rgba(226,193,150,0.1)] backdrop-blur-xl">
-        <div className={cn("text-xl font-bold tracking-tight uppercase", notoSerif.className)}>
-          L&apos;ATELIER
-        </div>
+      <header className="fixed top-0 z-50 flex w-full items-center justify-between px-6 py-4">
+      <button
+          type="button"
+          onClick={() => router.push(FLOW_ROUTES.chooseType)}
+          className="group flex items-center gap-2 px-6 py-3 cursor-pointer text-[#e1e3e1] opacity-70 transition-all duration-200 hover:opacity-100"
+        >
+          <span className="text-[10px] font-bold tracking-[0.15em] uppercase">
+            Back
+          </span>
 
-        <button type="button" onClick={() => router.push(FLOW_ROUTES.chooseType)}>
-          <span className="text-[#e2c196]">✕</span>
         </button>
       </header>
 
-      <main className="mx-auto w-full max-w-7xl px-6 pt-32 pb-40 md:px-20">
+      <main className="mx-auto w-full max-w-7xl px-6 pt-12 pb-40 md:px-20">
         <div className="mb-16 grid grid-cols-1 items-end gap-12 lg:grid-cols-2">
           <div>
             <h1 className={cn("mb-6 text-5xl leading-tight md:text-6xl", notoSerif.className)}>
@@ -129,17 +132,8 @@ export default function NecklacePage() {
 
       </main>
 
-      <footer className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-end gap-2 bg-[#111413]/90 px-6 py-8 shadow-[0_-10px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl md:px-20">
-        <button
-          type="button"
-          onClick={() => router.push(FLOW_ROUTES.chooseType)}
-          className="group flex items-center gap-2 px-6 py-3 cursor-pointer text-[#e1e3e1] opacity-70 transition-all duration-200 hover:opacity-100"
-        >
-          <span className="text-[10px] font-bold tracking-[0.15em] uppercase">
-            Back
-          </span>
+      <footer className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-end gap-2 px-6 py-8 md:px-20">
 
-        </button>
 
         <div className="flex items-center gap-12">
           <button
@@ -153,21 +147,6 @@ export default function NecklacePage() {
           </button>
         </div>
       </footer>
-
-      <nav className="fixed bottom-24 left-1/2 z-40 flex w-[90%] -translate-x-1/2 items-center justify-around rounded-full border border-white/5 px-6 py-2 md:hidden">
-        <div className="flex flex-col items-center text-[#e2c196]">
-          <Gem className="size-5" />
-          <span className="mt-1 text-[8px] tracking-widest uppercase">Design</span>
-        </div>
-        <div className="flex flex-col items-center text-[#8b928f]">
-          <Sparkles className="size-5" />
-          <span className="mt-1 text-[8px] tracking-widest uppercase">Atelier</span>
-        </div>
-        <div className="flex flex-col items-center text-[#8b928f]">
-          <BookOpenIcon className="size-5" />
-          <span className="mt-1 text-[8px] tracking-widest uppercase">Archive</span>
-        </div>
-      </nav>
     </div>
   )
 }

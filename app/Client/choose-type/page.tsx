@@ -41,7 +41,7 @@ type Props = {
 
 export default function ChooseJewelleryType({
 }: Props) {
-    const [selected, setSelected] = useState<JewelleryType>("ring")
+    const [selected, setSelected] = useState<JewelleryType | null>(null)
     const router = useRouter();
 
     const routeMap: Record<JewelleryType, string> = {
@@ -53,6 +53,7 @@ export default function ChooseJewelleryType({
     }
 
     const handleContinue = useCallback(() => {
+        if (!selected) return
         const route = routeMap[selected]
         if (route) {
             router.push(route)
@@ -93,11 +94,6 @@ export default function ChooseJewelleryType({
                 >
                     L&apos;ATELIER
                 </div>
-                {/* <div className="flex w-56 items-start gap-4">
-                    <div className="flex-1">
-                        <Stepper compact step={step} totalSteps={totalSteps} />
-                    </div>
-                </div> */}
             </header>
 
             <section className="relative z-10 flex min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 py-2">
@@ -121,7 +117,7 @@ export default function ChooseJewelleryType({
                 <div className="flex w-full max-w-7xl flex-wrap justify-center gap-6 px-4">
                     {
                         JEWELRY_TYPES.map(({ id, label, Icon }) => {
-                            const activeType = (jewelleryType || selected)
+                            const activeType = jewelleryType ?? selected
                             const isSelected = activeType === id
                             return (
                                 <div
@@ -197,6 +193,7 @@ export default function ChooseJewelleryType({
                                         </h3>
                                         {isSelected ? (
                                             <div
+                                               
                                                 className="mt-4 rounded-full border px-4 py-1"
                                                 style={{
                                                     backgroundColor: `${ACCENT}1a`,
@@ -215,26 +212,20 @@ export default function ChooseJewelleryType({
                                 </div>
                             )
                         })}
-                </div>
-            </section>
-
-            <nav
-                className="z-50 flex shrink-0 justify-center border-0 bg-transparent px-4 py-8 pb-10"
-                style={{
-                    background: "rgba(17, 20, 19, 0.6)",
-                    backdropFilter: "blur(40px)",
-                }}
-            >
-                <button
+                           <button
                     type="button"
                     onClick={handleContinue}
+                    disabled={!selected}
                     className="group cursor-pointer flex items-center gap-4 rounded-full bg-linear-to-tr from-[#e2c196] to-[#a58860] px-10 py-4 shadow-[0_0_30px_rgba(226,193,150,0.2)] transition-transform duration-300 hover:scale-[1.02] active:scale-95 sm:px-12"
                 >
                     <span className="text-sm font-bold tracking-[0.25em] uppercase text-[#111413]">
                         Begin Crafting
                     </span>
                 </button>
-            </nav>
+                </div>
+             
+            </section>
+
 
             <div
                 className="pointer-events-none fixed top-0 right-0 -z-10 h-screen w-1/3 translate-x-1/2 skew-x-12 bg-[#191c1b]/20"
