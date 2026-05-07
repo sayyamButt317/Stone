@@ -5,7 +5,6 @@ import {
     History,
     House,
     Mail,
-    MapPin,
     MessageCircle,
     NotebookPen,
     SearchCheck,
