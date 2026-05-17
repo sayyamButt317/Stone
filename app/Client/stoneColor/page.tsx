@@ -1,17 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation"
 import { Manrope, Noto_Serif } from "next/font/google"
-import {
-    ArrowLeft,
-    ArrowRight,
-    Diamond,
-    Eye,
-    Leaf,
-    PenSquare,
-    ShoppingBag,
-    Sparkles,
-    User,
-} from "lucide-react"
 import { cn } from "@/lib/utils"
 import { FLOW_ROUTES } from "../flow-routes"
 import useJewelleryStore, { StoneColor } from "@/app/store/jewellery-store"
@@ -43,9 +32,12 @@ export default function StonePage() {
             )}
         >
 
-            <Sidebar />
+            {/* <Sidebar /> */}
 
-            <main className="mx-auto min-h-screen w-full max-w-7xl px-6 pt-24 pb-4 md:px-12 lg:pl-40">
+            <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-24 pt-12 md:pl-24">
+                <nav className="fixed top-0 z-50 flex w-full items-center justify-between px- 6py-6 ">
+                    <BackButton onClick={() => router.back()} />
+                </nav>
                 <header className="mb-16 w-full max-w-4xl text-center">
                     <span className="mb-4 block text-xs tracking-[0.3em] text-[#e2c196] uppercase">
                         The Color Narrative
@@ -96,9 +88,6 @@ export default function StonePage() {
 
                     <div className="mt-14 flex flex-col items-end justify-end gap-4 md:flex-row">
                         <div className="flex items-center gap-4">
-                            <BackButton
-                                onClick={() => router.back()}
-                            />
                             <CustomButton
                                 onClick={() => router.push(FLOW_ROUTES.chooseMetal)}
                             >

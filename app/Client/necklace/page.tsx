@@ -68,14 +68,12 @@ export default function NecklacePage() {
       )}
     >
       <header className="fixed top-0 z-50 flex w-full items-center justify-between px-6 py-4">
-      <button
+        <button
           type="button"
           onClick={() => router.push(FLOW_ROUTES.chooseType)}
           className="group flex items-center gap-2 px-6 py-3 cursor-pointer text-[#e1e3e1] opacity-70 transition-all duration-200 hover:opacity-100"
         >
-          <span className="text-[10px] font-bold tracking-[0.15em] uppercase">
-            Back
-          </span>
+          <ArrowLeft className="size-4" /> <span className="text-[10px] font-bold tracking-[0.15em] uppercase">Back</span>
 
         </button>
       </header>
@@ -139,10 +137,10 @@ export default function NecklacePage() {
           <button
             type="button"
             onClick={() => router.push(FLOW_ROUTES.chooseGender)}
-            className="flex items-center gap-3 rounded-full bg-linear-to-tr from-[#e2c196] to-[#a58860] px-10 py-4 text-[#111413] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(226,193,150,0.2)] active:scale-95"
+            className="flex cursor-pointer items-center gap-3 rounded-full bg-linear-to-tr from-[#e2c196] to-[#a58860] px-10 py-4 text-[#111413] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(226,193,150,0.2)] active:scale-95"
           >
             <span className="text-[10px] font-extrabold tracking-[0.15em] uppercase">
-              Next: Choose Intended Wearer
+              Choose Intended Wearer
             </span>
           </button>
         </div>
@@ -151,11 +149,4 @@ export default function NecklacePage() {
   )
 }
 
-function BookOpenIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={className}>
-      <path d="M3 5.5A2.5 2.5 0 0 1 5.5 3H11v16H5.5A2.5 2.5 0 0 0 3 21.5z" />
-      <path d="M21 5.5A2.5 2.5 0 0 0 18.5 3H13v16h5.5A2.5 2.5 0 0 1 21 21.5z" />
-    </svg>
-  )
-}
+

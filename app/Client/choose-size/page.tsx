@@ -68,7 +68,8 @@ export default function ChooseSize({
 
   const handleContinue = (() => {
     if (!sizeType) return
-    router.push(FLOW_ROUTES.additionalDetails)
+    // router.push(FLOW_ROUTES.additionalDetails)
+    router.push(FLOW_ROUTES.preferSetting)
   })
 
   return (

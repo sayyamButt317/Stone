@@ -67,9 +67,9 @@ export default function GemstoneDecisionPage() {
       `}</style>
 
       <nav className="fixed top-0 z-50 flex w-full items-center justify-between px- 6py-6 ">
-        <div className="font-['Noto_Serif'] text-2xl uppercase tracking-[0.2em] text-[#e2c196]">
-          L&apos;ATELIER
-        </div>
+        <BackButton
+          onClick={() => router.back()}
+        />
       </nav>
 
       {/* <aside className="fixed left-0 z-40 flex h-screen w-24 flex-col items-center gap-8 border-r border-[#414846]/10 bg-[#191c1b]/60 py-24 backdrop-blur-2xl">
@@ -140,9 +140,7 @@ export default function GemstoneDecisionPage() {
             className="z-50 shrink-0 border-0"
           >
             <div className="mx-auto flex w-full items-center justify-end gap-4">
-              <BackButton
-                onClick={() => router.back()}
-              />
+
               <div className="flex items-center gap-12">
                 <CustomButton
                   className={stone === "own" || stone === "choose" || stone === "reference"

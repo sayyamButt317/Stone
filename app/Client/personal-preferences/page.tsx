@@ -77,7 +77,7 @@ export default function PersonalPreferencesPage() {
       `}</style>
 
             <nav className="fixed top-0 z-50 flex h-20 w-full items-center justify-between px-8">
-                <div className="font-['Noto_Serif'] text-xl font-bold tracking-widest text-[#e2c196]">L&apos;ATELIER</div>
+                <BackButton onClick={handleBack} />
             </nav>
 
             <main className="mx-auto flex w-full max-w-5xl grow flex-col items-center px-6 pb-40 pt-12 md:px-24">
@@ -134,9 +134,7 @@ export default function PersonalPreferencesPage() {
 
             <footer className="fixed bottom-0 z-50 flex w-full items-center justify-end gap-2 rounded-t-full border-t border-[#414846]/15 mb-2 px-6">
                 <div className="flex items-center justify-end gap-2">
-                    <BackButton
-                        onClick={() => router.back()}
-                    />
+
                     <CustomButton
                         onClick={handleContinue}
                     >

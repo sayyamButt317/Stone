@@ -130,7 +130,9 @@ export default function InspirationImagePage() {
       />
 
       <header className="fixed top-0 z-50 flex h-20 w-full items-center justify-between  px-8 text-[#e2c196] ">
-        <div className="font-['Noto_Serif'] text-lg uppercase tracking-[0.2em] text-[#e2c196]">L&apos;ATELIER</div>
+        <BackButton
+          onClick={handleSkip}
+        />
       </header>
 
       <main className="mx-auto flex w-full max-w-7xl grow flex-col items-center px-6 pb-48 pt-12 md:px-24 md:pb-40">
@@ -207,9 +209,7 @@ export default function InspirationImagePage() {
         </div>
 
         <div className="mt-6 flex w-full flex-row gap-2 justify-end items-center">
-          <BackButton
-            onClick={handleSkip}
-          />
+
           <CustomButton
             onClick={RingGeneration}
             disabled={isGenerating}

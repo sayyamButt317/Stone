@@ -37,7 +37,7 @@ export default function ChooseMetal({
 }: MetalProps) {
   const [selectedMetal, setSelectedMetal] = useState<MetalChoice>("gold")
   const router = useRouter();
-  const { metalType, setMetalType } = useJewelleryStore()
+  const { metalType, setMetalType, jewelleryType } = useJewelleryStore()
 
   const selectedMetalLabel = useMemo(
     () => METALS.find((metal) => metal.id === selectedMetal)?.currentLabel ?? "18k Yellow Gold",
@@ -53,7 +53,11 @@ export default function ChooseMetal({
 
   const handleContinue = (() => {
     if (!metalType) return
-    router.push(FLOW_ROUTES.preferSetting)
+    if (jewelleryType === "ring") {
+      router.push(FLOW_ROUTES.chooseSize)
+      return
+    }
+    router.push(FLOW_ROUTES.wearFrequency)
   })
 
   return (
@@ -68,26 +72,13 @@ export default function ChooseMetal({
       <h1 className="sr-only">Choose your metal</h1>
 
       <header className="fixed top-0 z-50 w-full bg-[#111413]/80 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between px-6 py-4">
-          <div
-            className={cn(
-              "cursor-pointer text-lg tracking-wide italic transition-transform active:scale-95",
-              notoSerif.className
-            )}
-            style={{ color: ACCENT }}
-          >
-            L&apos;ATELIER
-          </div>
-        </div>
-
-        <div className="absolute right-0 bottom-0 left-0 h-px bg-linear-to-r from-transparent via-[#414846]/20 to-transparent" />
+        <BackButton
+          onClick={() => router.back()}
+        />
       </header>
 
       <main className="mx-auto flex w-full max-w-screen-2xl min-h-0 flex-1 flex-col items-center justify-center overflow-y-auto px-6 pt-22 pb-40">
         <div className="mb-6 w-full max-w-4xl space-y-6 text-center">
-          {/* <div className="mx-auto w-full max-w-xs">
-            <Stepper step={step} totalSteps={totalSteps} />
-          </div> */}
 
           <div className="space-y-2">
             <h1
@@ -171,10 +162,6 @@ export default function ChooseMetal({
 
       <footer className="fixed bottom-0 z-50 w-full rounded-t-[40px] ">
         <div className="mx-auto cursor-pointer flex w-full max-w-screen-2xl items-center justify-end gap-2 px-10 py-8">
-          <BackButton
-            onClick={() => router.back()}
-          />
-
           <CustomButton
             onClick={handleContinue}
             className="rounded-full cursor-pointer bg-linear-to-br from-[#e2c196] to-[#a58860] px-8 py-3 text-[10px] font-bold tracking-[0.2em] text-[#111413] uppercase shadow-[0_4px_15px_rgba(226,193,150,0.2)] transition-all duration-200 hover:opacity-90 active:scale-[0.97]"

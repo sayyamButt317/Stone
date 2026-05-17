@@ -85,28 +85,8 @@ export default function ChooseGender({
       </h1>
 
       <header className="z-50 w-full shrink-0 bg-stone-950/80 px-6 py-6 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:px-12">
-        <div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between">
-          <div
-            className={cn("text-xl italic sm:text-2xl", notoSerif.className)}
-            style={{ color: ACCENT }}
-          >
-            L&apos;Atelier d&apos;Artiste
-          </div>
-          <div
-            className={cn(
-              "hidden text-[10px] tracking-[0.2em] text-stone-400 uppercase md:block",
-              notoSerif.className
-            )}
-          >
-            <span style={{ color: ACCENT }}>Bespoke Journey</span>
-          </div>
-        </div>
+        <BackButton onClick={handleBack} />
       </header>
-
-      {/* <div className="mx-auto w-full max-w-4xl shrink-0 px-6 pt-6 pb-4 md:px-24">
-        <Stepper step={step} totalSteps={totalSteps} label="Selection" />
-      </div> */}
-
       <main className="relative flex min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 pb-40">
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
           <div
@@ -200,7 +180,7 @@ export default function ChooseGender({
         className="z-50 shrink-0 border-0 px-10 py-2"
       >
         <div className="mx-auto flex w-full items-center justify-end gap-4">
-          <BackButton onClick={handleBack} />
+
           <CustomButton onClick={handleProceed}>
             Proceed to Carving
           </CustomButton>

@@ -4,7 +4,7 @@ import { RING_CREATION_INSTRUCATIONS_PAYLOAD, RING_GENERATION_PAYLOAD } from '@/
 
 
 const api = axios.create({
-    baseURL: 'https://shopify-backend-sh3v.onrender.com/api',
+    baseURL: "http://54.167.236.90/api",
     headers: {
         'Content-Type': 'application/json',
     },

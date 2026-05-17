@@ -5,6 +5,8 @@ import Image from "next/image"
 import { FLOW_ROUTES } from "../flow-routes"
 import { useRouter } from "next/navigation"
 import { Gem, Palette } from "lucide-react"
+import BackButton from "@/components/Custom/BackButton"
+import CustomButton from "@/components/Custom/CustomButton"
 
 export default function RecomendationPage() {
 
@@ -57,8 +59,12 @@ export default function RecomendationPage() {
 
 
             <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-24 pt-12 md:pl-24">
+                <nav className="fixed top-0 z-50 flex w-full items-center justify-between px- 6py-6 ">
+                    <BackButton onClick={handleBack} />
+                </nav>
                 <div className="absolute right-[-10%] top-[-10%] h-[600px] w-[600px] rounded-full bg-[#314c47]/10 blur-[120px]" />
                 <div className="absolute bottom-[-10%] left-[-10%] h-[400px] w-[400px] rounded-full bg-[#e2c196]/5 blur-[100px]" />
+
 
                 <section className="relative z-10 w-full max-w-6xl px-8 md:px-20 ">
                     <header className="mb-16 space-y-4 text-center">
@@ -127,17 +133,12 @@ export default function RecomendationPage() {
                     </div>
 
                     <footer className="mt-20 flex items-center justify-end">
-                        <button onClick={handleBack} className="group flex items-center gap-3 rounded-full px-8 py-4 text-sm uppercase tracking-widest text-[#c1c8c5] transition-colors hover:text-[#e2c196]" type="button">
-                            Back
-                        </button>
-                        <button
+                        <CustomButton
                             onClick={handleNext}
-                            className={`gold-gradient flex cursor-pointer items-center gap-3 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-widest text-[#412d0d] shadow-[0_10px_20px_rgba(0,0,0,0.3)] ${pick === "stone" || pick === "color" ? "opacity-100" : "opacity-30"}`}
                             disabled={pick !== "stone" && pick !== "color"}
-                            type="button"
                         >
                             Next
-                        </button>
+                        </CustomButton>
                     </footer>
                 </section>
             </main>

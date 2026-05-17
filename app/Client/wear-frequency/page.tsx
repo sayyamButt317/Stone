@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { FLOW_ROUTES } from "../flow-routes"
 import useJewelleryStore from "@/app/store/jewellery-store"
+import CustomButton from "@/components/Custom/CustomButton"
+import BackButton from "@/components/Custom/BackButton"
 
 type WearFrequency = "every-day" | "carefully" | "special"
 
@@ -65,7 +67,7 @@ export default function WearFrequencyPage() {
       `}</style>
 
             <nav className="fixed top-0 z-50 flex h-24 w-full items-center justify-between bg-[#111413]/80 px-12 shadow-2xl shadow-black/40 backdrop-blur-xl">
-                <div className="font-['Noto_Serif'] text-2xl font-light tracking-[0.2em] text-[#e2c196]">L&apos;ATELIER</div>
+                <BackButton onClick={handleBack} />
             </nav>
             <main className="mx-auto flex w-full max-w-7xl grow flex-col items-center px-6 pb-40 pt-22">
                 <div className="mb-16 space-y-6 text-center">
@@ -158,20 +160,7 @@ export default function WearFrequencyPage() {
 
             <div className="fixed bottom-0 z-50 h-28 w-full">
                 <div className="mx-auto flex h-full w-full max-w-screen-2xl items-center justify-end gap-2 px-16">
-                    <button
-                        className="flex items-center cursor-pointer gap-4 rounded-full border border-[#414846]/15 px-10 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-[#e1e3e1]/40 transition-transform duration-300 hover:scale-[1.02]"
-                        onClick={handleBack}
-                        type="button"
-                    >
-                        Back
-                    </button>
-                    <button
-                        className="flex items-center cursor-pointer  gap-4 rounded-full bg-linear-to-br from-[#e2c196] to-[#a58860] px-10 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-[#111413] shadow-[0_0_20px_rgba(226,193,150,0.2)] transition-transform duration-300 active:scale-95 hover:scale-[1.02]"
-                        onClick={handleNext}
-                        type="button"
-                    >
-                        Next:Personal Preferences
-                    </button>
+                    <CustomButton onClick={handleNext}>Personal Preferences</CustomButton>
                 </div>
             </div>
         </div>
