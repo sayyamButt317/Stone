@@ -1,13 +1,11 @@
 "use client"
-
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useCallback, useRef, useState } from "react"
 import useJewelleryStore from "@/app/store/jewellery-store"
 import { FLOW_ROUTES } from "../flow-routes"
-import { useCreateRingMutation } from "@/app/routes/Client/hooks/ring-hook"
+import { useCreateRingMutation } from "@/app/routes/Client/hooks/queries"
 import { RING_CREATION_INSTRUCATIONS_PAYLOAD } from "@/app/constant/ringcreation"
-import { Loader2 } from "lucide-react"
 import CustomButton from "@/components/Custom/CustomButton"
 import BackButton from "@/components/Custom/BackButton"
 

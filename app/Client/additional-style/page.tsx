@@ -6,10 +6,9 @@ import { Sparkles, Zap, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import useRingStore from "@/app/store/ring-store"
 import Image from "next/image"
-import router from "next/router"
 import { FLOW_ROUTES } from "../flow-routes"
 import useJewelleryStore from "@/app/store/jewellery-store"
-import useGenerateImageHook from "@/app/routes/Client/hooks/generateimage-hook"
+import useGenerateImageHook from "@/app/routes/Client/hooks/mutation"
 import { useRouter } from "next/navigation"
 
 const manrope = Manrope({
