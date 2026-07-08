@@ -1,135 +1,141 @@
-'use client';
+"use client"
 
-import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
-import { LogOut, Menu } from 'lucide-react';
-import { useState } from 'react';
-import { adminSidebarLinks } from '@/app/constant/sidebaritems';
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import Image from "next/image"
+import { clsx } from "clsx"
+import { Menu } from "lucide-react"
+import { useState } from "react"
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { ADMIN, NAV_GROUPS } from "./data"
+import { cormorant, dk } from "./theme"
 
+export default function DashboardSidebar() {
+  const pathname = usePathname()
+  const [open, setOpen] = useState(false)
 
-function NavGroups({ onNavigate }: { onNavigate?: () => void }) {
-    const pathname = usePathname();
-
-    return (
-        <nav className="flex flex-col gap-1 flex-1 overflow-y-auto no-scrollbar pr-1">
-            {adminSidebarLinks.map((group) => {
-                const isGroupActive = group.children.some((c) => pathname === c.route);
-
+  const nav = (
+    <div className="flex h-full flex-col">
+      <SidebarBrand />
+      <nav className="mt-6 flex-1 space-y-6 overflow-y-auto pr-1">
+        {NAV_GROUPS.map((group) => (
+          <div key={group.title}>
+            <p
+              className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-[0.2em]"
+              style={{ color: dk.onFaint }}
+            >
+              {group.title}
+            </p>
+            <ul className="space-y-0.5">
+              {group.items.map((item) => {
+                const active = pathname === item.href
+                const Icon = item.icon
                 return (
-                    <div key={group.label}>
-                        <div
-                            className={cn(
-                                'w-full group relative flex items-center gap-3 py-4 rounded-2xl transition-all duration-300 ease-out',
-                                isGroupActive
-                                    ? 'bg-[#e2c196]/10 border border-[#e2c196]/25 text-[#e2c196]'
-                                    : 'text-[#c1c8c5]/70 hover:text-[#e1e3e1] hover:bg-[#191c1b] border border-transparent',
-                            )}
-                        >
-                            <div
-                                className={cn(
-                                    'flex h-9 w-9 items-center justify-center rounded-2xl transition-all duration-300 shrink-0',
-                                    isGroupActive
-                                        ? 'bg-[#e2c196]/15 text-[#e2c196]'
-                                        : cn('text-[#c1c8c5]/70 group-hover:bg-[#282b29]', group.iconBg),
-                                )}
-                            >
-                                <span className={group.iconColor}>{group.icon}</span>
-                            </div>
-                            <span className="flex-1 text-left text-md font-medium tracking-wide">
-                                {group.label}
-                            </span>
-                        </div>
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={clsx(
+                        "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-all",
+                        active
+                          ? "border-l-2"
+                          : "border-l-2 border-transparent hover:bg-white/[0.03]",
+                      )}
+                      style={{
+                        color: active ? dk.accent : dk.onVar,
+                        backgroundColor: active ? "rgba(197,160,89,0.08)" : undefined,
+                        borderLeftColor: active ? dk.accent : "transparent",
+                      }}
+                    >
+                      <Icon className="size-4 shrink-0" strokeWidth={1.6} />
+                      <span className="font-medium">{item.label}</span>
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        ))}
+      </nav>
+      <SidebarUser />
+    </div>
+  )
 
-                        <div className="flex flex-col gap-0.5 pt-1 pb-1">
-                            {group.children.map((child) => {
-                                const isActive = pathname === child.route;
-                                return (
-                                    <Link
-                                        key={child.route}
-                                        href={child.route}
-                                        onClick={onNavigate}
-                                        className={cn(
-                                            'flex items-center gap-2.5 pl-2 pr-3 py-2 rounded-xl text-md transition-all duration-200',
-                                            isActive
-                                                ? 'text-[#e2c196] bg-[#e2c196]/10'
-                                                : 'text-[#c1c8c5]/60 hover:text-[#e1e3e1] hover:bg-[#191c1b]',
-                                        )}
-                                    >
-                                        <span
-                                            className={cn(
-                                                'w-2 h-2 rounded-full shrink-0',
-                                                isActive ? 'bg-[#e2c196]' : 'bg-[#414846]',
-                                            )}
-                                        />
-                                        <span className="flex-1">{child.label}</span>
-                                    </Link>
-                                );
-                            })}
-                        </div>
-                    </div>
-                );
-            })}
-        </nav>
-    );
+  return (
+    <>
+      <aside
+        className="fixed inset-y-0 left-0 z-40 hidden w-[260px] flex-col border-r p-5 lg:flex"
+        style={{ borderColor: dk.panelBorder, backgroundColor: dk.sidebar }}
+      >
+        {nav}
+      </aside>
+
+      <div className="fixed left-4 top-4 z-50 lg:hidden">
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <button
+              type="button"
+              aria-label="Open menu"
+              className="flex size-10 items-center justify-center rounded-lg border"
+              style={{ borderColor: dk.panelBorder, color: dk.accent, background: dk.panel }}
+            >
+              <Menu className="size-5" />
+            </button>
+          </SheetTrigger>
+          <SheetContent
+            side="left"
+            className="w-[280px] border-r p-5"
+            style={{ borderColor: dk.panelBorder, backgroundColor: dk.sidebar, color: dk.on }}
+          >
+            <SheetTitle className="sr-only">Dashboard navigation</SheetTitle>
+            {nav}
+          </SheetContent>
+        </Sheet>
+      </div>
+    </>
+  )
 }
 
-export default function AdminSidebar() {
-    const [mobileOpen, setMobileOpen] = useState(false);
+function SidebarBrand() {
+  return (
+    <Link href="/dashboard" className="flex items-center gap-3 px-2">
+      <div
+        className="flex size-10 items-center justify-center rounded-full border"
+        style={{ borderColor: dk.borderStrong, background: "rgba(197,160,89,0.1)" }}
+      >
+        <span className={`${cormorant.className} text-lg font-semibold`} style={{ color: dk.accent }}>
+          S
+        </span>
+      </div>
+      <div>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ color: dk.on }}>
+          Stone Jewellery
+        </p>
+        <p className="text-[10px]" style={{ color: dk.onFaint }}>
+          Admin Panel
+        </p>
+      </div>
+    </Link>
+  )
+}
 
-    const sidebarContent = (onNavigate?: () => void) => (
-        <>
-            <NavGroups onNavigate={onNavigate} />
-
-            {/* Logout */}
-            <div className="pt-6 border-t border-[#414846]/40 cursor-pointer ">
-                <Button
-                    variant="ghost"
-                    className="w-full justify-start text-[#ffb4ab] hover:bg-[#93000a]/20 hover:text-[#ffdad6] rounded-xl"
-                    onClick={() => {
-                        onNavigate?.();
-                    }}
-                >
-                    <LogOut className="w-6 h-6 mr-12" />
-                    Logout
-                </Button>
-            </div>
-        </>
-    );
-
-    return (
-        <>
-            {/* Desktop */}
-            <aside className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] flex-col bg-linear-to-b from-[#111413] to-[#0F2A26] border-r border-[#e2c196]/10 shadow-[10px_0_30px_rgba(0,0,0,0.45)] p-6">
-                {sidebarContent()}
-            </aside>
-
-            {/* <LogoutDialogue open={isLogout} onOpenChange={setIsLogout} /> */}
-
-            {/* Mobile */}
-            <div className="md:hidden">
-                <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-                    <SheetTrigger asChild>
-                        <button
-                            className="fixed top-4 left-4 z-50 text-[#e2c196] bg-[#111413]/90 backdrop-blur-xl p-2 rounded-xl border border-[#e2c196]/20"
-                            aria-label="Open menu"
-                        >
-                            <Menu />
-                        </button>
-                    </SheetTrigger>
-
-                    <SheetContent
-                        side="left"
-                        className="w-[260px] p-6 bg-linear-to-b from-[#111413] to-[#0F2A26] border-r border-[#e2c196]/15 text-[#e1e3e1]"
-                        onCloseAutoFocus={(e) => e.preventDefault()}
-                    >
-                        <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                        {sidebarContent(() => setMobileOpen(false))}
-                    </SheetContent>
-                </Sheet>
-            </div>
-        </>
-    );
+function SidebarUser() {
+  return (
+    <div
+      className="mt-4 flex items-center gap-3 rounded-xl border p-3"
+      style={{ borderColor: dk.panelBorder, background: "rgba(0,8,8,0.6)" }}
+    >
+      <div className="relative size-9 shrink-0 overflow-hidden rounded-full border" style={{ borderColor: dk.borderStrong }}>
+        <Image src={ADMIN.avatar} alt={ADMIN.name} fill className="object-cover" sizes="36px" />
+      </div>
+      <div className="min-w-0">
+        <p className="truncate text-sm font-medium" style={{ color: dk.on }}>
+          {ADMIN.name}
+        </p>
+        <p className="truncate text-[11px]" style={{ color: dk.onVar }}>
+          {ADMIN.role}
+        </p>
+      </div>
+    </div>
+  )
 }

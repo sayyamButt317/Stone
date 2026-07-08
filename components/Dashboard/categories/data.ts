@@ -1,0 +1,160 @@
+import { CheckCircle2, Grid3X3, Package, Wallet } from "lucide-react"
+import type { FilterOption, ProductCategory, SummaryStat } from "../types"
+
+export const CATEGORIES_PAGE = {
+  title: "Categories",
+  subtitle: "Organize your products with categories.",
+  searchPlaceholder: "Search categories by name or description...",
+  tableSearchPlaceholder: "Search categories...",
+  totalCount: 14,
+  entityLabel: "categories",
+} as const
+
+export const CATEGORY_SUMMARY_STATS: SummaryStat[] = [
+  { id: "total", label: "Total Categories", value: "14", change: 16.7, icon: Grid3X3 },
+  { id: "active", label: "Active Categories", value: "12", change: 9.1, icon: CheckCircle2 },
+  { id: "products", label: "Total Products", value: "356", change: 12.7, icon: Package },
+  { id: "value", label: "Total Value", value: "PKR 89,250,000", change: 16.9, icon: Wallet },
+]
+
+export const CATEGORY_STATUS_FILTERS: FilterOption[] = [
+  { label: "All Status", value: "all" },
+  { label: "Active", value: "active" },
+  { label: "Inactive", value: "inactive" },
+]
+
+export const CATEGORY_SORT_OPTIONS: FilterOption[] = [
+  { label: "Newest", value: "newest" },
+  { label: "Oldest", value: "oldest" },
+  { label: "Most Products", value: "products-desc" },
+  { label: "Name A–Z", value: "name-asc" },
+]
+
+export const PRODUCT_CATEGORIES: ProductCategory[] = [
+  {
+    id: "1",
+    name: "Rings",
+    description: "Elegant rings for every occasion and style.",
+    image: "/assest/diamondring.png",
+    productCount: 68,
+    status: "active",
+    createdAt: "May 12, 2024",
+  },
+  {
+    id: "2",
+    name: "Necklaces",
+    description: "Statement necklaces and delicate chains crafted with rare stones.",
+    image: "/assest/hero.png",
+    productCount: 52,
+    status: "active",
+    createdAt: "May 8, 2024",
+  },
+  {
+    id: "3",
+    name: "Earrings",
+    description: "From classic studs to dramatic drops that frame the face.",
+    image: "/assest/earring.png",
+    productCount: 45,
+    status: "active",
+    createdAt: "Apr 22, 2024",
+  },
+  {
+    id: "4",
+    name: "Bracelets",
+    description: "Tennis bracelets, cuffs, and chains in gold and platinum.",
+    image: "/assest/diamondbraclet.png",
+    productCount: 38,
+    status: "active",
+    createdAt: "Apr 10, 2024",
+  },
+  {
+    id: "5",
+    name: "Pendants",
+    description: "Emerald and diamond pendants designed to be treasured forever.",
+    image: "/assest/pendant.png",
+    productCount: 31,
+    status: "active",
+    createdAt: "Mar 28, 2024",
+  },
+  {
+    id: "6",
+    name: "Bangles",
+    description: "Traditional and contemporary bangles for every celebration.",
+    image: "/assest/diamondbraclet.png",
+    productCount: 24,
+    status: "inactive",
+    createdAt: "Mar 15, 2024",
+  },
+  {
+    id: "7",
+    name: "Brooches",
+    description: "Vintage-inspired brooches with modern Stone craftsmanship.",
+    image: "/assest/gemstone.png",
+    productCount: 12,
+    status: "active",
+    createdAt: "Feb 20, 2024",
+  },
+  {
+    id: "8",
+    name: "Sets",
+    description: "Coordinated jewellery sets for weddings and special occasions.",
+    image: "/assest/hero.png",
+    productCount: 18,
+    status: "active",
+    createdAt: "Feb 5, 2024",
+  },
+  {
+    id: "9",
+    name: "Anklets",
+    description: "Delicate anklets in gold and silver for everyday elegance.",
+    image: "/assest/diamondbraclet.png",
+    productCount: 9,
+    status: "active",
+    createdAt: "Jan 18, 2024",
+  },
+  {
+    id: "10",
+    name: "Cufflinks",
+    description: "Refined cufflinks for formal occasions and gifting.",
+    image: "/assest/gemstone.png",
+    productCount: 7,
+    status: "inactive",
+    createdAt: "Jan 5, 2024",
+  },
+  {
+    id: "11",
+    name: "Engagement",
+    description: "Engagement rings and bands crafted for life's biggest moment.",
+    image: "/assest/diamondring.png",
+    productCount: 42,
+    status: "active",
+    createdAt: "Dec 20, 2023",
+  },
+  {
+    id: "12",
+    name: "Wedding",
+    description: "Bridal sets, bands, and ceremonial pieces for the wedding day.",
+    image: "/assest/hero.png",
+    productCount: 35,
+    status: "active",
+    createdAt: "Dec 8, 2023",
+  },
+  {
+    id: "13",
+    name: "Gemstones",
+    description: "Loose gemstones and custom stone sourcing for bespoke pieces.",
+    image: "/assest/gemstone.png",
+    productCount: 22,
+    status: "active",
+    createdAt: "Nov 15, 2023",
+  },
+  {
+    id: "14",
+    name: "Gift Sets",
+    description: "Curated gift boxes for birthdays, anniversaries, and milestones.",
+    image: "/assest/box.png",
+    productCount: 15,
+    status: "active",
+    createdAt: "Nov 1, 2023",
+  },
+]
