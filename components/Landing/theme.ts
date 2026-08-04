@@ -1,4 +1,6 @@
-import { Cormorant_Garamond, Manrope } from "next/dist/compiled/@next/font/dist/google"
+import { Cormorant_Garamond, Manrope } from "next/font/google"
+
+
 
 /** Body / UI — clean sans for navigation, labels, and body copy */
 export const manrope = Manrope({
@@ -15,13 +17,8 @@ export const cormorant = Cormorant_Garamond({
   variable: "--font-stone-serif",
 })
 
-/** Legacy alias — existing primitives still reference notoSerif */
 export const notoSerif = cormorant
 
-/**
- * Stone Jewellery brand tokens — deep forest green, black marble tones,
- * and muted gold accents aligned with the luxury landing design.
- */
 export const tk = {
   surface: "#0a0f0e",
   surfaceDeep: "#050807",
