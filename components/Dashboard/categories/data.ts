@@ -88,7 +88,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   {
     id: "7",
     name: "Brooches",
-    description: "Vintage-inspired brooches with modern Stone craftsmanship.",
+    description: "Vintage-inspired brooches with modern Velora craftsmanship.",
     image: "/assest/gemstone.png",
     productCount: 12,
     status: "active",

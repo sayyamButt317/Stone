@@ -177,17 +177,17 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ]
 
 export const BRAND = {
-  name: "STONE JEWELLERY",
+  name: "V E L O R A",
   tagline: "Timeless beauty. Crafted for eternity.",
   hero: {
     eyebrow: "Timeless Elegance, Precious Moments",
-    title: "Where Every Stone",
+    title: "Where Every Piece",
     titleAccent: "Tells a Story",
     description:
       "Discover exquisite jewelry crafted with rare gemstones and unparalleled artistry. Each piece tells a story of elegance, passion, and timeless beauty.",
     primaryCta: { label: "Explore Collections", href: "#collections", icon: ArrowRight },
     secondaryCta: { label: "Book an Appointment", href: "#appointment", icon: Calendar },
-    videoLabel: "Discover the Stone Experience",
+    videoLabel: "Discover the Velora Experience",
   },
   collections: {
     eyebrow: "Our Collections",

@@ -2,7 +2,7 @@ import { tk as landingTk, goldGradient, manrope, cormorant } from "@/components/
 
 export { manrope, cormorant, goldGradient }
 
-/** Dashboard tokens — aligned with Stone Jewellery landing palette */
+/** Dashboard tokens — aligned with V E L O R A landing palette */
 export const dk = {
   ...landingTk,
   bg: "#000000",

@@ -103,7 +103,7 @@ export default function Footer() {
           className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left"
         >
           <p className="text-xs font-light" style={{ color: tk.onFaint }}>
-            © {new Date().getFullYear()} Stone Jewellery. All rights reserved.
+            © {new Date().getFullYear()} V E L O R A. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-xs font-light transition-colors hover:text-white" style={{ color: tk.onVar }}>

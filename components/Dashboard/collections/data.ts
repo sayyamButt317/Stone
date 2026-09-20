@@ -116,7 +116,7 @@ export const JEWELRY_COLLECTIONS: JewelryCollection[] = [
   {
     id: "7",
     name: "Vintage Revival",
-    description: "Art-deco inspired settings with a contemporary Stone twist.",
+    description: "Art-deco inspired settings with a contemporary Velora twist.",
     image: "/assest/gemstone.png",
     productCount: 19,
     category: "Mixed",

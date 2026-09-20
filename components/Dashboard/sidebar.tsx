@@ -104,12 +104,12 @@ function SidebarBrand() {
         style={{ borderColor: dk.borderStrong, background: "rgba(197,160,89,0.1)" }}
       >
         <span className={`${cormorant.className} text-lg font-semibold`} style={{ color: dk.accent }}>
-          S
+          V
         </span>
       </div>
       <div>
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ color: dk.on }}>
-          Stone Jewellery
+        <p className={`${cormorant.className} text-[11px] font-semibold uppercase tracking-[0.28em]`} style={{ color: dk.on }}>
+          V E L O R A
         </p>
         <p className="text-[10px]" style={{ color: dk.onFaint }}>
           Admin Panel
