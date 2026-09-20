@@ -268,11 +268,11 @@ export function Logo({ className }: { className?: string }) {
           className={`${cormorant.className} text-xl font-semibold`}
           style={{ color: tk.accent }}
         >
-          S
+          V
         </span>
       </div>
-      <span className="text-sm font-semibold uppercase tracking-[0.22em]" style={{ color: tk.on }}>
-        Stone Jewellery
+      <span className={`${cormorant.className} text-sm font-semibold uppercase tracking-[0.28em]`} style={{ color: tk.on }}>
+        V E L O R A
       </span>
     </Link>
   )

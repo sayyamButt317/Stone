@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import {
   Bell,
   ChevronDown,
@@ -14,8 +15,8 @@ import {
   Search,
 } from "lucide-react"
 import { useDashStagger, useMountFade } from "../hooks/useGsap"
-import { GoldButton, StatusBadge, panelGradient } from "../ui"
-import { cormorant, dk } from "../theme"
+import { StatusBadge, panelGradient } from "../ui"
+import { cormorant, dk, goldGradient } from "../theme"
 import type { CatalogProduct, DashIcon, ProductSummaryStat } from "../types"
 import {
   CATALOG_PRODUCTS,
@@ -119,10 +120,15 @@ export default function ProductsPageView() {
                   3
                 </span>
               </button>
-              <GoldButton icon={Plus} className="shrink-0">
+              <Link
+                href="/dashboard/products/new"
+                className="inline-flex shrink-0 items-center gap-2 rounded-lg px-4 py-2.5 text-xs font-semibold uppercase tracking-wide transition-all hover:brightness-110"
+                style={{ background: goldGradient, color: dk.surfaceDeep }}
+              >
+                <Plus className="size-4" strokeWidth={2} />
                 Add Product
                 <ChevronDown className="size-3.5" strokeWidth={2.5} />
-              </GoldButton>
+              </Link>
             </div>
           </div>
         </div>

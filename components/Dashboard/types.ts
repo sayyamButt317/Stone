@@ -242,3 +242,88 @@ export interface StatusBadgeProps {
     | CollectionStatus
     | InventoryStatus
 }
+
+/* ------------------------------------------------------------------ */
+/*  Add / Edit Product form                                            */
+/* ------------------------------------------------------------------ */
+
+export type ProductPublishStatus = "draft" | "active" | "archived"
+
+export interface ProductFormMedia {
+  mainImage: string | null
+  gallery: string[]
+  video: string | null
+  images360: string[]
+}
+
+export interface ProductFormPricing {
+  regularPrice: string
+  costPrice: string
+  currency: string
+  discountSchedule: boolean
+  discountStart: string
+  discountEnd: string
+}
+
+export interface ProductFormInventory {
+  stockQuantity: string
+  lowStockAlert: string
+  trackInventory: boolean
+  allowBackOrders: boolean
+  weight: string
+  weightUnit: string
+}
+
+export interface ProductFormSpecs {
+  metalType: string
+  metalPurity: string
+  metalColor: string
+  gemstone: string
+  stoneShape: string
+  stoneColor: string
+  countryOfOrigin: string
+}
+
+export interface ProductFormVisibility {
+  onlineStore: boolean
+  search: boolean
+  homepage: boolean
+  featuredProduct: boolean
+}
+
+export interface ProductFormFeatured {
+  newArrival: boolean
+  bestSeller: boolean
+  trending: boolean
+  limitedEdition: boolean
+  recommended: boolean
+}
+
+export interface ProductFormPublish {
+  schedulePublish: boolean
+  publishDate: string
+  publishTime: string
+  createdAt: string
+}
+
+export interface ProductFormState {
+  name: string
+  shortDescription: string
+  category: string
+  fullDescription: string
+  media: ProductFormMedia
+  pricing: ProductFormPricing
+  inventory: ProductFormInventory
+  specs: ProductFormSpecs
+  status: ProductPublishStatus
+  visibility: ProductFormVisibility
+  collections: string[]
+  categories: string[]
+  featured: ProductFormFeatured
+  publish: ProductFormPublish
+}
+
+export interface BreadcrumbItem {
+  label: string
+  href?: string
+}
